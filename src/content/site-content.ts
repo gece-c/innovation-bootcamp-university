@@ -46,8 +46,8 @@ export const hero = {
   body:
     "Start with foundational education, then transition to earning while you learn through real projects in high-demand tech roles.",
   actions: [
-    { href: "/opportunities#apply", label: "Pre-Register" },
-    { href: "/opportunities#internships", label: "Explore Internships" }
+    { href: "/company#contact", label: "Pre-Register" },
+    { href: "/opportunities/internships", label: "Explore Internships" }
   ],
   stats: [
     { label: "Tier Learning Path", value: "3" },
@@ -720,7 +720,7 @@ export const howItWorksPage = {
     title: "Ready to Get Started?",
     description:
       "Apply today and begin your journey from student to paid professional with our innovative cooperative education model.",
-    href: "/opportunities#apply",
+    href: "/company#contact",
     label: "Apply Now"
   }
 };
@@ -859,3 +859,18 @@ export const legalLinks = [
   { href: "/legal/cookie-policy", label: "Cookie Policy" },
   { href: "/legal/accessibility", label: "Accessibility" }
 ];
+
+export const companyLinks = [
+  { href: "/company", label: "About" },
+  { href: "/company/contact", label: "Contact" },
+  { href: "/company/press", label: "Press" },
+  { href: "/company/careers-at-ib", label: "Careers at IB" }
+];
+
+export const stayUpdatedBlock = {
+  title: "Stay Updated",
+  body:
+    "Get the latest updates about our programs, student success stories, and upcoming events delivered to your inbox.",
+  placeholder: "Enter your email",
+  buttonLabel: "Subscribe"
+};
