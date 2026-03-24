@@ -46,7 +46,7 @@ export const hero = {
   body:
     "Start with foundational education, then transition to earning while you learn through real projects in high-demand tech roles.",
   actions: [
-    { href: "/company#contact", label: "Pre-Register" },
+    { href: "/opportunities/internships", label: "Pre-Register" },
     { href: "/opportunities/internships", label: "Explore Internships" }
   ],
   stats: [
@@ -383,7 +383,7 @@ export const internshipPositions: InternshipPosition[] = [
 export const industryPartnersPage = {
   title: "Industry Partners",
   subtitle: "Collaborate with leading companies shaping the future of technology",
-  primaryCta: { href: "/company#contact", label: "Become a Partner" },
+  primaryCta: { href: "/company/contact", label: "Become a Partner" },
   partners: [
     {
       name: "TechCorp",
@@ -428,7 +428,7 @@ export const industryPartnersPage = {
   finalCta: {
     title: "Ready to Partner With Us?",
     description: "Join our network of industry partners and help shape the future of tech education.",
-    href: "/company#contact",
+    href: "/company/contact",
     label: "Get in Touch"
   }
 };
@@ -436,7 +436,7 @@ export const industryPartnersPage = {
 export const becomeAdvisorPage = {
   title: "Become an Advisor",
   subtitle: "Share your expertise and help shape the next generation of tech professionals",
-  primaryCta: { href: "/company#contact", label: "Apply Now" },
+  primaryCta: { href: "/opportunities/internships", label: "Apply Now" },
   requirementsTitle: "Requirements",
   requirements: [
     {
@@ -485,7 +485,7 @@ export const becomeAdvisorPage = {
   finalCta: {
     title: "Ready to Make an Impact?",
     description: "Join our network of industry experts and help shape the future of tech education.",
-    href: "/company#contact",
+    href: "/company/contact",
     label: "Apply as Advisor"
   }
 };
@@ -578,7 +578,7 @@ export const careerSupportPage = {
     title: "Hiring Partners",
     description:
       "We partner with leading tech companies to provide our graduates with exclusive job opportunities and direct access to hiring managers.",
-    href: "/company#contact",
+    href: "/company/contact",
     label: "Become a Hiring Partner"
   },
   storiesCta: {
@@ -720,7 +720,7 @@ export const howItWorksPage = {
     title: "Ready to Get Started?",
     description:
       "Apply today and begin your journey from student to paid professional with our innovative cooperative education model.",
-    href: "/company#contact",
+    href: "/opportunities/internships",
     label: "Apply Now"
   }
 };
@@ -759,7 +759,7 @@ export const studentHandbookPage = {
     title: "Need Additional Help?",
     description:
       "Can't find what you're looking for? Our support team is here to help you with any questions or concerns.",
-    href: "/company#contact",
+    href: "/company/contact",
     label: "Contact Support"
   }
 };
@@ -807,7 +807,7 @@ export const faqPage = {
   subtitle:
     "Find answers to common questions about our programs, application process, and student support services.",
   supportText: "Still have questions? We're here to help.",
-  supportLink: { href: "/company#contact", label: "Contact our support team" }
+  supportLink: { href: "/company/contact", label: "Contact our support team" }
 };
 
 export const faqAccordionItems = [

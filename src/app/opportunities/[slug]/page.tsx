@@ -59,7 +59,7 @@ export default async function OpportunityDetailPage({ params }: { params: Promis
               {item.summary ? <p className="mt-4 text-sm text-[var(--text-muted)]">{item.summary}</p> : null}
 
               <div className="mt-auto pt-6">
-                <ButtonLink href="/company#contact" variant="ghost">
+                <ButtonLink href="/opportunities/internships" variant="ghost">
                   More Details
                 </ButtonLink>
               </div>
@@ -268,7 +268,7 @@ export default async function OpportunityDetailPage({ params }: { params: Promis
           Full details for {page.title.toLowerCase()} are being added from your source document.
         </p>
         <div className="mt-5">
-          <ButtonLink href="/company#contact" variant="secondary">
+          <ButtonLink href="/company/contact" variant="secondary">
             Contact Team
           </ButtonLink>
         </div>

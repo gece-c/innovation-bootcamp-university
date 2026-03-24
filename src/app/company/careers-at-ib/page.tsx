@@ -1,4 +1,3 @@
-import { stayUpdatedBlock } from "@/content/site-content";
 import Link from "next/link";
 
 const reasons = [
@@ -109,19 +108,6 @@ export default function CareersAtIbPage() {
         </Link>
       </section>
 
-      <section className="rounded-2xl border border-[#4a4a4a] bg-[var(--surface)] p-6">
-        <h2 className="text-2xl font-semibold">{stayUpdatedBlock.title}</h2>
-        <p className="mt-2 max-w-2xl text-[var(--text-muted)]">{stayUpdatedBlock.body}</p>
-        <div className="mt-4 flex max-w-xl gap-2">
-          <input
-            placeholder={stayUpdatedBlock.placeholder}
-            className="w-full rounded-md border border-[#4a4a4a] bg-[var(--bg)] px-3 py-2"
-          />
-          <button type="button" className="rounded-md bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-black">
-            {stayUpdatedBlock.buttonLabel}
-          </button>
-        </div>
-      </section>
     </div>
   );
 }

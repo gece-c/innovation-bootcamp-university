@@ -1,18 +1,13 @@
  "use client";
 
 import { FormEvent, useState } from "react";
-import { stayUpdatedBlock } from "@/content/site-content";
 import { isValidEmail } from "@/lib/validation/email";
 
 export default function ContactPage() {
   const [contactEmail, setContactEmail] = useState("");
-  const [subscribeEmail, setSubscribeEmail] = useState("");
   const [contactStatus, setContactStatus] = useState<string | null>(null);
-  const [subscribeStatus, setSubscribeStatus] = useState<string | null>(null);
   const [contactError, setContactError] = useState<string | null>(null);
-  const [subscribeError, setSubscribeError] = useState<string | null>(null);
   const [isContactSubmitting, setIsContactSubmitting] = useState(false);
-  const [isSubscribeSubmitting, setIsSubscribeSubmitting] = useState(false);
 
   async function handleContactSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -51,37 +46,6 @@ export default function ContactPage() {
       setContactError("Network error. Please try again.");
     } finally {
       setIsContactSubmitting(false);
-    }
-  }
-
-  async function handleSubscribeSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubscribeStatus(null);
-    setSubscribeError(null);
-
-    if (!isValidEmail(subscribeEmail)) {
-      setSubscribeError("Please enter a valid email address.");
-      return;
-    }
-
-    setIsSubscribeSubmitting(true);
-    try {
-      const response = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: subscribeEmail })
-      });
-      const data = (await response.json()) as { message?: string };
-      if (!response.ok) {
-        setSubscribeError(data.message ?? "Unable to subscribe right now.");
-        return;
-      }
-      setSubscribeStatus(data.message ?? "Subscribed successfully.");
-      setSubscribeEmail("");
-    } catch {
-      setSubscribeError("Network error. Please try again.");
-    } finally {
-      setIsSubscribeSubmitting(false);
     }
   }
 
@@ -188,31 +152,6 @@ export default function ContactPage() {
         </article>
       </section>
 
-      <section className="rounded-2xl border border-[#4a4a4a] bg-[var(--surface)] p-6">
-        <h2 className="text-2xl font-semibold">{stayUpdatedBlock.title}</h2>
-        <p className="mt-2 max-w-2xl text-[var(--text-muted)]">{stayUpdatedBlock.body}</p>
-        <form className="mt-4 max-w-xl" onSubmit={handleSubscribeSubmit} noValidate>
-          <div className="flex gap-2">
-            <input
-              type="email"
-              required
-              value={subscribeEmail}
-              onChange={(event) => setSubscribeEmail(event.target.value)}
-              placeholder={stayUpdatedBlock.placeholder}
-              className="w-full rounded-md border border-[#4a4a4a] bg-[var(--bg)] px-3 py-2"
-            />
-            <button
-              type="submit"
-              disabled={isSubscribeSubmitting}
-              className="rounded-md bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-black disabled:opacity-60"
-            >
-              {stayUpdatedBlock.buttonLabel}
-            </button>
-          </div>
-          {subscribeError && <p className="mt-2 text-sm text-red-400">{subscribeError}</p>}
-          {subscribeStatus && <p className="mt-2 text-sm text-green-400">{subscribeStatus}</p>}
-        </form>
-      </section>
     </div>
   );
 }
