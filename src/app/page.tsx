@@ -13,17 +13,33 @@ import {
 } from "@/content/site-content";
 
 export default function HomePage() {
+  const heroStatPositionClasses = [
+    "sm:absolute sm:left-[-2%] sm:top-[10%] min-[980px]:left-[-5%] min-[980px]:top-[8%]",
+    "sm:absolute sm:left-[-6%] sm:top-[43%] min-[980px]:left-[-10%] min-[980px]:top-[38%]",
+    "sm:absolute sm:left-[10%] sm:bottom-[4%] min-[980px]:left-[5%] min-[980px]:bottom-[12%]",
+    "sm:absolute sm:left-[50%] sm:bottom-[-%] min-[980px]:left-[36%] min-[980px]:bottom-[-2%]"
+  ];
+
   return (
     <div className="space-y-14">
-      <section aria-labelledby="home-title" className="hero-reference">
-        <div className="hero-reference__content">
+      <section
+        aria-labelledby="home-title"
+        className="relative grid items-center gap-8 overflow-hidden rounded-2xl bg-[var(--surface)] p-6 max-[979px]:p-6 min-[980px]:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] min-[980px]:p-8"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--secondary) 22%, transparent), transparent 36%), radial-gradient(circle at 65% 58%, color-mix(in srgb, var(--primary) 20%, transparent), transparent 38%)"
+        }}
+      >
+        <div className="relative z-[2]">
           <p className="mb-3 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-sm text-[var(--primary)]">
             {hero.badge}
           </p>
           <h1 id="home-title" className="page-title">
             Applications Open for 2026
             <br />
-            <span className="hero-reference__title-accent">Launch Your Tech Career</span>
+            <span className='font-["Playfair_Display",Georgia,"Times_New_Roman",serif] font-bold'>
+              Launch Your Tech Career
+            </span>
           </h1>
           <p className="max-w-2xl text-[var(--text-muted)]">{hero.body}</p>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -34,28 +50,29 @@ export default function HomePage() {
           </div>
         </div>
 
-        <div className="hero-reference__media-wrap" aria-label="Hero program highlights">
-          <div className="hero-reference__blob hero-reference__blob--cyan" aria-hidden="true" />
-          <div className="hero-reference__blob hero-reference__blob--purple" aria-hidden="true" />
+        <div
+          className="relative z-[1] grid w-full justify-self-center gap-3 sm:min-h-[390px] sm:w-[min(100%,520px)] sm:block sm:justify-self-center min-[980px]:min-h-[420px] min-[980px]:justify-self-end"
+          aria-label="Hero program highlights"
+        >
           <Image
             src="/hero-person.svg"
             alt="Student standing in front of abstract shapes"
             width={531}
             height={582}
-            className="hero-reference__person"
+            className="relative z-[2] col-span-2 h-auto w-[min(100%,360px)] justify-self-center drop-shadow-[0_22px_30px_rgb(0_0_0_/_0.35)] sm:w-full"
             priority
           />
           {hero.stats.map((stat, index) => (
             <article
               key={stat.label}
-              className={`hero-stat-card hero-stat-card--${index + 1}`}
+              className={`z-[3] w-full rounded-[50rem] border border-[#4a4a4a] bg-[rgb(34_34_34_/_0.88)] px-[0.65rem] py-[0.6rem] text-center shadow-[0_10px_20px_rgb(0_0_0_/_0.35)] sm:h-[120px] sm:w-[120px] ${heroStatPositionClasses[index] ?? ""}`}
               aria-label={`${stat.label}: ${stat.value}`}
             >
-              <p className="hero-stat-card__icon" aria-hidden="true">
+              <p className="my-[0.8rem] mb-[0.1rem] text-[1.1rem] leading-[1.1] font-bold text-[var(--primary)]" aria-hidden="true">
                 {index === 0 ? "◌◌" : index === 1 ? "$" : index === 2 ? "○" : "</>"}
               </p>
-              <p className="hero-stat-card__value">{stat.value}</p>
-              <p className="hero-stat-card__label">{stat.label}</p>
+              <p className="text-[clamp(1.2rem,1.8vw,1.65rem)] leading-[1.2] font-bold">{stat.value}</p>
+              <p className="mt-[0.12rem] text-[0.62rem] leading-[1.3] text-[var(--text-muted)]">{stat.label}</p>
             </article>
           ))}
         </div>
