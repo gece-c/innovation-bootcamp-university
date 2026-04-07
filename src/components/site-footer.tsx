@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { companyLinks, legalLinks, navItems, opportunityPages, resources, stayUpdatedBlock } from "@/content/site-content";
+import { companyLinks, legalLinks, opportunityPages, resources, stayUpdatedBlock } from "@/content/site-content";
 import { isValidEmail } from "@/lib/validation/email";
 
 export function SiteFooter() {
@@ -44,8 +44,8 @@ export function SiteFooter() {
 
   return (
     <footer className="mt-16 border-t border-[#3f3f3f] bg-[var(--surface)]">
-      <div className="container-shell grid gap-8 py-10 md:grid-cols-12 md:gap-x-12 lg:gap-x-16">
-        <section className="md:col-span-5 lg:col-span-4">
+      <div className="container-shell grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
+        <section className="sm:col-span-2 lg:col-span-2">
           <h2 className="text-2xl font-semibold">{stayUpdatedBlock.title}</h2>
           <p className="mt-2 text-sm text-[var(--text-muted)]">{stayUpdatedBlock.body}</p>
           <form className="mt-4 max-w-xl" onSubmit={handleSubscribeSubmit} noValidate>
@@ -71,56 +71,41 @@ export function SiteFooter() {
           </form>
         </section>
 
-        <section className="md:col-span-2 lg:col-start-7 lg:col-span-2">
-          <h2 className="font-semibold">Programs</h2>
-          <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)]">
-            {navItems
-              .filter((item) => item.href === "/programs")
-              .map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="focus-ring rounded hover:text-[var(--primary)]">
-                    {item.label}
+        <section className="space-y-8">
+          <div>
+            <h2 className="font-semibold">Resources</h2>
+            <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)]">
+              {resources.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/resources/${item.slug}`}
+                    className="focus-ring rounded hover:text-[var(--primary)]"
+                  >
+                    {item.title}
                   </Link>
                 </li>
               ))}
-          </ul>
-        </section>
-
-        <section className="md:col-span-2 space-y-8 lg:col-span-2">
-          <div>
-          <h2 className="font-semibold">Resources</h2>
-          <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)]">
-            {resources.map((item) => (
-              <li key={item.slug}>
-                <Link
-                  href={`/resources/${item.slug}`}
-                  className="focus-ring rounded hover:text-[var(--primary)]"
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            </ul>
           </div>
 
           <div>
-          <h2 className="font-semibold">Opportunities</h2>
-          <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)]">
-            {opportunityPages.map((item) => (
-              <li key={item.slug}>
-                <Link
-                  href={`/opportunities/${item.slug}`}
-                  className="focus-ring rounded hover:text-[var(--primary)]"
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
+            <h2 className="font-semibold">Opportunities</h2>
+            <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)]">
+              {opportunityPages.map((item) => (
+                <li key={item.slug}>
+                  <Link
+                    href={`/opportunities/${item.slug}`}
+                    className="focus-ring rounded hover:text-[var(--primary)]"
+                  >
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
-        <section className="md:col-span-3 md:justify-self-end lg:col-span-2">
+        <section className="sm:col-span-2 lg:col-span-1">
           <h2 className="font-semibold">Company</h2>
           <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)]">
             {companyLinks.map((item) => (

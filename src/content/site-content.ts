@@ -50,9 +50,9 @@ export const hero = {
     { href: "/opportunities/internships", label: "Explore Internships" }
   ],
   stats: [
-    { label: "Tier Learning Path", value: "3" },
+    { label: "Learning Journey", value: "4 Stages" },
     { label: "Potential Earnings", value: "$65K+" },
-    { label: "Initial Student Capacity", value: "100+" },
+    { label: "Program Structure", value: "500 Hours Required" },
     { label: "Industry Sectors", value: "8+" }
   ]
 };
@@ -72,7 +72,7 @@ export const whyChoose = {
     {
       title: "Cooperative Education Model",
       description:
-        "Start with foundational learning, then transition to earning as you develop advanced skills in our tiered program.",
+        "Start with foundational learning, then transition to earning as you develop advanced skills through guided milestones.",
       icon: "🤝"
     },
     {
@@ -108,8 +108,8 @@ export const tracks: Track[] = [
     name: "Web Development",
     summary:
       "Master full-stack development with modern frameworks and cloud technologies while building a job-ready portfolio.",
-    capacity: "45+ initial capacity",
-    duration: "24 weeks",
+    capacity: "No cohort size limit",
+    duration: "Flexible timeline (500 hours required)",
     skills: ["React", "Node.js", "AWS", "TypeScript"],
     careers: ["Frontend Developer", "Full Stack Engineer"]
   },
@@ -118,8 +118,8 @@ export const tracks: Track[] = [
     name: "AI & Machine Learning",
     summary:
       "Build intelligent systems with Python, TensorFlow, and OpenAI tools for in-demand AI roles.",
-    capacity: "35+ initial capacity",
-    duration: "28 weeks",
+    capacity: "No cohort size limit",
+    duration: "Flexible timeline (500 hours required)",
     skills: ["Python", "TensorFlow", "PyTorch", "OpenAI"],
     careers: ["Machine Learning Engineer", "AI Research Assistant"]
   },
@@ -128,34 +128,10 @@ export const tracks: Track[] = [
     name: "Robotics Engineering",
     summary:
       "Create autonomous systems through hardware integration, computer vision, and real-world engineering workflows.",
-    capacity: "30+ initial capacity",
-    duration: "32 weeks",
+    capacity: "No cohort size limit",
+    duration: "Flexible timeline (500 hours required)",
     skills: ["ROS", "C++", "Computer Vision", "Arduino"],
     careers: ["Robotics Engineer", "Embedded Systems Developer"]
-  }
-];
-
-export const tiers = [
-  {
-    id: "tier-1",
-    title: "Foundation Builder",
-    duration: "2-3 months",
-    earning: "You Pay",
-    skills: ["HTML/CSS", "JavaScript", "Git Basics", "UI/UX Fundamentals"]
-  },
-  {
-    id: "tier-2",
-    title: "Skill Accelerator",
-    duration: "3-4 months",
-    earning: "Start Earning",
-    skills: ["React/Next.js", "Node.js", "Database Design", "API Development"]
-  },
-  {
-    id: "tier-3",
-    title: "Professional Developer",
-    duration: "4-6 months",
-    earning: "Earn More",
-    skills: ["System Design", "Cloud Services", "DevOps", "Team Leadership"]
   }
 ];
 
@@ -165,7 +141,7 @@ export const careerOpportunitiesSection = {
     "Our curriculum prepares you for roles across a wide range of tech sectors. Here are the industries where our graduates can build successful careers.",
   highlights: [
     { label: "Industry Sectors", value: "8+", icon: "🏢", tint: "primary" },
-    { label: "Initial Student Capacity", value: "100+", icon: "🎒", tint: "secondary" },
+    { label: "Program Completion", value: "500 Hours", icon: "🎒", tint: "secondary" },
     { label: "Target Placement Rate", value: "90%+", icon: "🎯", tint: "rose" }
   ],
   roles: [
@@ -594,7 +570,7 @@ export const resources = [
   {
     slug: "how-it-works",
     title: "How It Works",
-    summary: "Understand the 3-tier pathway from foundational learning to paid project work."
+    summary: "Understand the guided pathway from foundational learning to paid project work."
   },
   {
     slug: "student-handbook",
@@ -617,7 +593,7 @@ export const faq = [
   {
     question: "How does the cooperative education model work?",
     answer:
-      "Tier 1 focuses on foundation skills. Tier 2 transitions into paid project participation. Tier 3 advances into leadership-level project delivery and higher earnings."
+      "You begin with core skill building, transition into paid project participation, and continue advancing through guided mentorship and real-world delivery."
   },
   {
     question: "What are the program prerequisites?",
@@ -627,7 +603,7 @@ export const faq = [
   {
     question: "Can I participate while working full-time?",
     answer:
-      "Yes. Scheduling support and milestone planning are designed for career changers, though time commitment increases by tier."
+      "Yes. Scheduling support and milestone planning are designed for career changers, and time commitment can increase as you take on deeper project responsibilities."
   }
 ];
 
@@ -653,54 +629,6 @@ export const howItWorksPage = {
       description: "Graduate with the skills, portfolio, and experience employers are looking for."
     }
   ],
-  modelTitle: "Three-Tier Education Model",
-  modelTiers: [
-    {
-      tier: "Tier 1",
-      title: "Foundation Builder",
-      subtitle: "Learning Phase",
-      description:
-        "In Tier 1, you pay for education to build a solid foundation in technical skills.",
-      duration: "2-3 months",
-      earning: "$500/month",
-      outcomes: [
-        "Structured curriculum in your chosen track",
-        "Personalized mentorship and support",
-        "Hands-on projects with real-world applications",
-        "Community of like-minded learners"
-      ]
-    },
-    {
-      tier: "Tier 2",
-      title: "Skill Accelerator",
-      subtitle: "Start Earning",
-      description:
-        "In Tier 2, you start earning while you continue to learn more advanced skills.",
-      duration: "3-4 months",
-      earning: "Start earning income",
-      outcomes: [
-        "Work on client projects with supervision",
-        "Receive compensation for your contributions",
-        "Learn advanced topics in your specialty",
-        "Build a professional portfolio of work"
-      ]
-    },
-    {
-      tier: "Tier 3",
-      title: "Professional Developer",
-      subtitle: "Earn More",
-      description:
-        "In Tier 3, you take on leadership roles and increase your earning potential.",
-      duration: "4-6 months",
-      earning: "Increased earnings",
-      outcomes: [
-        "Lead project teams and mentor others",
-        "Increase your compensation",
-        "Develop specialized expertise",
-        "Prepare for career advancement or entrepreneurship"
-      ]
-    }
-  ],
   comparisonTitle: "Why Choose Cooperative Education?",
   comparison: {
     traditional: [
@@ -712,7 +640,7 @@ export const howItWorksPage = {
     cooperative: [
       "Lower initial investment ($500/month)",
       "Start earning in 2-3 months",
-      "Work on real client projects from Tier 2",
+      "Work on real client projects as you progress",
       "Seamless transition from learning to earning"
     ]
   },
@@ -824,7 +752,7 @@ export const faqAccordionItems = [
   {
     question: "How long are the programs?",
     answer:
-      "Program lengths vary depending on the track and intensity level you choose. Our part-time programs typically run for 12-24 weeks, while full-time intensive programs can be completed in 8-16 weeks."
+      "Programs follow a flexible schedule and are not capped by fixed timelines. Completion is based on fulfilling the required 500 learning and project hours."
   },
   {
     question: "What kind of support do students receive?",

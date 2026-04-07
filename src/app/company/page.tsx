@@ -63,28 +63,28 @@ export default function CompanyPage() {
         <h2 className="mb-6 text-center text-3xl font-semibold">Our Programs</h2>
         <div className="grid gap-4 md:grid-cols-3">
           <article className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
-            <h3 className="text-lg font-semibold">Foundation Developer</h3>
+            <h3 className="text-lg font-semibold">Web Development</h3>
             <p className="mt-2 text-sm text-[var(--text-muted)]">
-              Master programming fundamentals and build your first professional projects.
+              Build full-stack applications with modern frameworks and deployment workflows.
             </p>
-            <p className="mt-3 text-xs text-[var(--text-muted)]">Duration: 3-6 months</p>
-            <p className="text-xs text-[var(--text-muted)]">Focus: Core Programming Skills</p>
+            <p className="mt-3 text-xs text-[var(--text-muted)]">Duration: 24 weeks</p>
+            <p className="text-xs text-[var(--text-muted)]">Focus: Full-Stack Engineering</p>
           </article>
           <article className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
-            <h3 className="text-lg font-semibold">Professional Developer</h3>
+            <h3 className="text-lg font-semibold">AI &amp; Machine Learning</h3>
             <p className="mt-2 text-sm text-[var(--text-muted)]">
-              Earn more with advanced skills and leadership roles.
+              Develop and evaluate intelligent systems for real-world AI product use cases.
             </p>
-            <p className="mt-3 text-xs text-[var(--text-muted)]">Duration: 6-12 months</p>
-            <p className="text-xs text-[var(--text-muted)]">Focus: Advanced Development</p>
+            <p className="mt-3 text-xs text-[var(--text-muted)]">Duration: 28 weeks</p>
+            <p className="text-xs text-[var(--text-muted)]">Focus: Applied AI Delivery</p>
           </article>
           <article className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
-            <h3 className="text-lg font-semibold">Specialized Tracks</h3>
+            <h3 className="text-lg font-semibold">Robotics Engineering</h3>
             <p className="mt-2 text-sm text-[var(--text-muted)]">
-              Deep dive into specific technologies like AI, Cloud, or Mobile Development.
+              Design and test robotics systems that combine software, hardware, and controls.
             </p>
-            <p className="mt-3 text-xs text-[var(--text-muted)]">Duration: Varies</p>
-            <p className="text-xs text-[var(--text-muted)]">Focus: Specialized Skills</p>
+            <p className="mt-3 text-xs text-[var(--text-muted)]">Duration: 32 weeks</p>
+            <p className="text-xs text-[var(--text-muted)]">Focus: Intelligent Physical Systems</p>
           </article>
         </div>
       </section>

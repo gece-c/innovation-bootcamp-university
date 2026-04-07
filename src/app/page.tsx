@@ -1,14 +1,10 @@
 import { ButtonLink } from "@/components/ui/button-link";
 import { IndustryFeedbackCarousel } from "@/components/industry-feedback-carousel";
-import { SectionCard } from "@/components/ui/section-card";
 import Image from "next/image";
 import {
-  careerOpportunitiesSection,
   faqAccordionItems,
   hero,
   industryFeedbackSection,
-  tiers,
-  tracks,
   whyChoose
 } from "@/content/site-content";
 
@@ -65,14 +61,18 @@ export default function HomePage() {
           {hero.stats.map((stat, index) => (
             <article
               key={stat.label}
-              className={`z-[3] w-full rounded-[50rem] border border-[#4a4a4a] bg-[rgb(34_34_34_/_0.88)] px-[0.65rem] py-[0.6rem] text-center shadow-[0_10px_20px_rgb(0_0_0_/_0.35)] sm:h-[120px] sm:w-[120px] ${heroStatPositionClasses[index] ?? ""}`}
+              className={`z-[3] flex w-full flex-col items-center justify-center rounded-[50rem] border border-[#4a4a4a] bg-[rgb(34_34_34_/_0.88)] px-[0.65rem] py-[0.6rem] text-center shadow-[0_10px_20px_rgb(0_0_0_/_0.35)] ${index === 2 ? "sm:h-[136px] sm:w-[136px]" : "sm:h-[120px] sm:w-[120px]"} ${heroStatPositionClasses[index] ?? ""}`}
               aria-label={`${stat.label}: ${stat.value}`}
             >
-              <p className="my-[0.8rem] mb-[0.1rem] text-[1.1rem] leading-[1.1] font-bold text-[var(--primary)]" aria-hidden="true">
+              <p className="mb-[0.18rem] text-[1rem] leading-[1.1] font-bold text-[var(--primary)]" aria-hidden="true">
                 {index === 0 ? "◌◌" : index === 1 ? "$" : index === 2 ? "○" : "</>"}
               </p>
-              <p className="text-[clamp(1.2rem,1.8vw,1.65rem)] leading-[1.2] font-bold">{stat.value}</p>
-              <p className="mt-[0.12rem] text-[0.62rem] leading-[1.3] text-[var(--text-muted)]">{stat.label}</p>
+              <p className="max-w-[8ch] text-balance text-[clamp(1.05rem,1vw+0.5rem,1.65rem)] leading-[1.05] font-bold break-words">
+                {stat.value}
+              </p>
+              <p className="mt-[0.15rem] max-w-[10ch] text-balance text-[clamp(0.56rem,0.35vw+0.42rem,0.66rem)] leading-[1.25] text-[var(--text-muted)] break-words">
+                {stat.label}
+              </p>
             </article>
           ))}
         </div>
@@ -102,135 +102,150 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section aria-labelledby="tracks-title">
-        <h2 id="tracks-title" className="mb-6 text-3xl font-semibold">
-          Specialized Learning Tracks
-        </h2>
-        <div className="grid gap-5 md:grid-cols-3">
-          {tracks.map((track) => (
-            <SectionCard
-              key={track.slug}
-              title={track.name}
-              footer={
-                <ButtonLink href={`/programs#${track.slug}`} variant="secondary">
-                  Explore Track
-                </ButtonLink>
-              }
-            >
-              <p>{track.summary}</p>
-              <p className="mt-3 text-sm">
-                {track.capacity} - {track.duration}
-              </p>
-            </SectionCard>
-          ))}
-        </div>
-      </section>
-
-      <section aria-labelledby="tiers-title">
-        <h2 id="tiers-title" className="mb-6 text-3xl font-semibold">
-          From Paying to Earning
-        </h2>
-        <p className="mb-8 max-w-3xl text-[var(--text-muted)]">
-          Our cooperative education model transitions you from student to paid professional. Start with
-          foundational learning, then progress to earning while continuing your education.
-        </p>
-        <div className="grid gap-5 md:grid-cols-3">
-          {tiers.map((tier, index) => (
-            <article
-              key={tier.id}
-              className="flex h-full flex-col overflow-hidden rounded-xl border border-[#4a4a4a] bg-[var(--surface)]"
-            >
-              <div
-                className={`p-5 ${
-                  index === 0
-                    ? "bg-gradient-to-br from-[#0d8fae] via-[var(--primary)] to-[#39c7e8]"
-                    : index === 1
-                      ? "bg-gradient-to-br from-[#6f45c2] via-[var(--secondary)] to-[#b187e5]"
-                      : "bg-gradient-to-br from-[#0b7d98] via-[#13a7cb] to-[#8b7ce6]"
-                } flex min-h-[300px] flex-col`}
-              >
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/15 text-sm font-semibold text-white">
-                    {index + 1}
-                  </span>
-                  <span className="rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white">
-                    Tier {index + 1}
-                  </span>
-                </div>
-                <h3 className="mb-2 text-2xl font-semibold text-white">{tier.title}</h3>
-                <p className="text-white/90">
-                  {index === 0
-                    ? "Build a strong foundation in web development fundamentals with expert instruction and hands-on projects."
-                    : index === 1
-                      ? "Accelerate your learning with advanced concepts and begin earning through real-world project participation."
-                      : "Work on complex projects, lead development teams, and earn higher compensation with advanced skills."}
-                </p>
-              </div>
-
-              <div className="mt-auto grid grid-cols-2 gap-3 p-5">
-                <div className="rounded-lg border border-[#4a4a4a] bg-[var(--bg)]/40 p-3 text-center">
-                  <p className="text-xs text-[var(--text-muted)]">Potential Earnings</p>
-                  <p className="mt-1 text-2xl font-semibold text-[var(--primary)]">{tier.earning}</p>
-                </div>
-                <div className="rounded-lg border border-[#4a4a4a] bg-[var(--bg)]/40 p-3 text-center">
-                  <p className="text-xs text-[var(--text-muted)]">Duration</p>
-                  <p className="mt-1 text-2xl font-semibold text-[var(--secondary)]">{tier.duration}</p>
-                </div>
-              </div>
-
-              <div className="px-5 pb-5">
-                <p className="mb-2 text-sm font-semibold">Key Skills</p>
-                <div className="flex flex-wrap gap-2">
-                  {tier.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-md border border-[#4a4a4a] bg-[var(--bg)]/45 px-2 py-1 text-sm text-[var(--text-muted)]"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
       <section aria-labelledby="career-opportunities-title" className="rounded-2xl bg-[var(--surface)] p-8">
         <h2 id="career-opportunities-title" className="mb-4 text-3xl font-semibold">
           Career <span className="text-[var(--primary)]">Opportunities</span>
         </h2>
-        <p className="max-w-3xl text-[var(--text-muted)]">{careerOpportunitiesSection.body}</p>
+        <p className="max-w-3xl text-[var(--text-muted)]">
+          Our curriculum prepares you for roles across a wide range of tech sectors. Here are the
+          industries where our graduates can build successful careers.
+        </p>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {careerOpportunitiesSection.highlights.map((item) => (
-            <article
-              key={item.label}
-              className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-5 text-center"
-            >
-              <div className="mx-auto mb-4 text-3xl leading-none" aria-hidden="true">
-                {item.icon}
-              </div>
-              <p className="text-4xl font-semibold">{item.value}</p>
-              <p className="mt-1 text-[var(--text-muted)]">{item.label}</p>
-            </article>
-          ))}
+        <div className="mt-8 rounded-2xl border border-[#4a4a4a] bg-[var(--bg)]/30 p-6">
+          <h3 className="text-2xl font-semibold">Explore 40+ Internship Paths Across Industries</h3>
+          <p className="mt-3 text-[var(--text-muted)]">
+            Not everyone wants the same career and that is exactly the{" "}
+            point.
+          </p>
+          <p className="mt-2 text-[var(--text-muted)]">
+            Whether you&apos;re into AI, business, science, or creativity, you can{" "}
+            <strong>start working in your field from day one</strong>.
+          </p>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-4">
-          {careerOpportunitiesSection.roles.map((role) => (
-            <article
-              key={role.title}
-              className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-5"
-            >
-              <div className="mb-4 text-2xl leading-none" aria-hidden="true">
-                {role.icon}
-              </div>
-              <h3 className="mb-2 text-xl font-semibold">{role.title}</h3>
-              <p className="text-sm text-[var(--text-muted)]">{role.summary}</p>
-            </article>
-          ))}
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <h3 className="text-2xl font-semibold">Technology &amp; AI (Build the Future)</h3>
+            <p className="mt-2 text-[var(--text-muted)]">Work on cutting-edge systems shaping tomorrow:</p>
+            <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
+              <li>AI/AGI Intern</li>
+              <li>Machine Learning Engineering Intern</li>
+              <li>Computer Vision Engineering Intern</li>
+              <li>Prompt Engineer Intern</li>
+              <li>Software Development Intern</li>
+              <li>Front-end Developer Intern</li>
+            </ul>
+            <p className="mt-3 text-sm italic text-[var(--text-muted)]">
+              Perfect for builders, coders, and problem-solvers
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <h3 className="text-2xl font-semibold">Robotics &amp; Engineering (Hands-On Innovation)</h3>
+            <p className="mt-2 text-[var(--text-muted)]">Design, build, and integrate real-world systems:</p>
+            <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
+              <li>Robotics Engineering Intern</li>
+              <li>Mechatronics Engineering Intern</li>
+              <li>Embedded Systems Intern</li>
+              <li>Sensor Integration Intern</li>
+              <li>Control Systems Engineering Intern</li>
+              <li>Human-Robot Interaction Intern</li>
+            </ul>
+            <p className="mt-3 text-sm italic text-[var(--text-muted)]">
+              For those who want to create physical + intelligent systems
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <h3 className="text-2xl font-semibold">Science, Research &amp; Advanced Fields</h3>
+            <p className="mt-2 text-[var(--text-muted)]">Explore deep tech and scientific innovation:</p>
+            <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
+              <li>Biomedical Engineering Intern</li>
+              <li>Neuroscience Intern</li>
+              <li>Quantum Engineer Intern</li>
+              <li>Space Science Intern</li>
+              <li>Research Associate Intern (Open-Source Projects)</li>
+              <li>Animal Science and Veterinary Research Intern</li>
+            </ul>
+            <p className="mt-3 text-sm italic text-[var(--text-muted)]">
+              Ideal for analytical thinkers and future researchers
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <h3 className="text-2xl font-semibold">Business, Marketing &amp; Growth</h3>
+            <p className="mt-2 text-[var(--text-muted)]">Work directly on company growth and strategy:</p>
+            <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
+              <li>Business Development and Sales Intern</li>
+              <li>Business Development (AI &amp; Robotics) Intern</li>
+              <li>Marketing Intern</li>
+              <li>Digital Marketing Intern</li>
+              <li>SEO Specialist Intern</li>
+              <li>Social Media Intern</li>
+              <li>GTM Engineer Intern</li>
+              <li>GTM Influencer Intern</li>
+            </ul>
+            <p className="mt-3 text-sm italic text-[var(--text-muted)]">
+              For communicators, strategists, and growth-driven minds
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <h3 className="text-2xl font-semibold">Operations, Product &amp; Management</h3>
+            <p className="mt-2 text-[var(--text-muted)]">Help build and run real companies:</p>
+            <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
+              <li>Operations Intern</li>
+              <li>Project Management Intern</li>
+              <li>Product Development Intern (AI &amp; Robotics)</li>
+              <li>Quality Assurance Intern</li>
+              <li>Finance Intern</li>
+            </ul>
+            <p className="mt-3 text-sm italic text-[var(--text-muted)]">
+              For leaders, organizers, and decision-makers
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <h3 className="text-2xl font-semibold">Creative, Media &amp; Communication</h3>
+            <p className="mt-2 text-[var(--text-muted)]">Create content that reaches the world:</p>
+            <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
+              <li>Content Marketing Intern</li>
+              <li>Journalism &amp; PR Intern</li>
+              <li>Podcast Production Intern</li>
+              <li>Technical Writing Intern</li>
+              <li>UI/UX Design Intern</li>
+            </ul>
+            <p className="mt-3 text-sm italic text-[var(--text-muted)]">
+              For storytellers, designers, and creatives
+            </p>
+          </article>
+
+          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6 md:col-span-2">
+            <h3 className="text-2xl font-semibold">Emerging &amp; Interdisciplinary Fields</h3>
+            <p className="mt-2 text-[var(--text-muted)]">Where tech meets new industries:</p>
+            <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
+              <li>EdTech and Innovation Intern</li>
+              <li>Ethical and Legal Research Intern</li>
+              <li>Hospitality and Tourism Intern</li>
+              <li>Sport Science Intern</li>
+            </ul>
+            <p className="mt-3 text-sm italic text-[var(--text-muted)]">
+              For explorers who want something different
+            </p>
+          </article>
         </div>
+
+        <article className="mt-8 rounded-2xl border border-[#4a4a4a] bg-[var(--bg)]/30 p-6">
+          <h3 className="text-2xl font-semibold">Why This Matters</h3>
+          <p className="mt-3 text-[var(--text-muted)]">Most platforms offer a few generic roles.</p>
+          <p className="mt-2 text-[var(--text-muted)]">
+            Here, you choose from <strong>a wide ecosystem of real internships</strong>, across industries
+            and all connected to your learning journey.
+          </p>
+          <p className="mt-4 font-semibold">
+            Find your path. Start your internship. Build your career now.
+          </p>
+        </article>
       </section>
 
       <section aria-labelledby="industry-feedback-title" className="rounded-2xl bg-[var(--surface)] p-8">
