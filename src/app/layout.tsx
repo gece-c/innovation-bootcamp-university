@@ -5,7 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
   title: "Innovation Bootcamp University",
-  description: "From paying to earning tech skills.",
+  description: "Internship-based tech learning with a three-tier model.",
   icons: {
     icon: "/flolabs-logo.svg"
   }

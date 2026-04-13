@@ -1,9 +1,6 @@
 import { notFound } from "next/navigation";
 import { ButtonLink } from "@/components/ui/button-link";
 import {
-  becomeAdvisorPage,
-  careerSupportPage,
-  industryPartnersPage,
   internshipPositions,
   opportunityPages
 } from "@/content/site-content";
@@ -22,7 +19,7 @@ export default async function OpportunityDetailPage({ params }: { params: Promis
         <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
           <h1 className="page-title">Internship Positions</h1>
           <p className="mx-auto max-w-2xl text-[var(--text-muted)]">
-            Browse currently open roles and find opportunities that match your strengths.
+            Browse currently open roles across engineering, science, design, marketing, QA, business, and operations to find opportunities that match your strengths.
           </p>
         </section>
 
@@ -65,191 +62,6 @@ export default async function OpportunityDetailPage({ params }: { params: Promis
               </div>
             </article>
           ))}
-        </section>
-      </div>
-    );
-  }
-
-  if (slug === "industry-partners") {
-    return (
-      <div className="space-y-10">
-        <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
-          <h1 className="page-title">{industryPartnersPage.title}</h1>
-          <p className="mx-auto mb-6 max-w-2xl text-[var(--text-muted)]">{industryPartnersPage.subtitle}</p>
-          <ButtonLink href={industryPartnersPage.primaryCta.href}>{industryPartnersPage.primaryCta.label}</ButtonLink>
-        </section>
-
-        <section className="grid gap-5 md:grid-cols-2" aria-label="Industry partners">
-          {industryPartnersPage.partners.map((partner) => (
-            <article key={partner.name} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
-              <h2 className="text-2xl font-semibold">{partner.name}</h2>
-              <p className="mt-1 text-sm text-[var(--primary)]">{partner.category}</p>
-              <p className="mt-3 text-[var(--text-muted)]">{partner.summary}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {partner.support.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-[#4a4a4a] bg-[var(--bg)] px-3 py-1 text-xs text-[var(--text-muted)]"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </section>
-
-        <section className="rounded-2xl bg-[var(--surface)] p-8">
-          <h2 className="mb-6 text-center text-3xl font-semibold">{industryPartnersPage.benefitsTitle}</h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            {industryPartnersPage.benefits.map((item) => (
-              <article key={item.title} className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/45 p-5 text-center">
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-[var(--text-muted)]">{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
-          <h2 className="text-3xl font-semibold">{industryPartnersPage.finalCta.title}</h2>
-          <p className="mx-auto mt-3 max-w-3xl text-[var(--text-muted)]">{industryPartnersPage.finalCta.description}</p>
-          <div className="mt-6">
-            <ButtonLink href={industryPartnersPage.finalCta.href} variant="secondary">
-              {industryPartnersPage.finalCta.label}
-            </ButtonLink>
-          </div>
-        </section>
-      </div>
-    );
-  }
-
-  if (slug === "become-an-advisor") {
-    return (
-      <div className="space-y-10">
-        <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
-          <h1 className="page-title">{becomeAdvisorPage.title}</h1>
-          <p className="mx-auto mb-6 max-w-2xl text-[var(--text-muted)]">{becomeAdvisorPage.subtitle}</p>
-          <ButtonLink href={becomeAdvisorPage.primaryCta.href}>{becomeAdvisorPage.primaryCta.label}</ButtonLink>
-        </section>
-
-        <section>
-          <h2 className="mb-6 text-center text-3xl font-semibold">{becomeAdvisorPage.requirementsTitle}</h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            {becomeAdvisorPage.requirements.map((item) => (
-              <article key={item.title} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5 text-center">
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-[var(--text-muted)]">{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="mb-6 text-center text-3xl font-semibold">{becomeAdvisorPage.reasonsTitle}</h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            {becomeAdvisorPage.reasons.map((item) => (
-              <article key={item.title} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5 text-center">
-                <h3 className="text-xl font-semibold">{item.title}</h3>
-                <p className="mt-3 text-[var(--text-muted)]">{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="mb-6 text-center text-3xl font-semibold">{becomeAdvisorPage.testimonialsTitle}</h2>
-          <div className="grid gap-4 md:grid-cols-2">
-            {becomeAdvisorPage.testimonials.map((item) => (
-              <article key={item.name} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
-                <p className="text-yellow-300">★★★★★</p>
-                <p className="mt-3 text-[var(--text-muted)]">
-                  &ldquo;{item.quote}&rdquo;
-                </p>
-                <p className="mt-4 font-semibold">{item.name}</p>
-                <p className="text-sm text-[var(--text-muted)]">{item.role}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
-          <h2 className="text-3xl font-semibold">{becomeAdvisorPage.finalCta.title}</h2>
-          <p className="mx-auto mt-3 max-w-3xl text-[var(--text-muted)]">{becomeAdvisorPage.finalCta.description}</p>
-          <div className="mt-6">
-            <ButtonLink href={becomeAdvisorPage.finalCta.href} variant="secondary">
-              {becomeAdvisorPage.finalCta.label}
-            </ButtonLink>
-          </div>
-        </section>
-      </div>
-    );
-  }
-
-  if (slug === "career-support") {
-    return (
-      <div className="space-y-10">
-        <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
-          <h1 className="page-title">{careerSupportPage.title}</h1>
-          <p className="mx-auto max-w-3xl text-[var(--text-muted)]">{careerSupportPage.subtitle}</p>
-        </section>
-
-        <section className="grid gap-4 md:grid-cols-4" aria-label="Career support metrics">
-          {careerSupportPage.metrics.map((metric) => (
-            <article key={metric.label} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5 text-center">
-              <p className="text-4xl font-semibold text-[var(--primary)]">{metric.value}</p>
-              <p className="mt-1 text-lg font-semibold">{metric.label}</p>
-              <p className="mt-2 text-sm text-[var(--text-muted)]">{metric.note}</p>
-            </article>
-          ))}
-        </section>
-
-        <section>
-          <h2 className="mb-6 text-center text-3xl font-semibold">{careerSupportPage.servicesTitle}</h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {careerSupportPage.services.map((service) => (
-              <article key={service.title} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
-                <h3 className="text-xl font-semibold">{service.title}</h3>
-                <p className="mt-3 text-sm text-[var(--text-muted)]">{service.description}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section>
-          <h2 className="mb-6 text-center text-3xl font-semibold">{careerSupportPage.resourcesTitle}</h2>
-          <div className="grid gap-4 md:grid-cols-2">
-            {careerSupportPage.resources.map((resource) => (
-              <article key={resource.title} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
-                <h3 className="text-xl font-semibold">{resource.title}</h3>
-                <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-[var(--text-muted)]">
-                  {resource.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
-          <h2 className="text-3xl font-semibold">{careerSupportPage.partnerCta.title}</h2>
-          <p className="mx-auto mt-3 max-w-3xl text-[var(--text-muted)]">{careerSupportPage.partnerCta.description}</p>
-          <div className="mt-6">
-            <ButtonLink href={careerSupportPage.partnerCta.href} variant="secondary">
-              {careerSupportPage.partnerCta.label}
-            </ButtonLink>
-          </div>
-        </section>
-
-        <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
-          <h2 className="text-3xl font-semibold">{careerSupportPage.storiesCta.title}</h2>
-          <p className="mx-auto mt-3 max-w-3xl text-[var(--text-muted)]">{careerSupportPage.storiesCta.description}</p>
-          <div className="mt-6">
-            <ButtonLink href={careerSupportPage.storiesCta.href} variant="ghost">
-              {careerSupportPage.storiesCta.label}
-            </ButtonLink>
-          </div>
         </section>
       </div>
     );

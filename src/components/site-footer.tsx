@@ -85,6 +85,11 @@ export function SiteFooter() {
                   </Link>
                 </li>
               ))}
+              <li>
+                <Link href="/#faq-title" className="focus-ring rounded hover:text-[var(--primary)]">
+                  FAQs
+                </Link>
+              </li>
             </ul>
           </div>
 

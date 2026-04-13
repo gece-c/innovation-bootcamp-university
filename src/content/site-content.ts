@@ -20,40 +20,30 @@ export type InternshipPosition = {
 };
 
 export type OpportunityPage = {
-  slug: "internships" | "industry-partners" | "become-an-advisor" | "career-support";
+  slug: "internships";
   title: string;
   summary: string;
   ctaLabel: string;
 };
 
-export type IndustryPartner = {
-  name: string;
-  category: string;
-  summary: string;
-  support: string[];
-};
-
 export const navItems = [
-  { href: "/programs", label: "Programs" },
-  { href: "/resources", label: "Resources" },
-  { href: "/opportunities", label: "Opportunities" },
+  { href: "/resources/how-it-works", label: "How It Works" },
   { href: "/company", label: "About" }
 ];
 
 export const hero = {
-  badge: "Applications Open",
+  badge: "",
   title: "Launch Your Tech Career From Student to Professional",
   body:
-    "Start with foundational education, then transition to earning while you learn through real projects in high-demand tech roles.",
+    "Start with foundational education, then transition to internship-based learning through real projects in high-demand tech roles.",
   actions: [
     { href: "/opportunities/internships", label: "Pre-Register" },
     { href: "/opportunities/internships", label: "Explore Internships" }
   ],
   stats: [
-    { label: "Learning Journey", value: "4 Stages" },
-    { label: "Potential Earnings", value: "$65K+" },
-    { label: "Program Structure", value: "500 Hours Required" },
-    { label: "Industry Sectors", value: "8+" }
+    { label: "Learning Journey", value: "3 Tiers" },
+    { label: "Industry Sectors", value: "8+" },
+    { label: "Program Structure", value: "500 Hours Required" }
   ]
 };
 
@@ -61,18 +51,18 @@ export const whyChoose = {
   badge: "What Makes Us Different",
   title: "Why Choose Innovation Bootcamp University",
   body:
-    "Start with education, progress to earning, and graduate as a tech professional with our cooperative approach.",
+    "Start with education, progress through internship-based learning, and graduate as a tech professional with our cooperative approach.",
   points: [
     {
-      title: "Learn from Industry Experts",
+      title: "Learn from IBU Mentors",
       description:
-        "Get mentored by experienced professionals who bring real-world expertise to your learning journey.",
+        "Get mentored by experienced IBU instructors who bring practical expertise to your learning journey.",
       icon: "🎓"
     },
     {
       title: "Cooperative Education Model",
       description:
-        "Start with foundational learning, then transition to earning as you develop advanced skills through guided milestones.",
+        "Start with foundational learning, then transition to internship-based learning as you develop advanced skills through guided milestones.",
       icon: "🤝"
     },
     {
@@ -88,9 +78,9 @@ export const whyChoose = {
       icon: "👥"
     },
     {
-      title: "Industry-Recognized Skills",
+      title: "Job-Ready Skills",
       description:
-        "Gain certifications and skills that are in high demand across the tech industry.",
+        "Gain certifications and practical skills aligned to current technical role expectations.",
       icon: "💎"
     },
     {
@@ -109,7 +99,7 @@ export const tracks: Track[] = [
     summary:
       "Master full-stack development with modern frameworks and cloud technologies while building a job-ready portfolio.",
     capacity: "No cohort size limit",
-    duration: "Flexible timeline (500 hours required)",
+    duration: "Completion requirement: 500 hours",
     skills: ["React", "Node.js", "AWS", "TypeScript"],
     careers: ["Frontend Developer", "Full Stack Engineer"]
   },
@@ -119,7 +109,7 @@ export const tracks: Track[] = [
     summary:
       "Build intelligent systems with Python, TensorFlow, and OpenAI tools for in-demand AI roles.",
     capacity: "No cohort size limit",
-    duration: "Flexible timeline (500 hours required)",
+    duration: "Completion requirement: 500 hours",
     skills: ["Python", "TensorFlow", "PyTorch", "OpenAI"],
     careers: ["Machine Learning Engineer", "AI Research Assistant"]
   },
@@ -129,7 +119,7 @@ export const tracks: Track[] = [
     summary:
       "Create autonomous systems through hardware integration, computer vision, and real-world engineering workflows.",
     capacity: "No cohort size limit",
-    duration: "Flexible timeline (500 hours required)",
+    duration: "Completion requirement: 500 hours",
     skills: ["ROS", "C++", "Computer Vision", "Arduino"],
     careers: ["Robotics Engineer", "Embedded Systems Developer"]
   }
@@ -196,40 +186,8 @@ export const careerOpportunitiesSection = {
   ]
 };
 
-export const industryFeedbackSection = {
-  badge: "Industry Feedback",
-  title: "What Industry Partners Say",
-  body: "Hear from the tech industry professionals who have helped shape our program.",
-  testimonials: [
-    {
-      quote:
-        "The curriculum and hands-on approach designed by Innovation Bootcamp University aligns perfectly with what we look for in junior developers. We're excited to welcome their first cohort of students as interns.",
-      name: "David Park",
-      role: "Tech Lead at TechCorp Solutions",
-      tag: "Industry Partner"
-    },
-    {
-      quote:
-        "The Innovation Bootcamp University model addresses the biggest challenge we face - finding entry-level talent with practical experience. We're proud to be an early partner in this initiative.",
-      name: "Lisa Rodriguez",
-      role: "HR Director at InnovateTech",
-      tag: "Hiring Partner"
-    },
-    {
-      quote:
-        "The program's focus on real-world projects and industry collaboration sets it apart from traditional learning paths. I've been impressed with their comprehensive curriculum design.",
-      name: "Thomas Chen",
-      role: "Education Consultant at Future Skills Institute",
-      tag: "Education Advisor"
-    }
-  ]
-};
-
 export const opportunities = [
-  "Internships",
-  "Industry Partners",
-  "Become an Advisor",
-  "Career Support"
+  "Internships"
 ];
 
 export const opportunityPages: OpportunityPage[] = [
@@ -238,24 +196,6 @@ export const opportunityPages: OpportunityPage[] = [
     title: "Internships",
     summary: "Explore open internship positions across engineering, AI, robotics, and business teams.",
     ctaLabel: "Check Internships"
-  },
-  {
-    slug: "industry-partners",
-    title: "Industry Partners",
-    summary: "Collaborate with us as a hiring and project partner to support real student outcomes.",
-    ctaLabel: "View Partner Program"
-  },
-  {
-    slug: "become-an-advisor",
-    title: "Become an Advisor",
-    summary: "Mentor learners, guide curriculum quality, and shape practical training pathways.",
-    ctaLabel: "Explore Advisor Role"
-  },
-  {
-    slug: "career-support",
-    title: "Career Support",
-    summary: "Get interview preparation, portfolio guidance, and placement support throughout your journey.",
-    ctaLabel: "See Career Support"
   }
 ];
 
@@ -282,13 +222,13 @@ export const internshipPositions: InternshipPosition[] = [
     slug: "business-development-sales-intern",
     title: "Business Development and Sales Intern",
     status: "Open",
-    summary: "Help drive outreach, lead tracking, and partnership follow-ups."
+    summary: "Help drive outreach, lead tracking, and structured follow-up execution."
   },
   {
     slug: "business-development-sales-ai-robotics-intern",
     title: "Business Development and Sales Intern (AI and Robotics)",
     status: "Open",
-    summary: "Support AI and robotics partnership pipelines and market analysis."
+    summary: "Support AI and robotics outreach pipelines and market analysis."
   },
   {
     slug: "computer-vision-engineering-intern",
@@ -317,9 +257,6 @@ export const internshipPositions: InternshipPosition[] = [
   {
     slug: "full-stack-developer-intern",
     title: "Full Stack Developer Intern",
-    company: "TechCorp",
-    location: "San Francisco, CA",
-    duration: "3 months",
     schedule: "Full-time",
     status: "Open",
     summary: "Build modern web features using React, Next.js, and Node.js."
@@ -327,9 +264,6 @@ export const internshipPositions: InternshipPosition[] = [
   {
     slug: "machine-learning-intern",
     title: "Machine Learning Intern",
-    company: "AI Solutions",
-    location: "Remote",
-    duration: "6 months",
     schedule: "Full-time",
     status: "Open",
     summary: "Develop and evaluate ML models for real-world AI use cases."
@@ -337,9 +271,6 @@ export const internshipPositions: InternshipPosition[] = [
   {
     slug: "robotics-engineering-intern",
     title: "Robotics Engineering Intern",
-    company: "RoboTech",
-    location: "Boston, MA",
-    duration: "4 months",
     schedule: "Full-time",
     status: "Open",
     summary: "Design and test robotics components for next-generation systems."
@@ -347,245 +278,17 @@ export const internshipPositions: InternshipPosition[] = [
   {
     slug: "data-science-intern",
     title: "Data Science Intern",
-    company: "DataViz Inc",
-    location: "Remote",
-    duration: "6 months",
     schedule: "Part-time",
     status: "Open",
     summary: "Analyze datasets and deliver dashboards for actionable insights."
   }
 ];
 
-export const industryPartnersPage = {
-  title: "Industry Partners",
-  subtitle: "Collaborate with leading companies shaping the future of technology",
-  primaryCta: { href: "/company/contact", label: "Become a Partner" },
-  partners: [
-    {
-      name: "TechCorp",
-      category: "Technology",
-      summary: "Leading provider of enterprise software solutions.",
-      support: ["Internships", "Graduate Roles", "Mentorship"]
-    },
-    {
-      name: "AI Solutions",
-      category: "Artificial Intelligence",
-      summary: "Pioneering AI research and development company.",
-      support: ["Research Programs", "Internships", "Workshops"]
-    },
-    {
-      name: "RoboTech",
-      category: "Robotics",
-      summary: "Innovative robotics and automation solutions.",
-      support: ["Lab Access", "Internships", "Project Collaboration"]
-    },
-    {
-      name: "DataViz Inc",
-      category: "Data Analytics",
-      summary: "Data visualization and analytics platform.",
-      support: ["Training Programs", "Internships", "Certifications"]
-    }
-  ] as IndustryPartner[],
-  benefitsTitle: "Partner Benefits",
-  benefits: [
-    {
-      title: "Access to Talent",
-      description: "Connect with skilled graduates and interns from our programs."
-    },
-    {
-      title: "Industry Projects",
-      description: "Collaborate on real-world projects with our students."
-    },
-    {
-      title: "Global Network",
-      description: "Join our network of leading technology companies."
-    }
-  ],
-  finalCta: {
-    title: "Ready to Partner With Us?",
-    description: "Join our network of industry partners and help shape the future of tech education.",
-    href: "/company/contact",
-    label: "Get in Touch"
-  }
-};
-
-export const becomeAdvisorPage = {
-  title: "Become an Advisor",
-  subtitle: "Share your expertise and help shape the next generation of tech professionals",
-  primaryCta: { href: "/opportunities/internships", label: "Apply Now" },
-  requirementsTitle: "Requirements",
-  requirements: [
-    {
-      title: "3+ Years Experience",
-      description: "Professional experience in tech industry"
-    },
-    {
-      title: "Expertise",
-      description: "Deep knowledge in one or more of our program areas"
-    },
-    {
-      title: "Communication",
-      description: "Strong mentoring and communication skills"
-    }
-  ],
-  reasonsTitle: "Why Become an Advisor?",
-  reasons: [
-    {
-      title: "Professional Growth",
-      description: "Develop leadership and mentoring skills"
-    },
-    {
-      title: "Network Expansion",
-      description: "Connect with other industry experts"
-    },
-    {
-      title: "Make an Impact",
-      description: "Shape the next generation of tech talent"
-    }
-  ],
-  testimonialsTitle: "Advisor Testimonials",
-  testimonials: [
-    {
-      quote:
-        "Being an advisor has been incredibly rewarding. It is amazing to see students grow and succeed in their careers.",
-      name: "Sarah Chen",
-      role: "Senior Software Engineer at TechCorp"
-    },
-    {
-      quote:
-        "The program is well-structured and the students are highly motivated. It is a great way to give back to the community.",
-      name: "Michael Rodriguez",
-      role: "AI Research Lead at AI Solutions"
-    }
-  ],
-  finalCta: {
-    title: "Ready to Make an Impact?",
-    description: "Join our network of industry experts and help shape the future of tech education.",
-    href: "/company/contact",
-    label: "Apply as Advisor"
-  }
-};
-
-export const careerSupportPage = {
-  title: "Career Support",
-  subtitle:
-    "We are committed to your success beyond graduation. Our comprehensive career support services are designed to help you launch and grow your tech career.",
-  metrics: [
-    {
-      value: "95%",
-      label: "Employment Rate",
-      note: "Of our graduates secure technical roles within 6 months"
-    },
-    {
-      value: "45+",
-      label: "Hiring Partners",
-      note: "Active companies hiring from our talent pool"
-    },
-    {
-      value: "$85K",
-      label: "Average Starting Salary",
-      note: "For our graduates in their first technical role"
-    },
-    {
-      value: "92%",
-      label: "Career Satisfaction",
-      note: "Of graduates report high job satisfaction"
-    }
-  ],
-  servicesTitle: "Our Career Services",
-  services: [
-    {
-      title: "Career Coaching",
-      description: "One-on-one guidance from experienced tech industry professionals to help you navigate your career path."
-    },
-    {
-      title: "Job Search Strategy",
-      description: "Personalized job search planning, interview preparation, and salary negotiation support."
-    },
-    {
-      title: "Industry Network",
-      description: "Access to our network of hiring partners and alumni working at leading tech companies."
-    },
-    {
-      title: "Career Tracking",
-      description: "Ongoing job placement support and progress tracking to ensure you reach your career goals."
-    }
-  ],
-  resourcesTitle: "Career Resources",
-  resources: [
-    {
-      title: "Resume Building",
-      items: [
-        "Professional resume review and optimization",
-        "Portfolio development guidance",
-        "LinkedIn profile enhancement",
-        "Personal branding workshops"
-      ]
-    },
-    {
-      title: "Interview Preparation",
-      items: [
-        "Technical interview practice",
-        "Behavioral interview coaching",
-        "Mock interviews with industry professionals",
-        "Interview feedback and improvement plans"
-      ]
-    },
-    {
-      title: "Job Search Support",
-      items: [
-        "Access to exclusive job boards",
-        "Referrals to partner companies",
-        "Application strategy sessions",
-        "Salary negotiation coaching"
-      ]
-    },
-    {
-      title: "Long-term Success",
-      items: [
-        "Career development planning",
-        "Professional skill workshops",
-        "Industry mentorship matching",
-        "Networking event access"
-      ]
-    }
-  ],
-  partnerCta: {
-    title: "Hiring Partners",
-    description:
-      "We partner with leading tech companies to provide our graduates with exclusive job opportunities and direct access to hiring managers.",
-    href: "/company/contact",
-    label: "Become a Hiring Partner"
-  },
-  storiesCta: {
-    title: "Alumni Success Stories",
-    description:
-      "Read about how our graduates have successfully transitioned into rewarding tech careers and the impact of our career support services.",
-    href: "/resources/blog",
-    label: "Read Success Stories"
-  }
-};
-
 export const resources = [
   {
     slug: "how-it-works",
     title: "How It Works",
-    summary: "Understand the guided pathway from foundational learning to paid project work."
-  },
-  {
-    slug: "student-handbook",
-    title: "Student Handbook",
-    summary: "Review policies, expectations, schedules, and student success guidelines."
-  },
-  {
-    slug: "blog",
-    title: "Blog",
-    summary: "Read updates, success stories, and practical insights from the university team."
-  },
-  {
-    slug: "faqs",
-    title: "FAQs",
-    summary: "Get quick answers about admissions, learning structure, and participation."
+    summary: "See the real current flow from enrollment through internship-based learning."
   }
 ];
 
@@ -609,45 +312,41 @@ export const faq = [
 
 export const howItWorksPage = {
   title: "How It Works",
-  subtitle: "Our cooperative education model transitions you from student to paid professional.",
+  subtitle: "Our current model combines guided learning with internship-based practice at Innovation Bootcamp University.",
   cta: { href: "/programs", label: "Explore Programs" },
   stages: [
     {
-      title: "Foundation Learning",
-      description: "Begin with structured learning to build essential technical skills."
+      title: "Tier 1: Core Foundations",
+      description: "Build essential technical skills with structured lessons, checkpoints, and mentor guidance."
     },
     {
-      title: "Transition to Earning",
-      description: "Apply your skills to real projects and start earning while you continue learning."
+      title: "Tier 2: Applied Practice",
+      description: "Work on supervised practical assignments to strengthen delivery quality and team collaboration."
     },
     {
-      title: "Professional Growth",
-      description: "Take on leadership roles in projects and increase your earning potential."
-    },
-    {
-      title: "Career Advancement",
-      description: "Graduate with the skills, portfolio, and experience employers are looking for."
+      title: "Tier 3: Internship-Based Learning",
+      description: "Participate in internship-style work experiences aligned with your internship type and performance readiness."
     }
   ],
-  comparisonTitle: "Why Choose Cooperative Education?",
+  comparisonTitle: "Why This Structure Works",
   comparison: {
     traditional: [
-      "High upfront costs ($15,000-$50,000+)",
-      "Long period before earning income",
-      "Often unclear return on investment",
-      "Gap between education and employment"
+      "Learning and practical work are often disconnected",
+      "Students may finish with limited real delivery experience",
+      "Progress is usually measured by time instead of outcomes",
+      "Transition into internship work can feel abrupt"
     ],
     cooperative: [
-      "Lower initial investment ($500/month)",
-      "Start earning in 2-3 months",
-      "Work on real client projects as you progress",
-      "Seamless transition from learning to earning"
+      "Learning and practical application are intentionally connected",
+      "Students build confidence through guided project execution",
+      "Progress is milestone-based and skill-verified",
+      "Internship readiness is developed step by step"
     ]
   },
   finalCta: {
-    title: "Ready to Get Started?",
+    title: "Ready to Start?",
     description:
-      "Apply today and begin your journey from student to paid professional with our innovative cooperative education model.",
+      "Apply now and begin your path through our three-tier model with internship-based learning at IBU.",
     href: "/opportunities/internships",
     label: "Apply Now"
   }
@@ -733,7 +432,7 @@ export const blogPage = {
 export const faqPage = {
   title: "Frequently Asked Questions",
   subtitle:
-    "Find answers to common questions about our programs, application process, and student support services.",
+    "Find answers to common questions about internship pathways, application process, financial aid, and student support services.",
   supportText: "Still have questions? We're here to help.",
   supportLink: { href: "/company/contact", label: "Contact our support team" }
 };
@@ -742,42 +441,47 @@ export const faqAccordionItems = [
   {
     question: "What makes Innovation Bootcamp University different?",
     answer:
-      "Our program combines hands-on learning, industry mentorship, and real-world projects to provide a comprehensive learning experience. We focus on both technical skills and professional development."
+      "Our program combines hands-on learning, guided mentorship, and internship-based learning in a structured three-tier model. We focus on practical skill development and consistent progress."
   },
   {
     question: "Do I need prior programming experience?",
     answer:
-      "No prior programming experience is required for our beginner tracks. We have programs designed for all skill levels, from complete beginners to advanced developers looking to specialize."
+      "No prior programming experience is required. We support internship types across engineering, design, marketing, QA, neuroscience, business, and other fields where coding is optional unless your role requires it."
+  },
+  {
+    question: "How does tier progression work?",
+    answer:
+      "Progress follows a three-tier model with milestone-based advancement. Completion is based on fulfilling the required 500 learning and project hours."
   },
   {
     question: "How long are the programs?",
     answer:
-      "Programs follow a flexible schedule and are not capped by fixed timelines. Completion is based on fulfilling the required 500 learning and project hours."
+      "Program duration depends on your track and pace.\n\n- Full-time intensive: 8–16 weeks\n- Part-time: 20+ weeks"
   },
   {
     question: "What kind of support do students receive?",
     answer:
-      "Students receive comprehensive support including 1-on-1 mentoring, career coaching, technical assistance, and access to our community of learners and industry professionals."
+      "Students receive support through mentoring, technical feedback, structured checkpoints, and community collaboration across their learning journey."
   },
   {
-    question: "Are there job placement services?",
+    question: "What opportunities are currently available?",
     answer:
-      "Yes, we offer career services including resume reviews, interview preparation, networking events, and job placement assistance. We have partnerships with leading tech companies for internship and job opportunities."
+      "Current opportunities are internship-based pathways with roles across technology, robotics, science, design, marketing, business, operations, QA, and other interdisciplinary areas."
   },
   {
-    question: "What is the application process like?",
+    question: "What does the application process look like?",
     answer:
-      "The application process includes an online application, a brief interview to understand your goals, and for some advanced programs, a technical assessment. We want to ensure the program is the right fit for your needs."
+      "The process is simple and focused on fit:\n\n- Online application\n- Short interview to understand your goals\n- Technical assessment (for advanced roles)"
   },
   {
-    question: "Is financial aid available?",
+    question: "Is financial support available?",
     answer:
-      "Yes, we offer various financing options including scholarships, income share agreements, and flexible payment plans. We believe everyone should have access to quality tech education."
+      "Yes. We offer flexible options to make the program accessible:\n\n- Scholarships\n- Income share agreements\n- Payment plans"
   },
   {
-    question: "What technologies will I learn?",
+    question: "Will I need to learn coding for every internship type?",
     answer:
-      "Our curriculum covers in-demand technologies including JavaScript, Python, React, Node.js, and more. The specific technologies vary by program and are regularly updated based on industry trends."
+      "No. Some internship types are non-coding by design, while others include technical tools. You can choose a pathway based on your interests and goals, and add programming skills if you want to expand your options."
   }
 ];
 
@@ -791,14 +495,13 @@ export const legalLinks = [
 export const companyLinks = [
   { href: "/company", label: "About" },
   { href: "/company/contact", label: "Contact" },
-  { href: "/company/press", label: "Press" },
-  { href: "/company/careers-at-ib", label: "Careers at IB" }
+  { href: "/company/press", label: "Press" }
 ];
 
 export const stayUpdatedBlock = {
   title: "Stay Updated",
   body:
-    "Get the latest updates about our programs, student success stories, and upcoming events delivered to your inbox.",
+    "Be the first to know about new internship openings, company collaborations, and career opportunities.",
   placeholder: "Enter your email",
   buttonLabel: "Subscribe"
 };

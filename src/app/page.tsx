@@ -1,10 +1,8 @@
 import { ButtonLink } from "@/components/ui/button-link";
-import { IndustryFeedbackCarousel } from "@/components/industry-feedback-carousel";
 import Image from "next/image";
 import {
   faqAccordionItems,
   hero,
-  industryFeedbackSection,
   whyChoose
 } from "@/content/site-content";
 
@@ -27,12 +25,12 @@ export default function HomePage() {
         }}
       >
         <div className="relative z-[2]">
-          <p className="mb-3 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-sm text-[var(--primary)]">
-            {hero.badge}
-          </p>
+          {hero.badge ? (
+            <p className="mb-3 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-sm text-[var(--primary)]">
+              {hero.badge}
+            </p>
+          ) : null}
           <h1 id="home-title" className="page-title">
-            Applications Open for 2026
-            <br />
             <span className='font-["Playfair_Display",Georgia,"Times_New_Roman",serif] font-bold'>
               Launch Your Tech Career
             </span>
@@ -248,18 +246,6 @@ export default function HomePage() {
         </article>
       </section>
 
-      <section aria-labelledby="industry-feedback-title" className="rounded-2xl bg-[var(--surface)] p-8">
-        <p className="mb-3 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-sm text-[var(--primary)]">
-          {industryFeedbackSection.badge}
-        </p>
-        <h2 id="industry-feedback-title" className="page-title max-w-3xl">
-          {industryFeedbackSection.title}
-        </h2>
-        <p className="max-w-3xl text-[var(--text-muted)]">{industryFeedbackSection.body}</p>
-
-        <IndustryFeedbackCarousel testimonials={industryFeedbackSection.testimonials} />
-      </section>
-
       <section aria-labelledby="faq-title">
         <h2 id="faq-title" className="mb-6 text-3xl font-semibold">
           Frequently Asked Questions
@@ -268,7 +254,7 @@ export default function HomePage() {
           {faqAccordionItems.map((item) => (
             <details key={item.question} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-4">
               <summary className="focus-ring cursor-pointer rounded font-semibold">{item.question}</summary>
-              <p className="mt-3 text-[var(--text-muted)]">{item.answer}</p>
+              <p className="mt-3 whitespace-pre-line text-[var(--text-muted)]">{item.answer}</p>
             </details>
           ))}
         </div>
