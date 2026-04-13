@@ -1,98 +1,160 @@
-import { getAllInternships, Internship } from '@/lib/strapi'
-import Link from 'next/link'
+import Link from "next/link";
+import { getAllInternships, Internship } from "@/lib/strapi";
 
-// ==============================
-// SORTING
-// ==============================
 const statusPriority: Record<string, number> = {
   Open: 0,
-  'Closing Soon': 1,
+  "Closing Soon": 1,
   Pending: 2,
+  Closed: 3,
   Filled: 3,
-}
+};
 
 function sortInternships(list: Internship[]) {
   return [...list].sort((a, b) => {
-    const aPriority = statusPriority[a.status] ?? 99
-    const bPriority = statusPriority[b.status] ?? 99
+    const aPriority = statusPriority[a.status] ?? 99;
+    const bPriority = statusPriority[b.status] ?? 99;
 
     if (aPriority !== bPriority) {
-      return aPriority - bPriority
+      return aPriority - bPriority;
     }
 
-    return a.title.localeCompare(b.title)
-  })
+    return a.title.localeCompare(b.title);
+  });
 }
 
-// ==============================
-// PAGE
-// ==============================
+function internshipStatusBadgeClass(status: string) {
+  if (status === "Open") {
+    return "bg-green-500/15 text-green-300";
+  }
+  if (status === "Closed" || status === "Filled") {
+    return "bg-rose-500/15 text-rose-300";
+  }
+  return "bg-amber-500/15 text-amber-300";
+}
+
 export default async function InternshipsPage() {
-  const internships = await getAllInternships()
-  const sorted = sortInternships(internships)
+  const internships = await getAllInternships();
+  const sorted = sortInternships(internships);
+  const openCount = sorted.filter((i) => i.status === "Open").length;
 
   return (
-    <main className="min-h-screen bg-white pt-20">
-      <section className="py-16">
-        <div className="max-w-5xl mx-auto px-4">
+    <div className="space-y-10">
+      <section
+        aria-labelledby="internships-hero-title"
+        className="relative overflow-hidden rounded-2xl border border-[#4a4a4a]/70 bg-[var(--surface)] px-6 py-10 text-center sm:px-10 sm:py-12 md:px-14 md:py-14"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--secondary) 20%, transparent), transparent 38%), radial-gradient(circle at 12% 88%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 42%)"
+        }}
+      >
+        <div
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage:
+              "linear-gradient(120deg, transparent 0%, color-mix(in srgb, var(--text) 4%, transparent) 45%, transparent 70%)"
+          }}
+          aria-hidden
+        />
 
-          {/* HEADER */}
-          <div className="text-center mb-10">
-            <h1 className="text-4xl font-bold text-[#00349B]">
-              Internship Positions
-            </h1>
-            <p className="text-gray-600 mt-2">
-              Apply to your passion
-            </p>
-          </div>
+        <div className="relative z-[1] mx-auto max-w-3xl">
+          <h1 id="internships-hero-title" className="page-title">
+            <span className="block text-[52px] text-[var(--text)]">Internship</span>
+            <span className='block text-[62px] font-["Playfair_Display",Georgia,"Times_New_Roman",serif] font-bold text-[var(--primary)]'>
+              Positions
+            </span>
+          </h1>
 
-          {/* CONTENT */}
-          {sorted.length === 0 ? (
-            <p className="text-center text-gray-500">
-              No internships available at the moment.
-            </p>
-          ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {sorted.map((internship) => {
+          <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-relaxed text-[var(--text-muted)] sm:text-lg">
+            Browse open roles from industry partners, compare what fits your skills, and apply to roles that <b>accelerate
+            your tech career.</b>
+          </p>
 
-                const getStatusClass = () => {
-                  if (internship.status === 'Open')
-                    return 'bg-green-100 text-green-800'
-
-                  if (internship.status === 'Filled')
-                    return 'bg-gray-100 text-gray-800'
-
-                  return 'bg-yellow-100 text-yellow-800'
-                }
-
-                return (
-                  <div
-                    key={internship.id}
-                    className="p-6 border rounded-lg hover:shadow-lg transition"
+          {sorted.length > 0 ? (
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              {openCount > 0 ? (
+                <p className="inline-flex items-center gap-2.5 rounded-full border border-[#4a4a4a] bg-[var(--bg)]/55 px-4 py-2 text-sm text-[var(--text)] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.45)] backdrop-blur-[2px]">
+                  <span
+                    className="relative flex h-2 w-2 shrink-0 rounded-full bg-green-400"
+                    aria-hidden
                   >
-                  <Link href={`/opportunities/internships/${internship.slug}`}>
-                    <h3 className="text-lg font-semibold mb-2 text-black">
-                      {internship.title}
-                    </h3>
-
-                    <span className={`px-2 py-1 text-xs rounded text-black ${getStatusClass()}`}>
-                      {internship.status}
-                    </span>
-
-                    {internship.location && (
-                      <p className="text-sm text-gray-500 mt-2">
-                        {internship.location}
-                      </p>
-                    )}
-                    </Link>
-                  </div>
-
-                )
-              })}
+                    <span className="absolute inset-0 animate-ping rounded-full bg-green-400 opacity-40" />
+                  </span>
+                  <span>
+                    <span className="font-semibold text-[var(--primary)]">{openCount}</span>
+                    {openCount === 1 ? " role" : " roles"} open now
+                    {openCount < sorted.length ? (
+                      <span className="text-[var(--text-muted)]">
+                        {" "}
+                        · {sorted.length} listing{sorted.length === 1 ? "" : "s"}
+                      </span>
+                    ) : null}
+                  </span>
+                </p>
+              ) : (
+                <p className="inline-flex items-center rounded-full border border-[#4a4a4a]/80 bg-[var(--surface-muted)]/40 px-4 py-2 text-sm text-[var(--text-muted)]">
+                  {sorted.length} active listing{sorted.length === 1 ? "" : "s"}
+                </p>
+              )}
             </div>
-          )}
+          ) : null}
         </div>
       </section>
-    </main>
-  )
+
+      {sorted.length === 0 ? (
+        <section
+          className="rounded-2xl border border-[#4a4a4a] bg-[var(--surface)] p-10 text-center"
+          aria-live="polite"
+        >
+          <p className="text-[var(--text-muted)]">No internships available at the moment.</p>
+        </section>
+      ) : (
+        <section className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" aria-label="Internship listings">
+          {sorted.map((internship) => (
+            <article key={internship.id} className="h-full min-h-0">
+              <Link
+                href={`/opportunities/internships/${internship.slug}`}
+                className="focus-ring group flex h-full min-h-[12rem] flex-col rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5 transition-[border-color,box-shadow] hover:border-[var(--primary)]/40 hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--primary)_28%,transparent),0_12px_40px_-16px_rgba(0,0,0,0.55)]"
+                aria-labelledby={`internship-card-${internship.id}`}
+              >
+                <h2
+                  id={`internship-card-${internship.id}`}
+                  className="text-xl font-semibold leading-tight transition-colors group-hover:text-[var(--primary)]"
+                >
+                  {internship.title}
+                </h2>
+
+                <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                  <span
+                    className={`inline-flex shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold ${internshipStatusBadgeClass(internship.status)}`}
+                  >
+                    {internship.status}
+                  </span>
+                  {internship.location ? (
+                    <>
+                      <span
+                        className="size-1 shrink-0 rounded-full bg-[var(--primary)]/35 ring-1 ring-[var(--text-muted)]/15"
+                        aria-hidden
+                      />
+                      <span className="min-w-0 truncate text-xs font-normal text-[var(--text-muted)] opacity-60">
+                        {internship.location}
+                      </span>
+                    </>
+                  ) : null}
+                </div>
+
+                <span className="mt-auto block w-full pt-6">
+                  <span className="flex w-full items-center justify-center gap-2 rounded-lg border border-[var(--primary)]/50 bg-[color-mix(in_srgb,var(--primary)_14%,transparent)] px-4 py-3 text-sm font-semibold text-[var(--primary)] transition-[color,background-color,border-color,gap] group-hover:border-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-black group-hover:gap-3">
+                    View role
+                    <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">
+                      →
+                    </span>
+                  </span>
+                </span>
+              </Link>
+            </article>
+          ))}
+        </section>
+      )}
+    </div>
+  );
 }
