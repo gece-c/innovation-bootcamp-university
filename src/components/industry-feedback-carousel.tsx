@@ -58,12 +58,12 @@ export function IndustryFeedbackCarousel({ testimonials }: IndustryFeedbackCarou
         </button>
 
         <div className="mb-5 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] text-xl text-white">
-          "
+          &ldquo;
         </div>
 
         <div key={testimonials[activeIndex].name} className="testimonial-enter">
           <p className="min-h-[140px] text-xl leading-relaxed text-[var(--text)]">
-            "{testimonials[activeIndex].quote}"
+            &ldquo;{testimonials[activeIndex].quote}&rdquo;
           </p>
 
           <div className="mt-6">

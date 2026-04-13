@@ -35,32 +35,6 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
           ))}
         </section>
 
-        <section aria-labelledby="model-title" className="rounded-2xl bg-[var(--surface)] p-6">
-          <h2 id="model-title" className="mb-5 text-center text-3xl font-semibold">
-            {howItWorksPage.modelTitle}
-          </h2>
-          <div className="space-y-4">
-            {howItWorksPage.modelTiers.map((tier) => (
-              <SectionCard key={tier.tier} title={tier.title}>
-                <p className="mb-2 text-sm text-[var(--primary)]">{tier.tier}</p>
-                <p className="mb-2 font-semibold">{tier.subtitle}</p>
-                <p>{tier.description}</p>
-                <p className="mt-2 text-sm">
-                  Duration: {tier.duration}
-                  <br />
-                  Earning: {tier.earning}
-                </p>
-                <p className="mt-4 font-semibold">What you&apos;ll get:</p>
-                <ul className="mt-2 grid list-inside list-disc gap-1 md:grid-cols-2">
-                  {tier.outcomes.map((outcome) => (
-                    <li key={outcome}>{outcome}</li>
-                  ))}
-                </ul>
-              </SectionCard>
-            ))}
-          </div>
-        </section>
-
         <section aria-labelledby="comparison-title">
           <h2 id="comparison-title" className="mb-4 text-center text-3xl font-semibold">
             {howItWorksPage.comparisonTitle}
