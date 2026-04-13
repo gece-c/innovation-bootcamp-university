@@ -1,0 +1,18 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "diogo-text-push",
+    "main",
+    "strapi-integration"
+  ],
+  "parent": {
+    "diogo-text-push": "main",
+    "main": null,
+    "strapi-integration": "main"
+  },
+  "order": [
+    "main",
+    "diogo-text-push",
+    "strapi-integration"
+  ]
+}
