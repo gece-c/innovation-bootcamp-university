@@ -1,39 +1,84 @@
 const CONTENT_STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
 const CONTENT_STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
 
+// ==============================
+// GENERIC TYPES
+// ==============================
 interface StrapiResponse<T> {
   data: T;
 }
 
-// Internship interface
+// ==============================
+// RAW DATA (from Strapi)
+// ==============================
+interface InternshipRaw {
+  title?: string;
+  name?: string;
+  slug?: string;
+  status?: "Open" | "Closed" | "Filled";
+  internship_status?: string;
+  location?: string;
+  description?: string;
+  hubspotFormId?: string
+}
+
+// ==============================
+// SUPPORT BOTH STRAPI FORMATS
+// ==============================
+
+// v4 → { id, attributes: {...} }
+// v5 → { id, title, slug, ... }
+type StrapiInternship =
+  | {
+      id: number;
+      attributes: InternshipRaw;
+    }
+  | (InternshipRaw & { id: number });
+
+// ==============================
+// CLEAN DATA 
+// ==============================
 export interface Internship {
   id: number;
-  documentId: string;
   title: string;
   slug: string;
   status: "Open" | "Closed" | "Filled";
   location: string;
   description: string;
-  internship_status?: string;
+  hubspotFormId?: string
 }
 
-// Normalize status 
-function normalizeInternship(item: Internship): Internship {
-  const status = item.status ?? item.internship_status;
+// ==============================
+// NORMALIZER 
+// ==============================
+function normalizeInternship(item: StrapiInternship): Internship {
+  const attr =
+    "attributes" in item ? item.attributes : item;
+
+  const status = attr.status ?? attr.internship_status ?? "Filled";
 
   return {
-    ...item,
-    status: (status ?? "Filled") as Internship["status"],
+    id: item.id,
+    title: (attr.title ?? attr.name ?? "Untitled").trim(),
+    slug: attr.slug ?? "",
+    status: status as Internship["status"],
+    location: attr.location ?? "",
+    description: attr.description ?? "",
+    hubspotFormId: attr.hubspotFormId ?? ""
   };
 }
 
-// Generic fetch for content Strapi
+// ==============================
+// FETCH
+// ==============================
 async function fetchContentAPI<T>(path: string): Promise<T> {
   if (!CONTENT_STRAPI_URL) {
-    throw new Error("Missing CONTENT_STRAPI_URL");
+    throw new Error("Missing NEXT_PUBLIC_STRAPI_URL");
   }
 
-  const res = await fetch(`${CONTENT_STRAPI_URL}/api${path}`, {
+  const url = `${CONTENT_STRAPI_URL.replace(/\/$/, "")}/api${path}`;
+
+  const res = await fetch(url, {
     headers: {
       "Content-Type": "application/json",
       ...(CONTENT_STRAPI_API_TOKEN && {
@@ -52,14 +97,14 @@ async function fetchContentAPI<T>(path: string): Promise<T> {
   return res.json();
 }
 
-//
+// ==============================
 // GET ALL INTERNSHIPS
-//
+// ==============================
 export async function getAllInternships(): Promise<Internship[]> {
   try {
-    const response = await fetchContentAPI<StrapiResponse<Internship[]>>(
-      "/internships?populate=*&pagination[pageSize]=100"
-    );
+    const response = await fetchContentAPI<
+      StrapiResponse<StrapiInternship[]>
+    >("/internships?populate=*");
 
     return (response.data || []).map(normalizeInternship);
   } catch (error) {
@@ -68,16 +113,17 @@ export async function getAllInternships(): Promise<Internship[]> {
   }
 }
 
-//
-// GET ONE INTERNSHIP BY SLUG
-//
+// ==============================
+// GET ONE INTERNSHIP
+// ==============================
 export async function getInternship(slug: string): Promise<Internship | null> {
   try {
-    const response = await fetchContentAPI<StrapiResponse<Internship[]>>(
-      `/internships?filters[slug][$eq]=${slug}&populate=*`
-    );
+    const response = await fetchContentAPI<
+      StrapiResponse<StrapiInternship[]>
+    >(`/internships?filters[slug][$eq]=${slug}&populate=*`);
 
     const item = response.data?.[0];
+
     return item ? normalizeInternship(item) : null;
   } catch (error) {
     console.error("Failed to fetch internship:", error);
