@@ -8,12 +8,11 @@ export default function OpportunitiesPage() {
       <section className="text-center">
         <h1 className="page-title">Opportunities</h1>
         <p className="mx-auto mb-8 max-w-3xl text-[var(--text-muted)]">
-          Discover pathways designed to help you gain experience, build networks, and grow into high-impact tech
-          careers.
+          Opportunities are currently focused on internship-based pathways across technical and non-technical fields.
         </p>
       </section>
 
-      <section aria-label="Opportunity categories" className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <section aria-label="Opportunity categories" className="grid gap-4 md:grid-cols-2">
         {opportunityPages.map((item) => (
           <SectionCard
             key={item.slug}

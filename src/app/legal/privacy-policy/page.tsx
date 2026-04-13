@@ -69,8 +69,8 @@ export default function PrivacyPolicyPage() {
         <h2 className="text-xl font-semibold text-[var(--text-strong)]">Information Sharing</h2>
         <p className="text-[var(--text-muted)]">We may share your information with:</p>
         <ul className="list-disc space-y-2 pl-6 text-[var(--text-muted)]">
-          <li>Service providers and partners who assist in operating our platform</li>
-          <li>Educational institutions and employers (with your consent)</li>
+          <li>Service providers who assist in operating our platform</li>
+          <li>Authorized internal program teams (when needed to support your enrollment and learning)</li>
           <li>Legal authorities when required by law</li>
         </ul>
       </section>

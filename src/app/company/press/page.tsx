@@ -7,9 +7,9 @@ const latestNews = [
   },
   {
     date: "February 1, 2024",
-    title: "Partnership Announcement with Leading Tech Companies",
+    title: "Program Update: Internship-Based Learning Pathway",
     body:
-      "Innovation Bootcamp University partners with top tech companies to provide enhanced career opportunities for graduates."
+      "Innovation Bootcamp University publishes updates to its internal internship-based learning structure and student progression model."
   },
   {
     date: "January 10, 2024",
