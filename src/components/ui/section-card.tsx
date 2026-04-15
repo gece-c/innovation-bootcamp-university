@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 
 type SectionCardProps = {
-  title: string;
+  title: ReactNode;
   children: ReactNode;
   footer?: ReactNode;
 };

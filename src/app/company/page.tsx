@@ -10,21 +10,6 @@ export default function CompanyPage() {
         </p>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-2 lg:grid-cols-3" aria-label="About stats">
-        <article className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5 text-center">
-          <p className="text-3xl font-semibold text-[var(--primary)]">95%</p>
-          <p className="mt-1 text-sm text-[var(--text-muted)]">Program Success Rate</p>
-        </article>
-        <article className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5 text-center">
-          <p className="text-3xl font-semibold text-[var(--primary)]">50+</p>
-          <p className="mt-1 text-sm text-[var(--text-muted)]">Active Internship Types</p>
-        </article>
-        <article className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5 text-center">
-          <p className="text-3xl font-semibold text-[var(--primary)]">25+</p>
-          <p className="mt-1 text-sm text-[var(--text-muted)]">Expert Mentors</p>
-        </article>
-      </section>
-
       <section>
         <h2 className="mb-6 text-center text-3xl font-semibold">Our Core Values</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

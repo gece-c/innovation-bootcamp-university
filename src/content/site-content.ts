@@ -26,8 +26,18 @@ export type OpportunityPage = {
   ctaLabel: string;
 };
 
+export type Project = {
+  slug: string;
+  title: string;
+  summary: string;
+  currentWork?: string;
+  focus?: string[];
+  externalUrl?: string;
+};
+
 export const navItems = [
-  { href: "/resources/how-it-works", label: "How It Works" },
+  { href: "/projects", label: "Projects" },
+  { href: "/resources", label: "Resources" },
   { href: "/company", label: "About" }
 ];
 
@@ -289,6 +299,118 @@ export const resources = [
     slug: "how-it-works",
     title: "How It Works",
     summary: "See the real current flow from enrollment through internship-based learning."
+  },
+  {
+    slug: "student-handbook",
+    title: "Student Handbook",
+    summary:
+      "Everything you need to navigate your journey at Innovation Bootcamp University, from your first day to becoming a professional."
+  }
+];
+
+export const projectsPage = {
+  title: "Our Projects",
+  subtitle:
+    "Explore the innovative AI, robotics, education, and media initiatives being built across the Hephaestus and FloLabs ecosystem."
+};
+
+export const projects: Project[] = [
+  {
+    slug: "moodchanger",
+    title: "MoodChanger",
+    summary:
+      "An AI-powered platform designed to enhance emotional well-being. It leverages advanced AI models to analyze user inputs and generate practical advice to improve happiness and reduce stress.",
+    currentWork:
+      "Expanding MoodChanger's functionality by integrating interactive AI tools, refining algorithms for better personalization, and designing a user-friendly interface to make emotional health accessible to everyone.",
+    focus: [
+      "Design excellence and intuitive UX/UI",
+      "AI connectivity across multiple innovations",
+      "Startup-style innovation and creator enablement"
+    ],
+    externalUrl: "https://moodchanger.ai"
+  },
+  {
+    slug: "caipo",
+    title: "CAIPO",
+    summary:
+      "CAIPO is Chief Artificial Intelligence Productivity Officer. This is a wearable AI tech that can record audio and video for note taking. The AI can assist you with summarizing or finding sections of your notes.",
+    currentWork:
+      "Actively developing CAIPO to incorporate state-of-the-art features, including real-time data analytics, industry-specific AI models, and user-friendly interfaces tailored to streamline workflows and enhance decision-making.",
+    focus: [
+      "Design excellence and practical UX/UI",
+      "AI-enabled productivity gains for teams and individuals",
+      "Entrepreneurial execution in emerging AI products"
+    ],
+    externalUrl: "https://www.caipo.ai/"
+  },
+  {
+    slug: "flo-studios",
+    title: "FloStudios",
+    summary:
+      "Flo Studios will serve as a hub for creativity and innovation, bringing together UX/UI designers, multimedia creators, and marketing strategists to work on groundbreaking internal projects. We are currently upgrading and launching several new websites, including Flo Studios and our Robot Dealership site. If you're interested in website development, this could be a great opportunity to get involved. While AI is a core focus of FloLabs, we're excited to announce Flo Studios, a new creative agency within our company.",
+    currentWork:
+      "Our first production is a film project inspired by the mythological roots of Lemnos, Greece, blending ancient tales with the future of AI and robotics. The story highlights Hephaestus, the legendary blacksmith who built the first robot, Talos, and AI Pandora on the island of Lemnos, where we are launching one of our labs and future campus. This project, along with others, offers an incredible opportunity to contribute to something meaningful while honing your skills.",
+    focus: [
+      "Design excellence across digital products",
+      "Multimedia innovation with AI-first tooling",
+      "Startup experimentation in creative production"
+    ],
+    externalUrl: "https://www.flostudios.ai/"
+  },
+  {
+    slug: "humanoid-robots",
+    title: "Humanoid Robots",
+    summary:
+      "A major milestone in our mission to push the boundaries of intelligent systems and human-robot interaction and include that interns who join our program may have the opportunity to contribute directly to this groundbreaking initiative. We are also launching RoboCollective.ai. Our one stop shop for all our robots and our partners robots and accessories.",
+    currentWork:
+      "We are communicating with many robot manufacturers to showcase and sell their products. The future of robotics and a dealership come together and we're looking for ways for people to customize their very own robot.",
+    externalUrl: "https://robocollective.ai"
+  },
+  {
+    slug: "hephaestus-international",
+    title: "Hephaestus International",
+    summary: "Hephaestus Labs Institute of Experiential Learning Center of Excellence",
+    externalUrl: "https://hephaestus.international/"
+  },
+  {
+    slug: "tarrl",
+    title: "TARRL",
+    summary: "The official portal for FloLabs' Texas Advanced Robotics Research Lab.",
+    currentWork: "Redesigning the site to reflect ongoing changes at FloLabs.",
+    externalUrl: "https://www.tarrl.org/"
+  },
+  {
+    slug: "flolabs-innovations-group",
+    title: "FloLabs Innovations Group",
+    summary:
+      "A global platform showcasing FloLabs initiatives, partnerships, and innovation in AI and technology.",
+    currentWork:
+      "Redesigning the platform to better highlight mission, active projects, and collaboration opportunities.",
+    externalUrl: "https://www.flolabsinnovations.com/"
+  },
+  {
+    slug: "flolabs-international",
+    title: "FloLabs International",
+    summary:
+      "A global platform showcasing FloLabs' diverse initiatives, partnerships, and cutting-edge innovations in AI and technology.",
+    currentWork:
+      "Redesigning the website to better highlight FloLabs' mission, ongoing projects, and opportunities for collaboration and internships.",
+    externalUrl: "https://www.flolabs.international/"
+  },
+  {
+    slug: "moodchanger-for-pets",
+    title: "MoodChanger for Pets",
+    summary:
+      "Expanding MoodChanger for pet owners by using data from wearable devices, environmental factors, and AI analysis to provide actionable insights into pets' behaviors, moods, and overall health.",
+    currentWork:
+      "Developing a seamless platform that integrates with pet wearables, creating AI models for real-time analysis, and designing engaging tools for pet owners to monitor and enhance their pets' quality of life."
+  },
+  {
+    slug: "flo-travel",
+    title: "FloTravel",
+    summary:
+      "AI is taking over in the market for travel. Flo Travel is using AI to help clients plan their trips accordingly. Plan your flight, hotel, trip, activites, etc. all in one place.",
+    externalUrl: "https://www.flomadtravel.com"
   }
 ];
 
@@ -312,41 +434,99 @@ export const faq = [
 
 export const howItWorksPage = {
   title: "How It Works",
-  subtitle: "Our current model combines guided learning with internship-based practice at Innovation Bootcamp University.",
-  cta: { href: "/programs", label: "Explore Programs" },
-  stages: [
+  subtitle: "A seamless path from learning to earning in the real world.",
+  cta: { href: "/opportunities/internships", label: "Explore the Journey" },
+  journeyTitle: "Three-Tier Learning Experience",
+  journeySubtitle: "A smarter path from beginner to paid professional, built for real-world success.",
+  journeySteps: [
     {
-      title: "Tier 1: Core Foundations",
-      description: "Build essential technical skills with structured lessons, checkpoints, and mentor guidance."
+      title: "Foundation Learning",
+      description:
+        "Start strong with structured, hands-on learning that builds the core skills companies actually need."
     },
     {
-      title: "Tier 2: Applied Practice",
-      description: "Work on supervised practical assignments to strengthen delivery quality and team collaboration."
+      title: "Start Earning",
+      description:
+        "Put your skills to work on real projects, collaborate with teams, and begin earning while you continue to grow."
     },
     {
-      title: "Tier 3: Internship-Based Learning",
-      description: "Participate in internship-style work experiences aligned with your internship type and performance readiness."
+      title: "Professional Growth",
+      description:
+        "Level up by taking ownership of projects, leading teams, and expanding your expertise."
+    },
+    {
+      title: "Career Launch",
+      description:
+        "Graduate with real experience, a powerful portfolio, and the confidence to land opportunities or create your own."
     }
   ],
-  comparisonTitle: "Why This Structure Works",
+  tiers: [
+    {
+      title: "Tier 1 | Foundation Builder",
+      tagline: "Learn. Build. Prepare.",
+      description:
+        "Start with a strong foundation through structured learning, hands-on practice, and close mentorship.",
+      duration: "500 hours + masterclasses",
+      valueLabel: "Investment",
+      valueText: "$500 up-front + $50/month",
+      gains: [
+        "Guided curriculum tailored to your chosen path",
+        "Real-world, project-based learning",
+        "Mentorship and continuous feedback",
+        "Access to a driven, like-minded community"
+      ]
+    },
+    {
+      title: "Tier 2 | Skill Accelerator",
+      tagline: "Apply. Collaborate. Earn.",
+      description:
+        "Move beyond learning-start working on real projects, collaborating with teams, and earning income as you grow.",
+      duration: "3-4 months",
+      valueLabel: "Earnings",
+      valueText: "Start getting paid",
+      gains: [
+        "Hands-on experience with real client projects",
+        "Advanced, in-demand technical skills",
+        "Paid contributions and real work exposure",
+        "A strong, job-ready portfolio"
+      ]
+    },
+    {
+      title: "Tier 3 | Professional",
+      tagline: "Lead. Scale. Thrive.",
+      description:
+        "Step into leadership roles, increase your income, and position yourself for long-term career success.",
+      duration: "4-6 months",
+      valueLabel: "Earnings",
+      valueText: "Increased income",
+      gains: [
+        "Leadership experience on real projects",
+        "Mentorship opportunities with newer learners",
+        "Specialized, high-value expertise",
+        "Pathways to jobs, freelance work, or entrepreneurship"
+      ]
+    }
+  ],
+  comparisonTitle: "Why Choose This Model?",
   comparison: {
+    traditionalTitle: "Traditional Education",
+    cooperativeTitle: "Our Co-op Model",
     traditional: [
-      "Learning and practical work are often disconnected",
-      "Students may finish with limited real delivery experience",
-      "Progress is usually measured by time instead of outcomes",
-      "Transition into internship work can feel abrupt"
+      "High upfront costs ($15K-$20K+)",
+      "Delayed return on investment",
+      "Limited real-world experience",
+      "Disconnect between learning and jobs"
     ],
     cooperative: [
-      "Learning and practical application are intentionally connected",
-      "Students build confidence through guided project execution",
-      "Progress is milestone-based and skill-verified",
-      "Internship readiness is developed step by step"
+      "Low monthly investment ($50/month)",
+      "Work on real projects with real impact",
+      "Smooth transition from learning -> earning -> career"
     ]
   },
   finalCta: {
-    title: "Ready to Start?",
+    title: "Ready to Get Started?",
     description:
-      "Apply now and begin your path through our three-tier model with internship-based learning at IBU.",
+      "Apply today and step into a modern co-op experience: build real skills, collaborate on real projects, and fast-track your journey from learner to paid professional.",
     href: "/opportunities/internships",
     label: "Apply Now"
   }
@@ -354,38 +534,40 @@ export const howItWorksPage = {
 
 export const studentHandbookPage = {
   title: "Student Handbook",
-  subtitle: "Everything you need to know about your journey with Innovation Bootcamp University.",
-  cta: { href: "/resources/faqs", label: "View FAQs" },
+  subtitle:
+    "Everything you need to navigate your journey at Innovation Bootcamp University, from your first day to becoming a professional.",
+  cta: { href: "/resources", label: "Explore Resources" },
   sections: [
     {
       title: "Academic Policies",
-      items: ["Attendance Requirements", "Grading System", "Academic Integrity", "Project Submissions"]
-    },
-    {
-      title: "Program Schedule",
-      items: ["Daily Schedule", "Important Dates", "Break Periods", "Make-up Sessions"]
+      items: [
+        "Attendance requirements",
+        "Academic integrity standards",
+        "Project submission guidelines"
+      ]
     },
     {
       title: "Student Conduct",
-      items: ["Code of Conduct", "Online Etiquette", "Collaboration Guidelines", "Academic Honesty"]
-    },
-    {
-      title: "Support Services",
-      items: ["Technical Support", "Academic Support", "Career Services", "Mental Health Resources"]
+      items: ["Code of conduct", "Online etiquette", "Collaboration guidelines", "Academic honesty"]
     },
     {
       title: "Certification",
-      items: ["Requirements", "Assessment Criteria", "Portfolio Review", "Certificate Issuance"]
+      items: [
+        "Graduation requirements",
+        "Assessment criteria",
+        "Portfolio review process",
+        "Certificate issuance"
+      ]
     },
     {
       title: "Communication",
-      items: ["Office Hours", "Mentor Meetings", "Discussion Forums", "Feedback Channels"]
+      items: ["Office hours", "Mentor meetings", "Discussion forums", "Feedback channels"]
     }
   ],
   helpBlock: {
     title: "Need Additional Help?",
     description:
-      "Can't find what you're looking for? Our support team is here to help you with any questions or concerns.",
+      "If you cannot find what you are looking for, our support team is available to assist you with any questions throughout your journey.",
     href: "/company/contact",
     label: "Contact Support"
   }
