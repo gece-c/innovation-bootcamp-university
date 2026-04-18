@@ -41,63 +41,75 @@ export const navItems = [
   { href: "/company", label: "About" }
 ];
 
+// --- Resource routes (grep-friendly) ---
+export const RESOURCE_SLUGS = {
+  howItWorks: "how-it-works",
+  communityPlaybook: "community-playbook"
+} as const;
+
+// --- Home hero ---
 export const hero = {
   badge: "",
-  title: "Launch Your Tech Career From Student to Professional",
+  title: "Launch Your Career with Real Internships",
+  lead: "Start learning, building, and earning, all at one place.",
   body:
-    "Start with foundational education, then transition to internship-based learning through real projects in high-demand tech roles.",
+    "Join a new kind of university experience where education is directly connected to real-world internships across AI, software, robotics, business, and more.",
+  highlights: [
+    { title: "Global Access", description: "Join from anywhere in the world, fully remote." },
+    { title: "Open Entry", description: "No prior experience required. Just ambition and curiosity." }
+  ],
   actions: [
     { href: "/opportunities/internships", label: "Pre-Register" },
     { href: "/opportunities/internships", label: "Explore Internships" }
   ],
   stats: [
-    { label: "Learning Journey", value: "3 Tiers" },
-    { label: "Industry Sectors", value: "8+" },
-    { label: "Program Structure", value: "500 Hours Required" }
+    { label: "", value: "Global community of learners" },
+    { label: "", value: "Remote first" },
+    { label: "", value: "Multi-disciplinary work environment" }
   ]
 };
 
 export const whyChoose = {
   badge: "What Makes Us Different",
-  title: "Why Choose Innovation Bootcamp University",
+  title: "Why Choose Bootcamp University",
   body:
-    "Start with education, progress through internship-based learning, and graduate as a tech professional with our cooperative approach.",
+    "Start with education, progress to earning, and graduate as a professional with our cooperative approach.",
   points: [
     {
-      title: "Learn from IBU Mentors",
+      title: "Learn with Real Internship",
       description:
-        "Get mentored by experienced IBU instructors who bring practical expertise to your learning journey.",
-      icon: "🎓"
+        "Work alongside fellow students and seasoned professionals to tackle live assignments. Build your expertise through side-by-side collaboration on projects that actually matter.",
+      icon: "💼"
     },
     {
       title: "Cooperative Education Model",
       description:
-        "Start with foundational learning, then transition to internship-based learning as you develop advanced skills through guided milestones.",
+        "Follow a structured journey from learning to earning. Master professional standards and internal workflows to transition from an intern role to a paid contributor.",
       icon: "🤝"
     },
     {
       title: "Hands-on Projects",
       description:
-        "Build real-world projects that demonstrate your capabilities to potential employers.",
+        "Focus on execution over theory. Build a portfolio of real-world deliverables that provide tangible proof of your capabilities to global employers.",
       icon: "🛠️"
     },
     {
-      title: "Collaborative Learning",
+      title: "Global Community",
       description:
-        "Join a community of learners and build your professional network from day one.",
+        "Join an international network of ambitious peers. Build your professional circle from day one by collaborating with a diverse community from all over the world.",
       icon: "👥"
     },
     {
-      title: "Job-Ready Skills",
+      title: "Industry-Recognized Skills",
       description:
-        "Gain certifications and practical skills aligned to current technical role expectations.",
-      icon: "💎"
+        "Gain the technical expertise and credentials currently in high demand. Master the tools and workflows that top companies actually use to get results.",
+      icon: "🏅"
     },
     {
-      title: "Fast-Track Career Growth",
+      title: "Interdisciplinary Collaboration",
       description:
-        "Accelerate your career progression with our structured learning paths and job placement support.",
-      icon: "🚀"
+        "Work where different fields meet. Learn to synchronize your skills with students and experts from design, tech, and business teams to solve complex problems together.",
+      icon: "🧩"
     }
   ]
 };
@@ -141,7 +153,7 @@ export const careerOpportunitiesSection = {
     "Our curriculum prepares you for roles across a wide range of tech sectors. Here are the industries where our graduates can build successful careers.",
   highlights: [
     { label: "Industry Sectors", value: "8+", icon: "🏢", tint: "primary" },
-    { label: "Program Completion", value: "500 Hours", icon: "🎒", tint: "secondary" },
+    { label: "Program Completion", value: "500 Hours", icon: "⏱️", tint: "secondary" },
     { label: "Target Placement Rate", value: "90%+", icon: "🎯", tint: "rose" }
   ],
   roles: [
@@ -166,7 +178,7 @@ export const careerOpportunitiesSection = {
     {
       title: "Data Engineering",
       summary: "Creating robust data pipelines and storage solutions for big data applications.",
-      icon: "🗄️",
+      icon: "📊",
       tint: "amber"
     },
     {
@@ -296,15 +308,15 @@ export const internshipPositions: InternshipPosition[] = [
 
 export const resources = [
   {
-    slug: "how-it-works",
+    slug: RESOURCE_SLUGS.howItWorks,
     title: "How It Works",
     summary: "See the real current flow from enrollment through internship-based learning."
   },
   {
-    slug: "student-handbook",
-    title: "Student Handbook",
+    slug: RESOURCE_SLUGS.communityPlaybook,
+    title: "Community Playbook",
     summary:
-      "Everything you need to navigate your journey at Innovation Bootcamp University, from your first day to becoming a professional."
+      "This guide outlines the professional standards, operational workflows, and ethical code required to contribute effectively within our internal project teams."
   }
 ];
 
@@ -414,163 +426,172 @@ export const projects: Project[] = [
   }
 ];
 
-export const faq = [
-  {
-    question: "How does the cooperative education model work?",
-    answer:
-      "You begin with core skill building, transition into paid project participation, and continue advancing through guided mentorship and real-world delivery."
-  },
-  {
-    question: "What are the program prerequisites?",
-    answer:
-      "No prior tech experience is required. Motivation, consistency, and willingness to collaborate are the main prerequisites."
-  },
-  {
-    question: "Can I participate while working full-time?",
-    answer:
-      "Yes. Scheduling support and milestone planning are designed for career changers, and time commitment can increase as you take on deeper project responsibilities."
-  }
-];
-
+// --- How it works ---
 export const howItWorksPage = {
   title: "How It Works",
-  subtitle: "A seamless path from learning to earning in the real world.",
+  subtitle: "A practical roadmap from collaborative learning to professional earning.",
   cta: { href: "/opportunities/internships", label: "Explore the Journey" },
   journeyTitle: "Three-Tier Learning Experience",
   journeySubtitle: "A smarter path from beginner to paid professional, built for real-world success.",
   journeySteps: [
     {
-      title: "Foundation Learning",
+      title: "Active Contribution",
       description:
-        "Start strong with structured, hands-on learning that builds the core skills companies actually need."
+        "Start by contributing to active project tracks and masterclasses designed to build the specific skills our teams use every day."
     },
     {
-      title: "Start Earning",
+      title: "Earn While You Grow",
       description:
-        "Put your skills to work on real projects, collaborate with teams, and begin earning while you continue to grow."
+        "Transition into active contributor roles on internal projects, collaborating with interdisciplinary teams and receiving a stipend for your work."
     },
     {
-      title: "Professional Growth",
+      title: "Leadership & Ownership",
       description:
-        "Level up by taking ownership of projects, leading teams, and expanding your expertise."
+        "Level up by managing project deliverables, leading peer teams, and mentoring incoming interns as they begin their journey."
     },
     {
       title: "Career Launch",
       description:
-        "Graduate with real experience, a powerful portfolio, and the confidence to land opportunities or create your own."
+        "Exit the program with a verified professional track record, a global network, and the confidence to lead in any modern work environment."
     }
   ],
   tiers: [
     {
-      title: "Tier 1 | Foundation Builder",
-      tagline: "Learn. Build. Prepare.",
+      title: "Tier 1 | Production Mastery",
+      tagline: "Collaborate. Build. Prepare.",
       description:
-        "Start with a strong foundation through structured learning, hands-on practice, and close mentorship.",
+        "Start your journey by embedding yourself in our development culture. Through a mix of guided tracks and hands-on practice, you'll master the tools and workflows needed to contribute to our upcoming project launches.",
       duration: "500 hours + masterclasses",
       valueLabel: "Investment",
       valueText: "$500 up-front + $50/month",
       gains: [
-        "Guided curriculum tailored to your chosen path",
-        "Real-world, project-based learning",
-        "Mentorship and continuous feedback",
-        "Access to a driven, like-minded community"
+        "Direct experience with internal project cycles.",
+        "Mastery of the tools used by our global team.",
+        "Continuous feedback through collaborative learning.",
+        "Access to a driven, like-minded community."
       ]
     },
     {
-      title: "Tier 2 | Skill Accelerator",
-      tagline: "Apply. Collaborate. Earn.",
+      title: "Tier 2 | Qualified Contributor",
+      tagline: "Refine. Deliver. Earn.",
       description:
-        "Move beyond learning-start working on real projects, collaborating with teams, and earning income as you grow.",
-      duration: "3-4 months",
+        "Transition to a compensated role within our project teams. You continue to learn and grow by tackling more complex tasks, but you are now working at a level of proficiency that qualifies you for a regional stipend.",
+      duration: "3–4 months (Subject to change)",
       valueLabel: "Earnings",
-      valueText: "Start getting paid",
+      valueText: "Region-based monthly stipend starts.",
       gains: [
-        "Hands-on experience with real client projects",
-        "Advanced, in-demand technical skills",
-        "Paid contributions and real work exposure",
-        "A strong, job-ready portfolio"
+        "Deepening expertise through higher-stakes project work.",
+        "Advanced, in-demand technical and professional skills.",
+        "Paid contributions adjusted to your local economy.",
+        "A strong, project-backed portfolio that proves your capabilities."
       ]
     },
     {
-      title: "Tier 3 | Professional",
-      tagline: "Lead. Scale. Thrive.",
+      title: "Tier 3 | Lead Contributor",
+      tagline: "Lead. Own. Earn More.",
       description:
-        "Step into leadership roles, increase your income, and position yourself for long-term career success.",
-      duration: "4-6 months",
+        "Learning takes a new form as you step into leadership. You continue to sharpen your skills by managing project deliverables and guiding Tier 1 and 2 peers, all while unlocking higher earning potential through increased responsibility.",
+      duration: "4–6 months (Subject to change)",
       valueLabel: "Earnings",
-      valueText: "Increased income",
+      valueText: "Increased regional earning potential.",
       gains: [
-        "Leadership experience on real projects",
-        "Mentorship opportunities with newer learners",
-        "Specialized, high-value expertise",
-        "Pathways to jobs, freelance work, or entrepreneurship"
+        "Leadership and management experience on active projects.",
+        "Mentorship opportunities to help guide newer learners.",
+        "Specialized expertise in project strategy and team operations.",
+        "Direct pathways to professional roles, freelance mastery, or entrepreneurship."
       ]
     }
   ],
   comparisonTitle: "Why Choose This Model?",
   comparison: {
     traditionalTitle: "Traditional Education",
-    cooperativeTitle: "Our Co-op Model",
+    cooperativeTitle: "Our Collaborative Model",
     traditional: [
-      "High upfront costs ($15K-$20K+)",
+      "High upfront costs ($15K to $20K+)",
       "Delayed return on investment",
-      "Limited real-world experience",
+      "Theoretical knowledge only",
       "Disconnect between learning and jobs"
     ],
     cooperative: [
       "Low monthly investment ($50/month)",
-      "Work on real projects with real impact",
-      "Smooth transition from learning -> earning -> career"
+      "Performance-based path to earning",
+      "Practical experience on live internal projects",
+      "Direct transition from learner to contributor"
     ]
   },
   finalCta: {
-    title: "Ready to Get Started?",
+    title: "Ready to Start Building?",
     description:
-      "Apply today and step into a modern co-op experience: build real skills, collaborate on real projects, and fast-track your journey from learner to paid professional.",
+      "Apply today and step into a modern collaborative experience. Build real skills, tackle real projects, and turn your ambition into a professional career.",
     href: "/opportunities/internships",
     label: "Apply Now"
   }
 };
 
-export const studentHandbookPage = {
-  title: "Student Handbook",
-  subtitle:
-    "Everything you need to navigate your journey at Innovation Bootcamp University, from your first day to becoming a professional.",
+// --- Community playbook ---
+export const communityPlaybookPage = {
+  title: "Community Playbook",
+  subtitle: "Navigating Our Collaborative Environment",
+  intro:
+    "This guide outlines the professional standards, operational workflows, and ethical code required to contribute effectively within our internal project teams.",
   cta: { href: "/resources", label: "Explore Resources" },
   sections: [
     {
-      title: "Academic Policies",
+      title: "Daily Workflow",
       items: [
-        "Attendance requirements",
-        "Academic integrity standards",
-        "Project submission guidelines"
+        'The Project Timer: Guidelines for logging your 500-hour journey. We value transparency; the timer ensures your effort is documented and your milestones are tracked.',
+        "Asynchronous Coordination: How we stay in sync across time zones. We prioritize clear, written updates in project channels so the work never stops, even when you do.",
+        'Defining "Done": Standards for completing a task. A contribution is considered finished only when it meets the team\'s quality requirements and is documented for the next person.'
       ]
     },
     {
-      title: "Student Conduct",
-      items: ["Code of conduct", "Online etiquette", "Collaboration guidelines", "Academic honesty"]
-    },
-    {
-      title: "Certification",
+      title: "Professional Ethics & IP",
       items: [
-        "Graduation requirements",
-        "Assessment criteria",
-        "Portfolio review process",
-        "Certificate issuance"
+        "Confidentiality (NDA): While we share a collaborative spirit, internal project data and upcoming product launches are strictly confidential until they are made public.",
+        "Originality & Attribution: We are a community of builders. Give credit where it's due, respect the work of your peers, and ensure all contributions are your own or properly sourced.",
+        "Professional Conduct: We maintain a high standard of mutual respect. Harassment, discrimination, or disruptive behavior are not tolerated in any of our digital spaces."
       ]
     },
     {
-      title: "Communication",
-      items: ["Office hours", "Mentor meetings", "Discussion forums", "Feedback channels"]
+      title: "Advancement & Earning",
+      items: [
+        "Tier 1 to Tier 2 Transition: Advancement is not automatic. It requires the completion of 500 logged hours plus a successful review of your project output to ensure you are ready for the paid contributor tier.",
+        "Quality Benchmarks: To qualify for Tiers 2 and 3, your work must consistently meet professional standards. Technical proficiency and leadership ability are the keys to unlocking higher earning potential.",
+        "Regional Stipend Eligibility: Guidelines on how your country of residence affects your Tier 2/3 earnings and the documentation required to set up your payments."
+      ]
+    },
+    {
+      title: "Learning & Masterclasses",
+      items: [
+        "Asynchronous Masterclasses: Access a curated library of videos, articles, and podcasts on your own schedule. These resources provide the technical and strategic context required for your specific project track.",
+        "The Brainwriting Process: Every masterclass is followed by a brainwriting session. This is your opportunity to provide content-based feedback, suggest practical project implementations, and evaluate if the resource should remain a core part of the curriculum for future interns.",
+        "Self-Guided Specialization: Use our internal knowledge base to sharpen your skills at your own pace. Your brainwriting contributions help the community identify which resources are most effective for real-world execution."
+      ]
+    },
+    {
+      title: "Community Hierarchy & Leadership",
+      items: [
+        "Peer-to-Peer Mentorship: We believe in a cycle of growth. Advanced contributors (Tier 3) serve as team leads, helping Tier 1 members navigate the workflow while continuing their own leadership journey.",
+        "Professional Guidance: Seasoned industry experts oversee the high-level project strategy, providing technical feedback on your deliverables while letting the community drive the daily execution.",
+        "Feedback Loops: From brainwriting insights to technical reviews, our communication is built on constructive loops that help every member of the team improve their output."
+      ]
+    },
+    {
+      title: "Verification & Portfolio",
+      items: [
+        "Experience Certification: Upon reaching specific milestones, we provide official verification of your hours and contributions.",
+        "Portfolio Approval: Guidelines on how to showcase your work for Innovation Bootcamp University on your personal site or LinkedIn, ensuring you stay within the bounds of your NDA.",
+        "Alumni Network: Access our global network of former contributors to help you land your next role or launch your own venture."
+      ]
     }
-  ],
-  helpBlock: {
-    title: "Need Additional Help?",
-    description:
-      "If you cannot find what you are looking for, our support team is available to assist you with any questions throughout your journey.",
-    href: "/company/contact",
-    label: "Contact Support"
-  }
+  ]
+};
+
+// --- Home: Career section closing article only ---
+export const homeWhyItMatters = {
+  title: "Why It Matters",
+  headline: "Stop studying the future. Start building it.",
+  body: "We bridge the gap between theory and employment. By the time you graduate, you won't just have a certificate; you'll have a resume filled with real-world impact."
 };
 
 export const blogPage = {
@@ -612,9 +633,9 @@ export const blogPage = {
 };
 
 export const faqPage = {
-  title: "Frequently Asked Questions",
+  title: "FAQs",
   subtitle:
-    "Find answers to common questions about internship pathways, application process, financial aid, and student support services.",
+    "Find answers to common questions about internship pathways, application process, financial options, and support.",
   supportText: "Still have questions? We're here to help.",
   supportLink: { href: "/company/contact", label: "Contact our support team" }
 };
@@ -623,49 +644,107 @@ export const faqAccordionItems = [
   {
     question: "What makes Innovation Bootcamp University different?",
     answer:
-      "Our program combines hands-on learning, guided mentorship, and internship-based learning in a structured three-tier model. We focus on practical skill development and consistent progress."
+      "We replace traditional classes with internship-based execution. You join a professional environment and start contributing to real internal projects from day one, rather than just studying theory."
   },
   {
-    question: "Do I need prior programming experience?",
+    question: "Do I need prior experience or coding skills?",
     answer:
-      "No prior programming experience is required. We support internship types across engineering, design, marketing, QA, neuroscience, business, and other fields where coding is optional unless your role requires it."
+      'No prior experience is required. We look for ambition and a "learn by doing" mindset. We offer pathways in engineering, design, marketing, business, and more, where coding is only required if it\'s essential to the role.'
   },
   {
-    question: "How does tier progression work?",
+    question: "How does progression through the tiers work?",
     answer:
-      "Progress follows a three-tier model with milestone-based advancement. Completion is based on fulfilling the required 500 learning and project hours."
+      "Advancement is based on milestones and performance. Once you fulfill the 500-hour Tier 1 requirement and meet our quality benchmarks, you qualify for Tier 2, where you begin earning a stipend."
   },
   {
     question: "How long are the programs?",
     answer:
-      "Program duration depends on your track and pace.\n\n- Full-time intensive: 8–16 weeks\n- Part-time: 20+ weeks"
+      "The duration is flexible and depends on your pace:\nTier 1: 500 hours of project contribution + masterclasses.\nTiers 2 & 3: [Placeholder: 3–6 months each] (subject to change based on project needs)."
   },
   {
-    question: "What kind of support do students receive?",
+    question: "What kind of support will I receive?",
     answer:
-      "Students receive support through mentoring, technical feedback, structured checkpoints, and community collaboration across their learning journey."
+      "You work in a collaborative environment with continuous feedback. You'll have access to seasoned professionals for technical reviews and peer team leads who support you through daily project challenges."
   },
   {
-    question: "What opportunities are currently available?",
+    question: "Is the program fully remote?",
     answer:
-      "Current opportunities are internship-based pathways with roles across technology, robotics, science, design, marketing, business, operations, QA, and other interdisciplinary areas."
+      "Yes. We are a remote-first community. You can collaborate with our global teams from anywhere in the world as long as you have a stable internet connection. We also have on-site locations in Austin/Texas and Lemnos/Greece."
   },
   {
-    question: "What does the application process look like?",
+    question: "How are the earnings/stipends calculated?",
     answer:
-      "The process is simple and focused on fit:\n\n- Online application\n- Short interview to understand your goals\n- Technical assessment (for advanced roles)"
+      "Earning in Tiers 2 and 3 follows a region-adjusted model. Monthly stipends are calculated according to the local economy of your country to ensure fair and accessible compensation."
+  },
+  {
+    question: "What happens after I complete Tier 3?",
+    answer:
+      "You graduate with a verified professional track record. You can continue within our network, move into a freelance career, or use your portfolio of live project work to land a role at a top global company."
   },
   {
     question: "Is financial support available?",
     answer:
-      "Yes. We offer flexible options to make the program accessible:\n\n- Scholarships\n- Income share agreements\n- Payment plans"
+      "[Placeholder: To be confirmed]. We are currently clarifying options for scholarships and payment plans to keep the program accessible."
   },
   {
-    question: "Will I need to learn coding for every internship type?",
+    question: "What does the application process look like?",
     answer:
-      "No. Some internship types are non-coding by design, while others include technical tools. You can choose a pathway based on your interests and goals, and add programming skills if you want to expand your options."
+      "The process is simple and focused on fit:\n- Online application\n- Short interview to understand your goals\n- Technical assessment (for advanced tracks)"
   }
 ];
+
+// --- About page ---
+export const aboutPage = {
+  title: "About",
+  missionLead:
+    "Our mission is to replace traditional study with active contribution, giving every ambitious individual the opportunity to build a career through real-world execution.",
+  missionBody:
+    "Innovation Bootcamp University is where the professional world replaces the classroom. We provide an interdisciplinary environment where learning happens through execution. Our mission is to make high-level professional growth accessible through a model that prioritizes real-world contribution over traditional study.",
+  coreValuesHeading: "Our Core Values",
+  coreValues: [
+    {
+      title: "Collaborative Execution",
+      body: "We believe the best way to learn is by doing. You don't just study workflows; you participate in them alongside a global community of peers and professionals."
+    },
+    {
+      title: "Action-First Philosophy",
+      body: "Our projects are not simulations. You contribute to live initiatives that require real-world problem-solving, ensuring your experience carries actual weight in the global market."
+    },
+    {
+      title: "Global Network",
+      body: "We are a remote-first community. You will build lasting connections with ambitious individuals from diverse backgrounds, creating a professional circle that spans every time zone."
+    },
+    {
+      title: "Progressive Growth",
+      body: "Our model is built on advancement. As your skills grow, so does your responsibility and earning potential, creating a clear path from contributor to lead."
+    }
+  ],
+  areasHeading: "Areas of Impact",
+  areas: [
+    {
+      title: "Technology & Engineering",
+      body: "Build the future of the web and physical world. Contribute to projects in software engineering, AI delivery, and intelligent robotics."
+    },
+    {
+      title: "Creative & Design",
+      body: "Bridge the gap between users and technology. Tackle challenges in UX/UI, industrial design, and digital media production."
+    },
+    {
+      title: "Business & Growth",
+      body: "Drive the strategy behind our initiatives. Engage in market research, strategic operations, and project management for emerging fields."
+    },
+    {
+      title: "Research & Advanced Sciences",
+      body: "Push the boundaries of what is possible. Participate in interdisciplinary work involving neuroscience, QA testing, and data analysis."
+    }
+  ],
+  finalCta: {
+    title: "Ready to Build Your Future?",
+    body: "Join an interdisciplinary community where your growth is driven by action. Pre-register today and take the first step toward a career defined by real-world impact.",
+    href: "/opportunities/internships",
+    label: "Pre-register Now"
+  }
+};
 
 export const legalLinks = [
   { href: "/legal/privacy-policy", label: "Privacy Policy" },

@@ -32,7 +32,7 @@ export function HubSpotForm({
   targetId = 'hubspot-form',
 }: HubSpotFormProps) {
   const formRef = useRef<HTMLDivElement>(null)
-  const [loaded, setLoaded] = useState(false) // ✅ start as NOT loaded
+  const [loaded, setLoaded] = useState(false) // start as NOT loaded until HubSpot reports ready
 
   useEffect(() => {
     let attempts = 0

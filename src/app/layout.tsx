@@ -4,7 +4,7 @@ import { SiteNavbar } from "@/components/site-navbar";
 import { SiteFooter } from "@/components/site-footer";
 
 export const metadata: Metadata = {
-  title: "Innovation Bootcamp University",
+  title: { default: "Innovation Bootcamp University", template: "%s | Innovation Bootcamp University" },
   description: "Internship-based tech learning with a three-tier model.",
   icons: {
     icon: "/flolabs-logo.svg"

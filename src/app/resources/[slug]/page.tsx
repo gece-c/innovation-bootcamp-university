@@ -1,9 +1,29 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SectionCard } from "@/components/ui/section-card";
 import { ButtonLink } from "@/components/ui/button-link";
-import { howItWorksPage, resources, studentHandbookPage } from "@/content/site-content";
+import {
+  RESOURCE_SLUGS,
+  communityPlaybookPage,
+  howItWorksPage,
+  resources
+} from "@/content/site-content";
 
-export default async function ResourceDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  if (slug === RESOURCE_SLUGS.howItWorks) {
+    return { title: "How It Works" };
+  }
+  if (slug === RESOURCE_SLUGS.communityPlaybook) {
+    return { title: "Community Playbook" };
+  }
+  const resource = resources.find((item) => item.slug === slug);
+  return { title: resource?.title ?? "Resources" };
+}
+
+export default async function ResourceDetailPage({ params }: Props) {
   const { slug } = await params;
   const resource = resources.find((item) => item.slug === slug);
 
@@ -11,7 +31,7 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
     notFound();
   }
 
-  if (slug === "how-it-works") {
+  if (slug === RESOURCE_SLUGS.howItWorks) {
     return (
       <div className="space-y-10">
         <section className="text-center">
@@ -54,20 +74,20 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
                   )
                 }
               >
-              <p className="font-medium text-[var(--primary)]">{tier.tagline}</p>
-              <p className="mt-2">{tier.description}</p>
-              <p className="mt-3 text-sm text-[var(--text-muted)]">
-                <span className="font-semibold text-[var(--text)]">Duration:</span> {tier.duration}
-              </p>
-              <p className="text-sm text-[var(--text-muted)]">
-                <span className="font-semibold text-[var(--text)]">{tier.valueLabel}:</span> {tier.valueText}
-              </p>
-              <h3 className="mt-4 font-semibold">What you&apos;ll gain:</h3>
-              <ul className="mt-2 list-inside list-disc space-y-1">
-                {tier.gains.map((gain) => (
-                  <li key={gain}>{gain}</li>
-                ))}
-              </ul>
+                <p className="font-medium text-[var(--primary)]">{tier.tagline}</p>
+                <p className="mt-2">{tier.description}</p>
+                <p className="mt-3 text-sm text-[var(--text-muted)]">
+                  <span className="font-semibold text-[var(--text)]">Duration:</span> {tier.duration}
+                </p>
+                <p className="text-sm text-[var(--text-muted)]">
+                  <span className="font-semibold text-[var(--text)]">{tier.valueLabel}:</span> {tier.valueText}
+                </p>
+                <h3 className="mt-4 font-semibold">What you&apos;ll gain:</h3>
+                <ul className="mt-2 list-inside list-disc space-y-1">
+                  {tier.gains.map((gain) => (
+                    <li key={gain}>{gain}</li>
+                  ))}
+                </ul>
               </SectionCard>
             );
           })}
@@ -104,17 +124,18 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
     );
   }
 
-  if (slug === "student-handbook") {
+  if (slug === RESOURCE_SLUGS.communityPlaybook) {
     return (
       <div className="space-y-10">
         <section className="text-center">
-          <h1 className="page-title">{studentHandbookPage.title}</h1>
-          <p className="mx-auto mb-6 max-w-3xl text-[var(--text-muted)]">{studentHandbookPage.subtitle}</p>
-          <ButtonLink href={studentHandbookPage.cta.href}>{studentHandbookPage.cta.label}</ButtonLink>
+          <h1 className="page-title">{communityPlaybookPage.title}</h1>
+          <p className="mx-auto mb-4 max-w-3xl text-[var(--text-muted)]">{communityPlaybookPage.subtitle}</p>
+          <p className="mx-auto mb-6 max-w-3xl text-[var(--text-muted)]">{communityPlaybookPage.intro}</p>
+          <ButtonLink href={communityPlaybookPage.cta.href}>{communityPlaybookPage.cta.label}</ButtonLink>
         </section>
 
-        <section aria-label="Student handbook sections" className="grid gap-4 md:grid-cols-2">
-          {studentHandbookPage.sections.map((section) => (
+        <section aria-label="Community playbook sections" className="grid gap-4 md:grid-cols-2">
+          {communityPlaybookPage.sections.map((section) => (
             <SectionCard key={section.title} title={section.title}>
               <ul className="list-inside list-disc space-y-1">
                 {section.items.map((item) => (
@@ -123,14 +144,6 @@ export default async function ResourceDetailPage({ params }: { params: Promise<{
               </ul>
             </SectionCard>
           ))}
-        </section>
-
-        <section className="text-center">
-          <h2 className="mb-2 text-3xl font-semibold">{studentHandbookPage.helpBlock.title}</h2>
-          <p className="mx-auto mb-6 max-w-3xl text-[var(--text-muted)]">
-            {studentHandbookPage.helpBlock.description}
-          </p>
-          <ButtonLink href={studentHandbookPage.helpBlock.href}>{studentHandbookPage.helpBlock.label}</ButtonLink>
         </section>
       </div>
     );

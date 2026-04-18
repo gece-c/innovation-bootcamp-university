@@ -1,17 +1,29 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button-link";
 import Image from "next/image";
 import {
   faqAccordionItems,
   hero,
+  homeWhyItMatters,
   whyChoose
 } from "@/content/site-content";
 
+export const metadata: Metadata = {
+  title: "Innovation Bootcamp University"
+};
+
 export default function HomePage() {
+  /** Organic blobs (8-value border-radius) to echo hero illustration shapes */
+  const heroStatBlobRadius = [
+    "58% 42% 62% 38% / 46% 55% 48% 52%",
+    "42% 58% 48% 52% / 60% 40% 52% 48%",
+    "52% 48% 38% 62% / 50% 52% 44% 56%"
+  ] as const;
+
   const heroStatPositionClasses = [
     "sm:absolute sm:left-[-2%] sm:top-[10%] min-[980px]:left-[-5%] min-[980px]:top-[8%]",
     "sm:absolute sm:left-[-6%] sm:top-[43%] min-[980px]:left-[-10%] min-[980px]:top-[38%]",
-    "sm:absolute sm:left-[10%] sm:bottom-[4%] min-[980px]:left-[5%] min-[980px]:bottom-[12%]",
-    "sm:absolute sm:left-[50%] sm:bottom-[-%] min-[980px]:left-[36%] min-[980px]:bottom-[-2%]"
+    "sm:absolute sm:left-[10%] sm:bottom-[4%] min-[980px]:left-[5%] min-[980px]:bottom-[12%]"
   ];
 
   return (
@@ -32,10 +44,18 @@ export default function HomePage() {
           ) : null}
           <h1 id="home-title" className="page-title">
             <span className='font-["Playfair_Display",Georgia,"Times_New_Roman",serif] font-bold'>
-              Launch Your Tech Career
+              {hero.title}
             </span>
           </h1>
-          <p className="max-w-2xl text-[var(--text-muted)]">{hero.body}</p>
+          <p className="mt-3 max-w-2xl text-[var(--text-muted)]">{hero.lead}</p>
+          <p className="mt-3 max-w-2xl text-[var(--text-muted)]">{hero.body}</p>
+          <ul className="mt-4 max-w-2xl list-none space-y-2 text-[var(--text-muted)]">
+            {hero.highlights.map((h) => (
+              <li key={h.title}>
+                <strong className="text-[var(--text)]">{h.title}:</strong> {h.description}
+              </li>
+            ))}
+          </ul>
           <div className="mt-6 flex flex-wrap gap-3">
             <ButtonLink href={hero.actions[0].href}>{hero.actions[0].label}</ButtonLink>
             <ButtonLink href={hero.actions[1].href} variant="ghost">
@@ -58,19 +78,25 @@ export default function HomePage() {
           />
           {hero.stats.map((stat, index) => (
             <article
-              key={stat.label}
-              className={`z-[3] flex w-full flex-col items-center justify-center rounded-[50rem] border border-[#4a4a4a] bg-[rgb(34_34_34_/_0.88)] px-[0.65rem] py-[0.6rem] text-center shadow-[0_10px_20px_rgb(0_0_0_/_0.35)] ${index === 2 ? "sm:h-[136px] sm:w-[136px]" : "sm:h-[120px] sm:w-[120px]"} ${heroStatPositionClasses[index] ?? ""}`}
-              aria-label={`${stat.label}: ${stat.value}`}
+              key={`${stat.value}-${index}`}
+              style={{ borderRadius: heroStatBlobRadius[index] ?? heroStatBlobRadius[0] }}
+              className={`z-[3] flex w-full flex-col items-center justify-center border border-[color-mix(in_srgb,var(--primary)_32%,#4e6c73)] bg-[rgb(34_34_34_/_0.88)] px-3 py-2.5 text-center shadow-[0_10px_24px_rgb(0_0_0_/_0.38)] [container-type:inline-size] sm:px-2 sm:py-2 ${index === 2 ? "sm:h-[136px] sm:w-[136px]" : "sm:h-[120px] sm:w-[120px]"} ${heroStatPositionClasses[index] ?? ""}`}
+              aria-label={stat.label ? `${stat.label}: ${stat.value}` : stat.value}
             >
-              <p className="mb-[0.18rem] text-[1rem] leading-[1.1] font-bold text-[var(--primary)]" aria-hidden="true">
-                {index === 0 ? "◌◌" : index === 1 ? "$" : index === 2 ? "○" : "</>"}
+              <p
+                className="mb-0.5 shrink-0 leading-none text-[clamp(0.75rem,10cqw,0.9rem)] text-[var(--primary)] sm:mb-0.5 sm:text-[clamp(0.68rem,9.5cqw,0.82rem)]"
+                aria-hidden="true"
+              >
+                {index === 0 ? "\u{1F310}" : index === 1 ? "\u{1F4BB}" : "\u{1F9E9}"}
               </p>
-              <p className="max-w-[8ch] text-balance text-[clamp(1.05rem,1vw+0.5rem,1.65rem)] leading-[1.05] font-bold break-words">
+              <p className="w-full max-w-[min(100%,22ch)] text-balance text-[clamp(0.8rem,2.6vw,1rem)] font-semibold leading-snug break-words sm:max-w-none sm:font-bold sm:leading-[1.07] sm:text-[clamp(0.64rem,calc(7.4cqw+0.12rem),0.84rem)]">
                 {stat.value}
               </p>
-              <p className="mt-[0.15rem] max-w-[10ch] text-balance text-[clamp(0.56rem,0.35vw+0.42rem,0.66rem)] leading-[1.25] text-[var(--text-muted)] break-words">
-                {stat.label}
-              </p>
+              {stat.label ? (
+                <p className="mt-[0.12em] max-w-[min(100%,11ch)] text-balance text-[clamp(0.52rem,calc(5.5cqw+0.2rem),0.68rem)] leading-[1.2] text-[var(--text-muted)] break-words">
+                  {stat.label}
+                </p>
+              ) : null}
             </article>
           ))}
         </div>
@@ -121,9 +147,19 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
-            <h3 className="text-2xl font-semibold">Technology &amp; AI (Build the Future)</h3>
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-6">
+          <article className="[container-type:inline-size] rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <header className="mb-2 flex items-start justify-between gap-3 sm:gap-4">
+              <h3 className="min-w-0 flex-1 text-2xl font-semibold">
+                Technology &amp; AI (Build the Future)
+              </h3>
+              <span
+                className="career-card-emoji shrink-0 select-none leading-none"
+                aria-hidden="true"
+              >
+                {"\u{1F4BB}"}
+              </span>
+            </header>
             <p className="mt-2 text-[var(--text-muted)]">Work on cutting-edge systems shaping tomorrow:</p>
             <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
               <li>AI/AGI Intern</li>
@@ -138,8 +174,18 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
-            <h3 className="text-2xl font-semibold">Robotics &amp; Engineering (Hands-On Innovation)</h3>
+          <article className="[container-type:inline-size] rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <header className="mb-2 flex items-start justify-between gap-3 sm:gap-4">
+              <h3 className="min-w-0 flex-1 text-2xl font-semibold">
+                Robotics &amp; Engineering (Hands-On Innovation)
+              </h3>
+              <span
+                className="career-card-emoji shrink-0 select-none leading-none"
+                aria-hidden="true"
+              >
+                {"\u{1F9BE}"}
+              </span>
+            </header>
             <p className="mt-2 text-[var(--text-muted)]">Design, build, and integrate real-world systems:</p>
             <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
               <li>Robotics Engineering Intern</li>
@@ -154,8 +200,18 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
-            <h3 className="text-2xl font-semibold">Science, Research &amp; Advanced Fields</h3>
+          <article className="[container-type:inline-size] rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <header className="mb-2 flex items-start justify-between gap-3 sm:gap-4">
+              <h3 className="min-w-0 flex-1 text-2xl font-semibold">
+                Science, Research &amp; Advanced Fields
+              </h3>
+              <span
+                className="career-card-emoji shrink-0 select-none leading-none"
+                aria-hidden="true"
+              >
+                {"\u{1F52C}"}
+              </span>
+            </header>
             <p className="mt-2 text-[var(--text-muted)]">Explore deep tech and scientific innovation:</p>
             <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
               <li>Biomedical Engineering Intern</li>
@@ -170,8 +226,18 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
-            <h3 className="text-2xl font-semibold">Business, Marketing &amp; Growth</h3>
+          <article className="[container-type:inline-size] rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <header className="mb-2 flex items-start justify-between gap-3 sm:gap-4">
+              <h3 className="min-w-0 flex-1 text-2xl font-semibold">
+                Business, Marketing &amp; Growth
+              </h3>
+              <span
+                className="career-card-emoji shrink-0 select-none leading-none"
+                aria-hidden="true"
+              >
+                {"\u{1F4BC}"}
+              </span>
+            </header>
             <p className="mt-2 text-[var(--text-muted)]">Work directly on company growth and strategy:</p>
             <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
               <li>Business Development and Sales Intern</li>
@@ -188,8 +254,18 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
-            <h3 className="text-2xl font-semibold">Operations, Product &amp; Management</h3>
+          <article className="[container-type:inline-size] rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <header className="mb-2 flex items-start justify-between gap-3 sm:gap-4">
+              <h3 className="min-w-0 flex-1 text-2xl font-semibold">
+                Operations, Product &amp; Management
+              </h3>
+              <span
+                className="career-card-emoji shrink-0 select-none leading-none"
+                aria-hidden="true"
+              >
+                {"\u{1F4CB}"}
+              </span>
+            </header>
             <p className="mt-2 text-[var(--text-muted)]">Help build and run real companies:</p>
             <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
               <li>Operations Intern</li>
@@ -203,8 +279,18 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
-            <h3 className="text-2xl font-semibold">Creative, Media &amp; Communication</h3>
+          <article className="[container-type:inline-size] rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <header className="mb-2 flex items-start justify-between gap-3 sm:gap-4">
+              <h3 className="min-w-0 flex-1 text-2xl font-semibold">
+                Creative, Media &amp; Communication
+              </h3>
+              <span
+                className="career-card-emoji shrink-0 select-none leading-none"
+                aria-hidden="true"
+              >
+                {"\u{1F3A8}"}
+              </span>
+            </header>
             <p className="mt-2 text-[var(--text-muted)]">Create content that reaches the world:</p>
             <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
               <li>Content Marketing Intern</li>
@@ -218,8 +304,18 @@ export default function HomePage() {
             </p>
           </article>
 
-          <article className="rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6 md:col-span-2">
-            <h3 className="text-2xl font-semibold">Emerging &amp; Interdisciplinary Fields</h3>
+          <article className="[container-type:inline-size] rounded-xl border border-[#4a4a4a] bg-[var(--bg)]/35 p-6">
+            <header className="mb-2 flex items-start justify-between gap-3 sm:gap-4">
+              <h3 className="min-w-0 flex-1 text-2xl font-semibold">
+                Emerging &amp; Interdisciplinary Fields
+              </h3>
+              <span
+                className="career-card-emoji shrink-0 select-none leading-none"
+                aria-hidden="true"
+              >
+                {"\u{1F500}"}
+              </span>
+            </header>
             <p className="mt-2 text-[var(--text-muted)]">Where tech meets new industries:</p>
             <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
               <li>EdTech and Innovation Intern</li>
@@ -234,21 +330,15 @@ export default function HomePage() {
         </div>
 
         <article className="mt-8 rounded-2xl border border-[#4a4a4a] bg-[var(--bg)]/30 p-6">
-          <h3 className="text-2xl font-semibold">Why This Matters</h3>
-          <p className="mt-3 text-[var(--text-muted)]">Most platforms offer a few generic roles.</p>
-          <p className="mt-2 text-[var(--text-muted)]">
-            Here, you choose from <strong>a wide ecosystem of real internships</strong>, across industries
-            and all connected to your learning journey.
-          </p>
-          <p className="mt-4 font-semibold">
-            Find your path. Start your internship. Build your career now.
-          </p>
+          <h3 className="text-2xl font-semibold">{homeWhyItMatters.title}</h3>
+          <p className="mt-3 text-lg font-semibold text-[var(--text)]">{homeWhyItMatters.headline}</p>
+          <p className="mt-3 text-[var(--text-muted)]">{homeWhyItMatters.body}</p>
         </article>
       </section>
 
       <section aria-labelledby="faq-title">
         <h2 id="faq-title" className="mb-6 text-3xl font-semibold">
-          Frequently Asked Questions
+          FAQs
         </h2>
         <div className="space-y-3">
           {faqAccordionItems.map((item) => (

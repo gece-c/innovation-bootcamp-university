@@ -78,6 +78,11 @@ a {
   margin-bottom: 0.8rem;
 }
 
+/* Home career cards: shared emoji scale (container cqi); min = half of old 5.25rem strip. */
+.career-card-emoji {
+  font-size: clamp(2.625rem, 7.25cqi, 3.875rem);
+}
+
 @keyframes testimonial-enter {
   from {
     opacity: 0;
