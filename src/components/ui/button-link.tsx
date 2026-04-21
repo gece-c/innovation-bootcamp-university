@@ -21,7 +21,7 @@ export function ButtonLink({ href, children, variant = "primary", ...props }: Bu
     <Link
       href={href}
       {...props}
-      className={`focus-ring inline-flex min-h-11 items-center justify-center rounded-lg border px-5 py-2 font-semibold transition-colors ${variantStyles[variant]}`}
+      className={`focus-ring inline-flex min-h-13 items-center justify-center rounded-lg border px-10 py-2 font-semibold transition-colors ${variantStyles[variant]}`}
     >
       {children}
     </Link>

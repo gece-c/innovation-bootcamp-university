@@ -14,12 +14,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body>
+      {/* Extensions may inject attrs on <body> before hydrate (e.g. cz-shortcut-listen). */}
+      <body className="min-w-0 overflow-x-hidden" suppressHydrationWarning>
         <a href="#main-content" className="skip-link focus-ring">
           Skip to main content
         </a>
         <SiteNavbar />
-        <main id="main-content" className="container-shell py-10">
+        <main id="main-content" className="container-shell min-w-0 py-10">
           {children}
         </main>
         <SiteFooter />

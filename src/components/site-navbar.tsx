@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/ui/button-link";
 
 export function SiteNavbar() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[#3f3f3f] bg-[var(--bg)]/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
       <div className="container-shell flex items-center justify-between py-4">
         <Link href="/" className="focus-ring flex items-center gap-3 rounded-md text-lg font-bold">
           <Image src="/flolabs-logo.svg" alt="FloLabs logo" width={36} height={36} priority />
