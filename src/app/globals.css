@@ -72,7 +72,7 @@ a {
 }
 
 .container-shell {
-  width: min(1120px, 92%);
+  width: 85%;
   margin-inline: auto;
 }
 
@@ -565,4 +565,137 @@ a {
   display: inline;
   font-weight: normal;
   margin-left: 0.5rem;
+}
+
+/* Home FAQ: modern editorial layout with existing site colors */
+.faq-modern-section {
+  border: 1px solid rgb(255 255 255 / 0.12);
+  background:
+    linear-gradient(
+      150deg,
+      color-mix(in srgb, var(--primary) 10%, rgb(255 255 255 / 0.08)),
+      rgb(255 255 255 / 0.015) 42%,
+      color-mix(in srgb, var(--secondary) 7%, transparent)
+    ),
+    rgb(24 25 28 / 0.72);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.1),
+    0 14px 30px rgb(0 0 0 / 0.28);
+  backdrop-filter: blur(10px) saturate(118%);
+  -webkit-backdrop-filter: blur(10px) saturate(118%);
+}
+
+.faq-modern-title {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(2.4rem, 4vw + 1.1rem, 4rem);
+  line-height: 1.05;
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.faq-modern-title-wrap {
+  margin-bottom: 1.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 3vw, 3.5rem);
+}
+
+.faq-modern-title-wrap::before,
+.faq-modern-title-wrap::after {
+  content: "";
+  height: 1px;
+  flex: 1 1 auto;
+  max-width: 16rem;
+  background: color-mix(in srgb, var(--primary) 72%, transparent);
+}
+
+.faq-modern-item {
+  border-top: 1px solid color-mix(in srgb, var(--primary) 32%, rgb(255 255 255 / 0.1));
+}
+
+.faq-modern-item:last-child {
+  border-bottom: 1px solid color-mix(in srgb, var(--primary) 32%, rgb(255 255 255 / 0.1));
+}
+
+.faq-modern-summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  cursor: pointer;
+  padding: 0.92rem 0.25rem;
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: none;
+}
+
+.faq-modern-summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-modern-chevron {
+  color: color-mix(in srgb, var(--text-muted) 82%, var(--primary) 18%);
+  font-size: 0.72rem;
+  line-height: 1;
+  transform: rotate(0deg) scale(1);
+  transition:
+    transform 180ms ease,
+    color 180ms ease;
+}
+
+.faq-modern-summary:hover .faq-modern-chevron {
+  transform: rotate(0deg) scale(1.21);
+}
+
+.faq-modern-item[open] .faq-modern-summary {
+  color: color-mix(in srgb, var(--text) 80%, var(--primary) 20%);
+}
+
+.faq-modern-item[open] .faq-modern-chevron {
+  transform: rotate(180deg) scale(1);
+  color: var(--primary);
+}
+
+.faq-modern-item[open] .faq-modern-summary:hover .faq-modern-chevron {
+  transform: rotate(180deg) scale(1.21);
+}
+
+.faq-modern-answer {
+  margin: 0;
+  padding: 0 0.25rem 1.05rem;
+  color: var(--text-muted);
+  font-size: 0.98rem;
+  line-height: 1.62;
+}
+
+@media (max-width: 640px) {
+  .faq-modern-summary {
+    font-size: 0.95rem;
+    padding-inline: 0;
+  }
+
+  .faq-modern-answer {
+    padding-inline: 0;
+  }
+
+  .faq-modern-title-wrap {
+    gap: 0.9rem;
+  }
+
+  .faq-modern-title-wrap::before,
+  .faq-modern-title-wrap::after {
+    max-width: 5.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-modern-summary,
+  .faq-modern-chevron {
+    transition: none;
+  }
 }

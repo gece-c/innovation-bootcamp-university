@@ -114,7 +114,7 @@ export default function HomePage() {
             playsInline
             aria-hidden="true"
           >
-            <source src="/hero-video.mp4" type="video/mp4" />
+            <source src="/hero-video.webm" type="video/webm" />
           </video>
         </div>
         <div className="relative z-[2] flex min-h-0 flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-14 xl:px-24 min-[980px]:min-h-[calc(100dvh-5rem)]">
@@ -246,13 +246,18 @@ export default function HomePage() {
         aria-labelledby="career-opportunities-title"
         className="glass-panel glass-panel-horizontal glass-panel-muted rounded-2xl p-8"
       >
-        <h2 id="career-opportunities-title" className="mb-4 text-3xl font-semibold">
+        <h2
+          id="career-opportunities-title"
+          className="mb-4 text-[clamp(2rem,1.2vw+1.7rem,3rem)] leading-tight font-semibold"
+        >
           {careerOpportunitiesSection.title.split(" ")[0]}{" "}
           <span className="text-[var(--primary)]">
             {careerOpportunitiesSection.title.split(" ").slice(1).join(" ")}
           </span>
         </h2>
-        <p className="max-w-3xl text-[var(--text-muted)]">{careerOpportunitiesSection.body}</p>
+        <p className="max-w-5xl text-[clamp(1.08rem,0.42vw+0.96rem,1.35rem)] leading-relaxed text-[var(--text-muted)]">
+          {careerOpportunitiesSection.body}
+        </p>
 
         <div className="glass-card glass-card-muted mt-8 rounded-2xl p-6">
           <h3 className="text-2xl font-semibold">{careerOpportunitiesSection.pathsTitle}</h3>
@@ -290,17 +295,26 @@ export default function HomePage() {
         </article>
       </section>
 
-      <section aria-labelledby="faq-title">
-        <h2 id="faq-title" className="mb-6 text-3xl font-semibold">
-          FAQs
-        </h2>
-        <div className="space-y-3">
-          {faqAccordionItems.map((item) => (
-            <details key={item.question} className="glass-card-soft rounded-xl p-4">
-              <summary className="focus-ring cursor-pointer rounded font-semibold">{item.question}</summary>
-              <p className="mt-3 whitespace-pre-line text-[var(--text-muted)]">{item.answer}</p>
-            </details>
-          ))}
+      <section aria-labelledby="faq-title" className="faq-modern-section rounded-2xl px-4 py-10 sm:px-8 sm:py-12">
+        <div className="mx-auto w-full max-w-4xl">
+          <div className="faq-modern-title-wrap">
+            <h2 id="faq-title" className="faq-modern-title">
+              FAQ
+            </h2>
+          </div>
+          <div>
+            {faqAccordionItems.map((item) => (
+              <details key={item.question} className="faq-modern-item group">
+                <summary className="faq-modern-summary focus-ring">
+                  <span>{item.question}</span>
+                  <span className="faq-modern-chevron" aria-hidden="true">
+                    &#9662;
+                  </span>
+                </summary>
+                <p className="faq-modern-answer whitespace-pre-line">{item.answer}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </section>
     </div>
