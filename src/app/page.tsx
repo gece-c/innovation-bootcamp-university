@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/button-link";
+import { ProjectsShowcaseTabs, type ProjectShowcaseItem } from "@/components/home/projects-showcase-tabs";
 import Image from "next/image";
 import type { IconType } from "react-icons";
 import { FaGlobeAmericas, FaLaptopCode, FaPuzzlePiece, FaUnlockAlt, FaUsers } from "react-icons/fa";
@@ -7,6 +8,7 @@ import {
   faqAccordionItems,
   hero,
   homeWhyItMatters,
+  projects,
   whyChoose
 } from "@/content/site-content";
 
@@ -42,6 +44,58 @@ export default function HomePage() {
     "sm:absolute sm:right-[12%] sm:bottom-[2%] min-[980px]:right-[-4%] min-[980px]:bottom-[10%]"
   ];
   const heroBlobIcons: IconType[] = [FaUsers, FaLaptopCode, FaPuzzlePiece, FaGlobeAmericas, FaUnlockAlt];
+  const projectShowcaseDescriptions: Record<string, string> = {
+    moodchanger:
+      "AI platform for emotional well-being that analyzes user input and provides personalized advice to improve mood and reduce stress.",
+    caipo:
+      "Wearable AI assistant that records and analyzes audio/video to generate summaries, insights, and boost productivity.",
+    "flo-studios":
+      "Creative agency focused on UX/UI, multimedia, and AI-driven projects, including films and experimental digital productions.",
+    "humanoid-robots":
+      "Initiative to develop and distribute customizable robots through a marketplace connecting manufacturers and users.",
+    "hephaestus-international":
+      "Experiential learning institute focused on innovation, education, and advanced technology development.",
+    tarrl: "Research lab portal dedicated to advanced robotics development and experimentation.",
+    "flolabs-innovations-group":
+      "Platform showcasing AI projects, partnerships, and innovation initiatives across the organization.",
+    "flolabs-international":
+      "Global hub highlighting FloLabs' mission, projects, and collaboration opportunities.",
+    "moodchanger-for-pets":
+      "Extension of MoodChanger using AI + wearable data to monitor and improve pets' health and behavior.",
+    "flo-travel":
+      "AI-powered travel planning platform that organizes trips, including flights, hotels, and activities in one place."
+  };
+  const projectImageBySlug: Record<string, string> = {
+    caipo: "/projects/CAIPO_Wearable.webp",
+    "humanoid-robots": "/projects/humanoid.png"
+  };
+  const projectTabIconBySlug: Record<string, string> = {
+    moodchanger: "/projects/icons/Moodchanger.png",
+    caipo: "/projects/icons/CAIPO.png",
+    "flo-studios": "/projects/icons/FloStudios.png",
+    "humanoid-robots": "/projects/icons/Humanoids.png",
+    "hephaestus-international": "/projects/icons/Hepheastus.png",
+    tarrl: "/projects/icons/TARRL.png",
+    "flolabs-innovations-group": "/projects/icons/Flolabs-Innovation.png",
+    "flolabs-international": "/projects/icons/Flolabs-International.png",
+    "moodchanger-for-pets": "/projects/icons/Moodchanger-PETS.png",
+    "flo-travel": "/projects/icons/Flomad-Travel.png"
+  };
+  const projectShowcaseItems: ProjectShowcaseItem[] = projects.slice(0, 10).map((project) => {
+    const sourceText = project.currentWork ?? project.summary;
+    const normalizedText = sourceText.replace(/\s+/g, " ").trim();
+    const shortDescription =
+      normalizedText.length > 190 ? `${normalizedText.slice(0, 187).trimEnd()}...` : normalizedText;
+
+    return {
+      slug: project.slug,
+      title: project.title,
+      description: projectShowcaseDescriptions[project.slug] ?? shortDescription,
+      imageAlt: `${project.title} project preview`,
+      imageSrc: projectImageBySlug[project.slug],
+      tabIconSrc: projectTabIconBySlug[project.slug]
+    };
+  });
 
   return (
     <div className="min-w-0 space-y-14">
@@ -148,6 +202,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ProjectsShowcaseTabs items={projectShowcaseItems} />
 
       <section aria-labelledby="why-choose-title" className="rounded-2xl bg-[var(--surface)] p-8">
         <p className="mb-3 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-sm text-[var(--primary)]">
