@@ -18,6 +18,7 @@ export default function ResourcesPage() {
           <SectionCard
             key={resource.slug}
             title={resource.title}
+            className="glass-card-soft border-white/15 bg-transparent"
             footer={
               <ButtonLink href={`/resources/${resource.slug}`} variant="secondary">
                 Open Page

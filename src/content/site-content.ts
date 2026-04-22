@@ -50,10 +50,10 @@ export const RESOURCE_SLUGS = {
 // --- Home hero ---
 export const hero = {
   badge: "",
-  title: "Launch Your Career with Real Internships",
-  lead: "Start learning, building, and earning, all at one place.",
+  title: "Earn While You Learn.",
+  lead: "Graduate as a Working Professional.",
   body:
-    "Join a new kind of university experience where education is directly connected to real-world internships across AI, software, robotics, business, and more.",
+    "Innovation Bootcamp University connects structured education directly to real internships across AI, software, robotics, business, and more. You start as a student. You finish with a resume that proves it.",
   highlights: [
     { title: "Global Access", description: "Join from anywhere in the world, fully remote." },
     { title: "Open Entry", description: "No prior experience required. Just ambition and curiosity." }
@@ -73,7 +73,7 @@ export const whyChoose = {
   badge: "What Makes Us Different",
   title: "Why Choose Bootcamp University",
   body:
-    "Start with education, progress to earning, and graduate as a professional with our cooperative approach.",
+    "Most programs teach you skills and send you into the job market alone. We place you inside real work from day one, so your education and your career start at the same time.",
   points: [
     {
       title: "Learn with Real Internship",
@@ -150,7 +150,109 @@ export const tracks: Track[] = [
 export const careerOpportunitiesSection = {
   title: "Career Opportunities",
   body:
-    "Our curriculum prepares you for roles across a wide range of tech sectors. Here are the industries where our graduates can build successful careers.",
+    "Our interdisciplinary curriculum is designed to prepare you for the most in-demand roles across the global tech landscape. Discover the industries where you can build a high-impact professional future.",
+  pathsTitle: "39 Internship Paths to Choose From",
+  pathsIntro: "We recognize that every professional journey is unique. That is the core of our approach.",
+  pathsBody:
+    "Whether your passion lies in AI, business strategy, scientific research, or creative design, you can start contributing to your field from day one.",
+  tracks: [
+    {
+      title: "Technology & AI (Build the Future)",
+      icon: "💻",
+      intro: "Work on cutting-edge systems shaping tomorrow:",
+      roles: [
+        "AI/AGI Intern",
+        "Machine Learning Engineering Intern",
+        "Computer Vision Engineering Intern",
+        "Prompt Engineer Intern",
+        "Software Development Intern",
+        "Front-end Developer Intern"
+      ],
+      fit: "Perfect for builders, coders, and problem-solvers"
+    },
+    {
+      title: "Robotics & Engineering (Hands-On Innovation)",
+      icon: "🦾",
+      intro: "Design, build, and integrate real-world systems:",
+      roles: [
+        "Robotics Engineering Intern",
+        "Mechatronics Engineering Intern",
+        "Embedded Systems Intern",
+        "Sensor Integration Intern",
+        "Control Systems Engineering Intern",
+        "Human-Robot Interaction Intern"
+      ],
+      fit: "For those who want to create physical + intelligent systems"
+    },
+    {
+      title: "Science, Research & Advanced Fields",
+      icon: "🔬",
+      intro: "Explore deep tech and scientific innovation:",
+      roles: [
+        "Biomedical Engineering Intern",
+        "Neuroscience Intern",
+        "Quantum Engineer Intern",
+        "Space Science Intern",
+        "Research Associate Intern (Open-Source Projects)",
+        "Animal Science and Veterinary Research Intern"
+      ],
+      fit: "Ideal for analytical thinkers and future researchers"
+    },
+    {
+      title: "Business, Marketing & Growth",
+      icon: "💼",
+      intro: "Work directly on company growth and strategy:",
+      roles: [
+        "Business Development and Sales Intern",
+        "Business Development (AI & Robotics) Intern",
+        "Marketing Intern",
+        "Digital Marketing Intern",
+        "SEO Specialist Intern",
+        "Social Media Intern",
+        "GTM Engineer Intern",
+        "GTM Influencer Intern"
+      ],
+      fit: "For communicators, strategists, and growth-driven minds"
+    },
+    {
+      title: "Operations, Product & Management",
+      icon: "📋",
+      intro: "Help build and run real companies:",
+      roles: [
+        "Operations Intern",
+        "Project Management Intern",
+        "Product Development Intern (AI & Robotics)",
+        "Quality Assurance Intern",
+        "Finance Intern"
+      ],
+      fit: "For leaders, organizers, and decision-makers"
+    },
+    {
+      title: "Creative, Media & Communication",
+      icon: "🎨",
+      intro: "Create content that reaches the world:",
+      roles: [
+        "Content Marketing Intern",
+        "Journalism & PR Intern",
+        "Podcast Production Intern",
+        "Technical Writing Intern",
+        "UI/UX Design Intern"
+      ],
+      fit: "For storytellers, designers, and creatives"
+    },
+    {
+      title: "Emerging & Interdisciplinary Fields",
+      icon: "🔀",
+      intro: "Where tech meets new industries:",
+      roles: [
+        "EdTech and Innovation Intern",
+        "Ethical and Legal Research Intern",
+        "Hospitality and Tourism Intern",
+        "Sport Science Intern"
+      ],
+      fit: "For explorers who want something different"
+    }
+  ],
   highlights: [
     { label: "Industry Sectors", value: "8+", icon: "🏢", tint: "primary" },
     { label: "Program Completion", value: "500 Hours", icon: "⏱️", tint: "secondary" },
