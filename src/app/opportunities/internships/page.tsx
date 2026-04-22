@@ -58,8 +58,8 @@ export default async function InternshipsPage() {
 
         <div className="relative z-[1] mx-auto max-w-3xl">
           <h1 id="internships-hero-title" className="page-title">
-            <span className="block text-[52px] text-[var(--text)]">Internship</span>
-            <span className='block text-[62px] font-["Playfair_Display",Georgia,"Times_New_Roman",serif] font-bold text-[var(--primary)]'>
+            <span className="block text-[clamp(2.05rem,5.2vw+0.7rem,3.25rem)] leading-[1.08] text-[var(--text)]">Internship</span>
+            <span className='block text-[clamp(2.3rem,6vw+0.8rem,3.9rem)] leading-[1.05] font-["Playfair_Display",Georgia,"Times_New_Roman",serif] font-bold text-[var(--primary)]'>
               Positions
             </span>
           </h1>

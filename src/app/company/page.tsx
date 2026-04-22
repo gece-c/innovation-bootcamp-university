@@ -19,7 +19,7 @@ export default function CompanyPage() {
         <h2 className="mb-6 text-center text-3xl font-semibold">{aboutPage.coreValuesHeading}</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {aboutPage.coreValues.map((item) => (
-            <article key={item.title} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
+            <article key={item.title} className="glass-card-soft rounded-xl p-5">
               <h3 className="text-lg font-semibold">{item.title}</h3>
               <p className="mt-2 text-sm text-[var(--text-muted)]">{item.body}</p>
             </article>
@@ -31,7 +31,7 @@ export default function CompanyPage() {
         <h2 className="mb-6 text-center text-3xl font-semibold">{aboutPage.areasHeading}</h2>
         <div className="grid gap-4 md:grid-cols-2">
           {aboutPage.areas.map((item) => (
-            <article key={item.title} className="rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5">
+            <article key={item.title} className="glass-card-soft rounded-xl p-5">
               <h3 className="text-lg font-semibold">{item.title}</h3>
               <p className="mt-2 text-sm text-[var(--text-muted)]">{item.body}</p>
             </article>
@@ -39,7 +39,7 @@ export default function CompanyPage() {
         </div>
       </section>
 
-      <section className="rounded-2xl bg-[var(--surface)] p-8 text-center">
+      <section className="glass-card-soft rounded-2xl p-8 text-center">
         <h2 className="text-3xl font-semibold">{aboutPage.finalCta.title}</h2>
         <p className="mx-auto mt-3 max-w-2xl text-[var(--text-muted)]">{aboutPage.finalCta.body}</p>
         <div className="mt-6 flex justify-center">

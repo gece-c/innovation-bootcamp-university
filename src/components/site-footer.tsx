@@ -43,7 +43,7 @@ export function SiteFooter() {
   }
 
   return (
-    <footer className="mt-16 border-t border-[#3f3f3f] bg-[var(--surface)]">
+    <footer className="glass-panel-neutral mt-16 border-t border-white/15">
       <div className="container-shell grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
         <section className="sm:col-span-2 lg:col-span-2">
           <h2 className="text-2xl font-semibold">{stayUpdatedBlock.title}</h2>
