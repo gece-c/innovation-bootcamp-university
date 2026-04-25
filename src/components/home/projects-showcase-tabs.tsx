@@ -72,7 +72,7 @@ export function ProjectsShowcaseTabs({ items }: ProjectsShowcaseTabsProps) {
       aria-labelledby="project-showcase-title"
       className="glass-panel glass-panel-muted rounded-2xl p-6 md:p-8"
     >
-      <p className="mb-3 inline-block rounded-full bg-black/35 px-3.5 py-1.5 text-sm font-semibold tracking-[0.01em] text-white backdrop-blur-sm">
+      <p className="theme-badge mb-3 inline-block rounded-full px-3.5 py-1.5 text-sm font-semibold tracking-[0.01em] backdrop-blur-sm">
         Case studies
       </p>
       <h2 id="project-showcase-title" className="page-title">
@@ -94,10 +94,10 @@ export function ProjectsShowcaseTabs({ items }: ProjectsShowcaseTabsProps) {
                 aria-selected={isActive}
                 aria-controls={`project-panel-${item.slug}`}
                 tabIndex={isActive ? 0 : -1}
-                className={`focus-ring flex h-14 flex-1 cursor-pointer items-center justify-center border-r border-white/10 px-2 py-2 transition-colors last:border-r-0 ${
+                className={`focus-ring flex h-14 flex-1 cursor-pointer items-center justify-center border-r border-[color-mix(in_srgb,var(--text-muted)_22%,transparent)] px-2 py-2 transition-colors last:border-r-0 ${
                   isActive
-                    ? "bg-white/9 text-[var(--text)]"
-                    : "bg-transparent text-[var(--text-muted)] hover:bg-white/5 hover:text-[var(--text)]"
+                    ? "bg-[var(--menu-hover-bg)] text-[var(--text)]"
+                    : "bg-transparent text-[var(--text-muted)] hover:bg-[var(--menu-hover-bg)] hover:text-[var(--text)]"
                 }`}
                 onClick={() => setActiveIndex(index)}
                 onKeyDown={(event) => onTabKeyDown(event, index)}

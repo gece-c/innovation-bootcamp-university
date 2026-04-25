@@ -49,7 +49,11 @@ export default async function ResourceDetailPage({ params }: Props) {
           </p>
           <div aria-label="Journey steps" className="grid gap-4 md:grid-cols-2">
             {howItWorksPage.journeySteps.map((step) => (
-              <SectionCard key={step.title} title={step.title} className="glass-card-soft border-white/15 bg-transparent">
+              <SectionCard
+                key={step.title}
+                title={step.title}
+                className="glass-card-soft border-[color-mix(in_srgb,var(--text-muted)_24%,transparent)] bg-transparent"
+              >
                 <p>{step.description}</p>
               </SectionCard>
             ))}
@@ -63,7 +67,7 @@ export default async function ResourceDetailPage({ params }: Props) {
             return (
               <SectionCard
                 key={tier.title}
-                className="glass-card-soft border-white/15 bg-transparent"
+                className="glass-card-soft border-[color-mix(in_srgb,var(--text-muted)_24%,transparent)] bg-transparent"
                 title={
                   tierName ? (
                     <span className="block leading-tight">
@@ -99,14 +103,20 @@ export default async function ResourceDetailPage({ params }: Props) {
             {howItWorksPage.comparisonTitle}
           </h2>
           <div className="grid gap-4 md:grid-cols-2">
-            <SectionCard title={howItWorksPage.comparison.traditionalTitle} className="glass-card-soft border-white/15 bg-transparent">
+            <SectionCard
+              title={howItWorksPage.comparison.traditionalTitle}
+              className="glass-card-soft border-[color-mix(in_srgb,var(--text-muted)_24%,transparent)] bg-transparent"
+            >
               <ul className="list-inside list-disc space-y-1">
                 {howItWorksPage.comparison.traditional.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
             </SectionCard>
-            <SectionCard title={howItWorksPage.comparison.cooperativeTitle} className="glass-card-soft border-white/15 bg-transparent">
+            <SectionCard
+              title={howItWorksPage.comparison.cooperativeTitle}
+              className="glass-card-soft border-[color-mix(in_srgb,var(--text-muted)_24%,transparent)] bg-transparent"
+            >
               <ul className="list-inside list-disc space-y-1">
                 {howItWorksPage.comparison.cooperative.map((item) => (
                   <li key={item}>{item}</li>
@@ -137,7 +147,11 @@ export default async function ResourceDetailPage({ params }: Props) {
 
         <section aria-label="Community playbook sections" className="grid gap-4 md:grid-cols-2">
           {communityPlaybookPage.sections.map((section) => (
-            <SectionCard key={section.title} title={section.title} className="glass-card-soft border-white/15 bg-transparent">
+            <SectionCard
+              key={section.title}
+              title={section.title}
+              className="glass-card-soft border-[color-mix(in_srgb,var(--text-muted)_24%,transparent)] bg-transparent"
+            >
               <ul className="list-inside list-disc space-y-1">
                 {section.items.map((item) => (
                   <li key={item}>{item}</li>

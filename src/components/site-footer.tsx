@@ -43,7 +43,7 @@ export function SiteFooter() {
   }
 
   return (
-    <footer className="glass-panel-neutral mt-16 border-t border-white/15">
+    <footer className="glass-panel-neutral mt-16 border-t border-[color-mix(in_srgb,var(--text-muted)_24%,transparent)]">
       <div className="container-shell grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
         <section className="sm:col-span-2 lg:col-span-2">
           <h2 className="text-2xl font-semibold">{stayUpdatedBlock.title}</h2>
@@ -56,18 +56,18 @@ export function SiteFooter() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder={stayUpdatedBlock.placeholder}
-                className="w-full rounded-md border border-[#4a4a4a] bg-[var(--bg)] px-3 py-2 text-sm"
+                className="w-full rounded-md border border-[var(--field-border)] bg-[var(--field-bg)] px-3 py-2 text-sm"
               />
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="rounded-md bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-black disabled:opacity-60"
+                className="rounded-md bg-[var(--primary)] px-4 py-2 text-sm font-semibold text-[var(--button-primary-text)] disabled:opacity-60"
               >
                 {stayUpdatedBlock.buttonLabel}
               </button>
             </div>
-            {error && <p className="mt-2 text-sm text-red-400">{error}</p>}
-            {status && <p className="mt-2 text-sm text-green-400">{status}</p>}
+            {error && <p className="mt-2 text-sm text-[var(--status-error)]">{error}</p>}
+            {status && <p className="mt-2 text-sm text-[var(--status-success)]">{status}</p>}
           </form>
         </section>
 
