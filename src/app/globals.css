@@ -92,6 +92,191 @@ a {
   font-size: clamp(2.625rem, 7.25cqi, 3.875rem);
 }
 
+/* Career opportunities section: static only (no animation/hover interactions). */
+.career-opportunities-section,
+.career-opportunities-section * {
+  transition: none !important;
+}
+
+.career-opportunities-section .career-slideup-target {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.career-opportunities-section.career-opportunities-section-visible .career-slideup-target {
+  animation: career-opportunities-slide-up 560ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.career-opportunities-section.career-opportunities-section-visible h2.career-slideup-target {
+  animation-delay: 40ms;
+}
+
+.career-opportunities-section.career-opportunities-section-visible p.career-slideup-target {
+  animation-delay: 120ms;
+}
+
+.career-opportunities-section.career-opportunities-section-visible .career-opportunities-rail-frame.career-slideup-target {
+  animation-delay: 180ms;
+}
+
+.career-opportunities-section.career-opportunities-section-visible .career-opportunity-card.career-slideup-target {
+  animation-delay: 220ms;
+}
+
+@keyframes career-opportunities-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.career-opportunities-section .glass-card:hover,
+.career-opportunities-section .glass-card-soft:hover,
+.career-opportunities-section .career-opportunity-card:hover,
+.career-opportunities-section .career-opportunity-card:focus,
+.career-opportunities-section .career-opportunity-card:focus-within {
+  transform: none;
+  border-color: rgb(255 255 255 / 0.15);
+  box-shadow: none;
+}
+
+.career-opportunities-section .career-opportunity-card {
+  box-shadow: none;
+}
+
+.career-opportunities-rail-frame {
+  position: relative;
+  isolation: isolate;
+}
+
+.career-opportunities-rail-frame::before,
+.career-opportunities-rail-frame::after {
+  content: none;
+}
+
+.career-opportunities-rail {
+  scroll-snap-type: none;
+  overscroll-behavior-x: contain;
+  &::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(83, 83, 83, 0.07);
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 12px;
+    background-color: rgba(54, 52, 52, 0.789);
+    border-radius: 50px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(194, 194, 194, 0.326);
+    border-radius: 50px;
+  }
+}
+
+.career-opportunities-rail-track {
+  scroll-padding-inline: 0.25rem;
+}
+
+.career-opportunity-card {
+  width: min(18.5rem, 80vw);
+  min-height: 16.5rem;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+
+.career-opportunity-card-content {
+  border-bottom: 1px solid rgb(255 255 255 / 0.12);
+}
+
+.career-opportunity-card-visual {
+  min-height: 5.25rem;
+  background:
+    linear-gradient(
+      165deg,
+      rgb(255 255 255 / 0.1),
+      rgb(255 255 255 / 0.03) 46%,
+      color-mix(in srgb, var(--primary) 10%, transparent)
+    ),
+    rgb(255 255 255 / 0.03);
+}
+
+.career-opportunity-card-icon {
+  display: inline-flex;
+  color: var(--primary);
+  font-size: clamp(2.45rem, 4.5vw, 3.4rem);
+}
+
+.career-opportunity-card--primary .career-opportunity-card-icon {
+  color: var(--primary);
+}
+
+.career-opportunity-card--secondary .career-opportunity-card-icon {
+  color: var(--secondary);
+}
+
+.career-opportunity-card--amber .career-opportunity-card-icon {
+  color: #dca36e;
+}
+
+.career-opportunity-card--green .career-opportunity-card-icon {
+  color: #70c7b3;
+}
+
+.career-opportunity-card--primary .career-opportunity-card-visual {
+  background:
+    linear-gradient(
+      162deg,
+      color-mix(in srgb, var(--primary) 20%, rgb(255 255 255 / 0.1)),
+      rgb(255 255 255 / 0.03) 45%,
+      color-mix(in srgb, var(--primary) 8%, transparent)
+    ),
+    rgb(255 255 255 / 0.03);
+}
+
+.career-opportunity-card--secondary .career-opportunity-card-visual {
+  background:
+    linear-gradient(
+      162deg,
+      color-mix(in srgb, var(--secondary) 20%, rgb(255 255 255 / 0.1)),
+      rgb(255 255 255 / 0.03) 45%,
+      color-mix(in srgb, var(--secondary) 8%, transparent)
+    ),
+    rgb(255 255 255 / 0.03);
+}
+
+.career-opportunity-card--amber .career-opportunity-card-visual {
+  background:
+    linear-gradient(
+      162deg,
+      color-mix(in srgb, #dca36e 24%, rgb(255 255 255 / 0.09)),
+      rgb(255 255 255 / 0.03) 45%,
+      color-mix(in srgb, #dca36e 10%, transparent)
+    ),
+    rgb(255 255 255 / 0.03);
+}
+
+.career-opportunity-card--green .career-opportunity-card-visual {
+  background:
+    linear-gradient(
+      162deg,
+      color-mix(in srgb, #70c7b3 24%, rgb(255 255 255 / 0.09)),
+      rgb(255 255 255 / 0.03) 45%,
+      color-mix(in srgb, #70c7b3 10%, transparent)
+    ),
+    rgb(255 255 255 / 0.03);
+}
+
+@media (max-width: 640px) {
+  .career-opportunity-card {
+    width: min(17rem, 86vw);
+  }
+}
+
 /* Glassmorphism utilities for homepage sections/cards */
 .glass-panel {
   position: relative;
@@ -292,6 +477,156 @@ a {
   animation: testimonial-enter 320ms ease-out;
 }
 
+@keyframes projects-container-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projects-container-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  will-change: transform, opacity;
+}
+
+.projects-container-reveal-visible {
+  animation: projects-container-slide-up 560ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.projects-container-delay-1 {
+  animation-delay: 40ms;
+}
+
+.projects-container-delay-2 {
+  animation-delay: 140ms;
+}
+
+.projects-container-delay-3 {
+  animation-delay: 240ms;
+}
+
+.why-choose-section {
+  background: transparent;
+}
+
+.why-choose-bg-pattern {
+  background:
+    radial-gradient(
+      72% 115% at 50% 52%,
+      rgb(255 255 255 / 0.07) 0%,
+      rgb(255 255 255 / 0.02) 34%,
+      transparent 72%
+    ),
+    repeating-radial-gradient(
+      circle at 50% 52%,
+      rgb(255 255 255 / 0.06) 0 1px,
+      transparent 1px 64px
+    );
+  opacity: 0.42;
+}
+
+.why-choose-badge {
+  display: inline-block;
+  margin: 0 0 0.7rem;
+  color: color-mix(in srgb, var(--text-muted) 86%, var(--text) 14%);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.why-choose-title {
+  margin: 0 0 1rem;
+  color: color-mix(in srgb, var(--text) 92%, var(--text-muted) 8%);
+  font-size: clamp(2rem, 2.5vw + 1.1rem, 3.6rem);
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+.why-choose-subtitle {
+  margin-inline: auto;
+  max-width: 64ch;
+  color: color-mix(in srgb, var(--text-muted) 88%, var(--text) 12%);
+  font-size: clamp(0.98rem, 0.25vw + 0.92rem, 1.12rem);
+  line-height: 1.7;
+}
+
+.why-choose-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.95rem;
+}
+
+.why-choose-item-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1px solid color-mix(in srgb, var(--text-muted) 56%, transparent);
+  border-radius: 999px;
+  color: var(--primary);
+  font-size: 1.113rem;
+  line-height: 1;
+}
+
+.why-choose-item-title {
+  margin: 0;
+  color: color-mix(in srgb, var(--text) 94%, var(--text-muted) 6%);
+  font-size: 22px;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.why-choose-item-description {
+  margin: 0.55rem 0 0;
+  color: color-mix(in srgb, var(--text-muted) 88%, var(--text) 12%);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .why-choose-item-icon {
+    width: 2.65rem;
+    height: 2.65rem;
+    font-size: 0.98rem;
+  }
+}
+
+@keyframes project-tab-attention-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.68);
+  }
+  52% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  74% {
+    transform: scale(0.93);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.project-tab-attention {
+  opacity: 0;
+  transform: scale(0.68);
+  will-change: transform, opacity;
+}
+
+.project-tab-attention-visible {
+  animation: project-tab-attention-pop 460ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
 @keyframes project-panel-slide-down {
   from {
     opacity: 0;
@@ -320,7 +655,30 @@ a {
   animation-delay: 290ms;
 }
 
-/* Home hero: illustration + stat blobs enter from the left with a ~30% scale-up */
+.project-badges-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  max-width: 36rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.project-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  color: var(--primary);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Home hero: right column reveal animation */
 @keyframes hero-visual-in {
   from {
     opacity: 0;
@@ -401,37 +759,139 @@ a {
   }
 }
 
-/* Hero stat blobs: lift + glow on hover / press */
-.hero-stat-blob {
-  transition:
-    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 320ms cubic-bezier(0.22, 1, 0.36, 1),
-    border-color 280ms ease,
-    background-color 280ms ease;
+@keyframes hero-carousel-slide-next-in {
+  from {
+    opacity: 0;
+    transform: translateX(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hero-stat-blob:hover {
-    transform: translateY(-0.35rem) scale(1.06);
-    border-color: color-mix(in srgb, var(--primary) 52%, #4e6c73);
-    background-color: rgb(40 40 40 / 0.93);
-    box-shadow:
-      0 16px 36px rgb(0 0 0 / 0.45),
-      0 0 0 1px color-mix(in srgb, var(--primary) 28%, transparent),
-      0 0 28px color-mix(in srgb, var(--primary) 22%, transparent);
+@keyframes hero-carousel-slide-prev-in {
+  from {
+    opacity: 0;
+    transform: translateX(-28px);
   }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-  .hero-stat-blob:active {
-    transform: translateY(-0.08rem) scale(1.02);
-    transition-duration: 100ms;
+.hero-carousel-slide {
+  animation-duration: 320ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+.hero-carousel-slide-next {
+  animation-name: hero-carousel-slide-next-in;
+}
+
+.hero-carousel-slide-prev {
+  animation-name: hero-carousel-slide-prev-in;
+}
+
+.hero-carousel-text-animate {
+  opacity: 0;
+  animation-duration: 260ms;
+  animation-timing-function: ease-out;
+  animation-delay: 50ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hero-carousel-text-next-in {
+  from {
+    opacity: 0;
+    transform: translateX(18px);
   }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-carousel-text-prev-in {
+  from {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-carousel-slide-next .hero-carousel-text-animate {
+  animation-name: hero-carousel-text-next-in;
+}
+
+.hero-carousel-slide-prev .hero-carousel-text-animate {
+  animation-name: hero-carousel-text-prev-in;
+}
+
+.hero-carousel-title-glow {
+  text-shadow:
+    0 0 0.45rem rgb(255 255 255 / 0.12),
+    0 0 1.05rem rgb(0 0 0 / 0.98);
+  filter: drop-shadow(0 0 0.5rem rgb(0 0 0 / 0.62));
+}
+
+.hero-carousel-description-glow {
+  text-shadow:
+    0 0 0.42rem rgb(255 255 255 / 0.28),
+    0 0 0.9rem rgb(0 0 0 / 0.72);
+}
+
+.hero-carousel-image-shell {
+  margin-inline: auto;
+  border-radius: 1rem;
+  filter: drop-shadow(0 0 1.35rem color-mix(in srgb, var(--primary) 38%, transparent));
+}
+
+.hero-carousel-image-shell img {
+  transform: scale(2.05);
+  transform-origin: center center;
+}
+
+.hero-carousel-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.hero-carousel-dot-button {
+  display: inline-flex;
+  height: 2rem;
+  width: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+}
+
+.hero-carousel-dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.42);
+  transform: scale(1);
+  box-shadow: none;
+  transition: transform 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.hero-carousel-dot-active {
+  background: rgb(255 255 255 / 1);
+  transform: scale(1.28);
+  box-shadow:
+    0 0 0.45rem rgb(255 255 255 / 0.9),
+    0 0 0.95rem rgb(255 255 255 / 0.62);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-stat-blob {
-    transition: none;
-  }
-
   .hero-text-reveal {
     animation: none;
     opacity: 1;
@@ -451,11 +911,46 @@ a {
     clip-path: inset(0 0 0 0);
   }
 
+  .hero-carousel-slide {
+    animation: none;
+  }
+
+  .hero-carousel-text-animate {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-carousel-dot {
+    transition: none;
+  }
+
   .project-panel-enter {
     animation: none;
     opacity: 1;
     transform: none;
   }
+
+  .projects-container-reveal {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  .projects-container-reveal-visible {
+    animation: none;
+  }
+
+  .project-tab-attention {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+
+  .project-tab-attention-visible {
+    animation: none;
+  }
+
 }
 
 /* HubSpot Form Styling */
@@ -671,6 +1166,118 @@ a {
   color: var(--text-muted);
   font-size: 0.98rem;
   line-height: 1.62;
+}
+
+/* Home internship highlights: full-width paired colorful glass cards */
+.internship-highlights-section {
+  background: transparent;
+}
+
+.internship-highlights-grid {
+  align-items: stretch;
+}
+
+.internship-highlight-card {
+  position: relative;
+  isolation: isolate;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.18),
+    0 20px 38px rgb(0 0 0 / 0.3);
+  backdrop-filter: blur(13px) saturate(128%);
+  -webkit-backdrop-filter: blur(13px) saturate(128%);
+}
+
+.internship-highlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.96;
+}
+
+.internship-highlight-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.internship-highlight-card--primary {
+  border-color: color-mix(in srgb, var(--primary) 42%, rgb(255 255 255 / 0.24));
+  background:
+    linear-gradient(
+      132deg,
+      color-mix(in srgb, var(--primary) 23%, rgb(255 255 255 / 0.2)) 0%,
+      rgb(255 255 255 / 0.055) 52%,
+      color-mix(in srgb, var(--primary) 10%, transparent) 100%
+    ),
+    rgb(24 32 38 / 0.62);
+}
+
+.internship-highlight-card--primary::before {
+  background:
+    radial-gradient(
+      84% 122% at 15% 12%,
+      color-mix(in srgb, var(--primary) 50%, transparent) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      78% 110% at 94% 88%,
+      rgb(255 255 255 / 0.08) 0%,
+      transparent 62%
+    );
+}
+
+.internship-highlight-card--secondary {
+  min-height: 14rem;
+  border-color: color-mix(in srgb, var(--secondary) 38%, rgb(255 255 255 / 0.24));
+  background:
+    linear-gradient(
+      132deg,
+      color-mix(in srgb, var(--secondary) 23%, rgb(255 255 255 / 0.2)) 0%,
+      rgb(255 255 255 / 0.055) 52%,
+      color-mix(in srgb, #dca36e 16%, transparent) 100%
+    ),
+    rgb(36 30 28 / 0.62);
+}
+
+.internship-highlight-card--secondary::before {
+  background:
+    radial-gradient(
+      82% 120% at 12% 14%,
+      color-mix(in srgb, var(--secondary) 46%, transparent) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      70% 95% at 95% 90%,
+      color-mix(in srgb, #dca36e 42%, transparent) 0%,
+      transparent 64%
+    );
+}
+
+.internship-highlight-card--image {
+  display: flex;
+  align-items: flex-end;
+  min-height: 14rem;
+  border-color: rgb(255 255 255 / 0.26);
+  background: rgb(18 18 20 / 0.35);
+}
+
+.internship-highlight-card--image::before {
+  content: none;
+}
+
+.internship-highlight-card--image-secondary {
+  border-color: color-mix(in srgb, var(--secondary) 44%, rgb(255 255 255 / 0.26));
+  background:
+    linear-gradient(
+      132deg,
+      color-mix(in srgb, var(--secondary) 26%, rgb(255 255 255 / 0.17)) 0%,
+      rgb(255 255 255 / 0.04) 52%,
+      color-mix(in srgb, #dca36e 18%, transparent) 100%
+    ),
+    rgb(28 25 30 / 0.66);
 }
 
 @media (max-width: 640px) {

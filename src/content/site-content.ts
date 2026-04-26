@@ -32,8 +32,33 @@ export type Project = {
   summary: string;
   currentWork?: string;
   focus?: string[];
+  badges?: string[];
   externalUrl?: string;
 };
+
+type WhyChooseIcon = "briefcase" | "handshake" | "tools" | "users" | "award" | "puzzle";
+
+type WhyChoosePoint = {
+  title: string;
+  description: string;
+  icon: WhyChooseIcon;
+};
+
+type WhyChooseSectionContent = {
+  badge: string;
+  title: string;
+  body: string;
+  points: WhyChoosePoint[];
+};
+
+export type CareerOpportunityIcon =
+  | "technologyAi"
+  | "roboticsEngineering"
+  | "scienceResearch"
+  | "businessGrowth"
+  | "operationsManagement"
+  | "creativeMedia"
+  | "interdisciplinary";
 
 export const navItems = [
   { href: "/projects", label: "Projects" },
@@ -69,7 +94,7 @@ export const hero = {
   ]
 };
 
-export const whyChoose = {
+export const whyChoose: WhyChooseSectionContent = {
   badge: "What Makes Us Different",
   title: "Why Choose Bootcamp University",
   body:
@@ -79,37 +104,37 @@ export const whyChoose = {
       title: "Learn with Real Internship",
       description:
         "Work alongside fellow students and seasoned professionals to tackle live assignments. Build your expertise through side-by-side collaboration on projects that actually matter.",
-      icon: "💼"
+      icon: "briefcase"
     },
     {
       title: "Cooperative Education Model",
       description:
         "Follow a structured journey from learning to earning. Master professional standards and internal workflows to transition from an intern role to a paid contributor.",
-      icon: "🤝"
+      icon: "handshake"
     },
     {
       title: "Hands-on Projects",
       description:
         "Focus on execution over theory. Build a portfolio of real-world deliverables that provide tangible proof of your capabilities to global employers.",
-      icon: "🛠️"
+      icon: "tools"
     },
     {
       title: "Global Community",
       description:
         "Join an international network of ambitious peers. Build your professional circle from day one by collaborating with a diverse community from all over the world.",
-      icon: "👥"
+      icon: "users"
     },
     {
       title: "Industry-Recognized Skills",
       description:
         "Gain the technical expertise and credentials currently in high demand. Master the tools and workflows that top companies actually use to get results.",
-      icon: "🏅"
+      icon: "award"
     },
     {
       title: "Interdisciplinary Collaboration",
       description:
         "Work where different fields meet. Learn to synchronize your skills with students and experts from design, tech, and business teams to solve complex problems together.",
-      icon: "🧩"
+      icon: "puzzle"
     }
   ]
 };
@@ -158,7 +183,7 @@ export const careerOpportunitiesSection = {
   tracks: [
     {
       title: "Technology & AI (Build the Future)",
-      icon: "💻",
+      icon: "technologyAi",
       intro: "Work on cutting-edge systems shaping tomorrow:",
       roles: [
         "AI/AGI Intern",
@@ -172,7 +197,7 @@ export const careerOpportunitiesSection = {
     },
     {
       title: "Robotics & Engineering (Hands-On Innovation)",
-      icon: "🦾",
+      icon: "roboticsEngineering",
       intro: "Design, build, and integrate real-world systems:",
       roles: [
         "Robotics Engineering Intern",
@@ -186,7 +211,7 @@ export const careerOpportunitiesSection = {
     },
     {
       title: "Science, Research & Advanced Fields",
-      icon: "🔬",
+      icon: "scienceResearch",
       intro: "Explore deep tech and scientific innovation:",
       roles: [
         "Biomedical Engineering Intern",
@@ -200,7 +225,7 @@ export const careerOpportunitiesSection = {
     },
     {
       title: "Business, Marketing & Growth",
-      icon: "💼",
+      icon: "businessGrowth",
       intro: "Work directly on company growth and strategy:",
       roles: [
         "Business Development and Sales Intern",
@@ -216,7 +241,7 @@ export const careerOpportunitiesSection = {
     },
     {
       title: "Operations, Product & Management",
-      icon: "📋",
+      icon: "operationsManagement",
       intro: "Help build and run real companies:",
       roles: [
         "Operations Intern",
@@ -229,7 +254,7 @@ export const careerOpportunitiesSection = {
     },
     {
       title: "Creative, Media & Communication",
-      icon: "🎨",
+      icon: "creativeMedia",
       intro: "Create content that reaches the world:",
       roles: [
         "Content Marketing Intern",
@@ -242,7 +267,7 @@ export const careerOpportunitiesSection = {
     },
     {
       title: "Emerging & Interdisciplinary Fields",
-      icon: "🔀",
+      icon: "interdisciplinary",
       intro: "Where tech meets new industries:",
       roles: [
         "EdTech and Innovation Intern",
@@ -455,6 +480,7 @@ export const projects: Project[] = [
       "AI-enabled productivity gains for teams and individuals",
       "Entrepreneurial execution in emerging AI products"
     ],
+    badges: ["Front-end", "Back-end", "Design", "Internet of Things", "Multi-modal perception"],
     externalUrl: "https://www.caipo.ai/"
   },
   {

@@ -5,6 +5,7 @@ type ButtonLinkProps = Omit<ComponentProps<typeof Link>, "className" | "children
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary" | "ghost";
+  className?: string;
 };
 
 const variantStyles: Record<NonNullable<ButtonLinkProps["variant"]>, string> = {
@@ -16,12 +17,12 @@ const variantStyles: Record<NonNullable<ButtonLinkProps["variant"]>, string> = {
     "bg-transparent text-[var(--text)] hover:bg-[var(--surface-muted)] active:bg-[var(--surface)] border-[var(--text-muted)]"
 };
 
-export function ButtonLink({ href, children, variant = "primary", ...props }: ButtonLinkProps) {
+export function ButtonLink({ href, children, variant = "primary", className, ...props }: ButtonLinkProps) {
   return (
     <Link
       href={href}
       {...props}
-      className={`focus-ring inline-flex min-h-13 items-center justify-center rounded-lg border px-10 py-2 font-semibold transition-colors ${variantStyles[variant]}`}
+      className={`focus-ring inline-flex min-h-13 items-center justify-center rounded-lg border px-10 py-2 font-semibold transition-colors ${variantStyles[variant]} ${className ?? ""}`}
     >
       {children}
     </Link>

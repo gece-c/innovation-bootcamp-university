@@ -6,6 +6,14 @@ const CONTENT_STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
 // ==============================
 interface StrapiResponse<T> {
   data: T;
+  meta?: {
+    pagination?: {
+      page: number;
+      pageSize: number;
+      pageCount: number;
+      total: number;
+    };
+  };
 }
 
 // ==============================
@@ -97,16 +105,49 @@ async function fetchContentAPI<T>(path: string): Promise<T> {
   return res.json();
 }
 
+async function fetchAllInternshipsRaw(pageSize = 100): Promise<StrapiInternship[]> {
+  const firstPage = await fetchContentAPI<StrapiResponse<StrapiInternship[]>>(
+    `/internships?populate=*&pagination[page]=1&pagination[pageSize]=${pageSize}`
+  );
+
+  const items = [...(firstPage.data || [])];
+  const pagination = firstPage.meta?.pagination;
+  const pageCount = pagination?.pageCount ?? 1;
+
+  if (pageCount > 1) {
+    const remainingPageRequests: Promise<StrapiResponse<StrapiInternship[]>>[] = [];
+
+    for (let page = 2; page <= pageCount; page++) {
+      remainingPageRequests.push(
+        fetchContentAPI<StrapiResponse<StrapiInternship[]>>(
+          `/internships?populate=*&pagination[page]=${page}&pagination[pageSize]=${pageSize}`
+        )
+      );
+    }
+
+    const remainingPages = await Promise.all(remainingPageRequests);
+
+    for (const response of remainingPages) {
+      items.push(...(response.data || []));
+    }
+  }
+
+  if (pagination?.total !== undefined && pagination.total !== items.length) {
+    console.warn(
+      `Strapi internships count mismatch: expected ${pagination.total}, received ${items.length}`
+    );
+  }
+
+  return items;
+}
+
 // ==============================
 // GET ALL INTERNSHIPS
 // ==============================
 export async function getAllInternships(): Promise<Internship[]> {
   try {
-    const response = await fetchContentAPI<
-      StrapiResponse<StrapiInternship[]>
-    >("/internships?populate=*");
-
-    return (response.data || []).map(normalizeInternship);
+    const data = await fetchAllInternshipsRaw();
+    return data.map(normalizeInternship);
   } catch (error) {
     console.error("Failed to fetch internships:", error);
     return [];

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ButtonLink } from "@/components/ui/button-link";
 import { ProjectsShowcaseTabs, type ProjectShowcaseItem } from "@/components/home/projects-showcase-tabs";
-import Image from "next/image";
-import type { IconType } from "react-icons";
-import { FaGlobeAmericas, FaLaptopCode, FaPuzzlePiece, FaUnlockAlt, FaUsers } from "react-icons/fa";
+import { HeroTextCarousel, type HeroCarouselItem } from "@/components/home/hero-text-carousel";
+import { WhyChooseSection } from "@/components/home/why-choose-section";
+import { CareerOpportunitiesRail } from "@/components/home/career-opportunities-rail";
 import {
+  type CareerOpportunityIcon,
   careerOpportunitiesSection,
   faqAccordionItems,
   hero,
@@ -18,34 +20,40 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  /** Organic blobs (8-value border-radius) to echo hero illustration shapes */
   const heroHighlightPhrase = "Real Internships";
   const heroBodyHighlightPhrase = "Innovation Bootcamp University";
   const heroLeadBoldPhrase = "all at one place.";
-  const heroInfoBlobs = [
-    ...hero.stats.map((stat) => ({ icon: "stat", title: stat.value, description: stat.label })),
-    ...hero.highlights.map((highlight) => ({
-      icon: "highlight",
+  const heroCarouselBaseItems: Omit<HeroCarouselItem, "imageSrc" | "imageAlt">[] = [
+    ...hero.stats.map((stat, index) => ({
+      id: `stat-${index}`,
+      kind: "stat" as const,
+      title: stat.value,
+      description: stat.label
+    })),
+    ...hero.highlights.map((highlight, index) => ({
+      id: `highlight-${index}`,
+      kind: "highlight" as const,
       title: highlight.title,
       description: highlight.description
     }))
-  ] as const;
-  const heroStatBlobRadius = [
-    "58% 42% 62% 38% / 46% 55% 48% 52%",
-    "42% 58% 48% 52% / 60% 40% 52% 48%",
-    "52% 48% 38% 62% / 50% 52% 44% 56%",
-    "54% 46% 50% 50% / 44% 58% 42% 56%",
-    "46% 54% 56% 44% / 58% 42% 54% 46%"
-  ] as const;
-
-  const heroStatPositionClasses = [
-    "sm:absolute sm:left-[2%] sm:top-[10%] min-[980px]:left-[-5%] min-[980px]:top-[8%]",
-    "sm:absolute sm:left-[-6%] sm:top-[43%] min-[980px]:left-[-10%] min-[980px]:top-[38%]",
-    "sm:absolute sm:left-[10%] sm:bottom-[4%] min-[980px]:left-[5%] min-[980px]:bottom-[12%]",
-    "sm:absolute sm:right-[4%] sm:top-[12%] min-[980px]:right-[-9%] min-[980px]:top-[1%]",
-    "sm:absolute sm:right-[12%] sm:bottom-[2%] min-[980px]:right-[-4%] min-[980px]:bottom-[10%]"
   ];
-  const heroBlobIcons: IconType[] = [FaUsers, FaLaptopCode, FaPuzzlePiece, FaGlobeAmericas, FaUnlockAlt];
+  const heroCarouselImageSources = ["/carousel/carousel_img_1.png", "/carousel/carousel_img_2.png", "/carousel/carousel_img_3.png", "/carousel/carousel_img_4.png", "/carousel/carousel_img_5.png"] as const;
+  const fallbackHeroItem = {
+    id: "hero-slide-fallback",
+    kind: "highlight" as const,
+    title: hero.title,
+    description: hero.lead
+  };
+  const heroCarouselItems: HeroCarouselItem[] = heroCarouselImageSources.map((imageSrc, index) => {
+    const sourceItem =
+      heroCarouselBaseItems[index] ?? heroCarouselBaseItems[heroCarouselBaseItems.length - 1] ?? fallbackHeroItem;
+    return {
+      ...sourceItem,
+      id: `${sourceItem.id}-slide-${index + 1}`,
+      imageSrc,
+      imageAlt: `${hero.title} highlight ${index + 1}`
+    };
+  });
   const projectShowcaseDescriptions: Record<string, string> = {
     moodchanger:
       "AI platform for emotional well-being that analyzes user input and provides personalized advice to improve mood and reduce stress.",
@@ -69,7 +77,15 @@ export default function HomePage() {
   };
   const projectImageBySlug: Record<string, string> = {
     caipo: "/projects/CAIPO_Wearable.webp",
-    "humanoid-robots": "/projects/humanoid.png"
+    "humanoid-robots": "/projects/humanoid.png",
+    "moodchanger-for-pets": "/projects/MoodchangerPETS.png",
+    "moodchanger": "/projects/Moodchanger.png",
+    "flo-studios": "/projects/FloStudios.png",
+    "hephaestus-international": "/projects/Hepheastus.png",
+    "flolabs-international": "/projects/Flolabs_international.png",
+    "flolabs-innovations-group": "/projects/Flolabs_white_logo.svg",
+    tarrl: "/projects/TARRL.png",
+    "flo-travel": "/projects/Flomad-Travel.png"
   };
   const projectTabIconBySlug: Record<string, string> = {
     moodchanger: "/projects/icons/Moodchanger.png",
@@ -93,11 +109,23 @@ export default function HomePage() {
       slug: project.slug,
       title: project.title,
       description: projectShowcaseDescriptions[project.slug] ?? shortDescription,
+      badges: project.badges,
       imageAlt: `${project.title} project preview`,
       imageSrc: projectImageBySlug[project.slug],
       tabIconSrc: projectTabIconBySlug[project.slug]
     };
   });
+  const careerOpportunityItems = careerOpportunitiesSection.tracks
+    .flatMap((track) =>
+      track.roles.map((role) => ({
+        id: `${track.title}-${role}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+        role: role.trim(),
+        trackTitle: track.title,
+        intro: track.intro,
+        icon: track.icon as CareerOpportunityIcon
+      }))
+    )
+    .filter((item, index, list) => list.findIndex((current) => current.role === item.role) === index);
 
   return (
     <div className="min-w-0 space-y-14">
@@ -117,7 +145,7 @@ export default function HomePage() {
             <source src="/hero-video.webm" type="video/webm" />
           </video>
         </div>
-        <div className="relative z-[2] flex min-h-0 flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-14 xl:px-24 min-[980px]:min-h-[calc(100dvh-5rem)]">
+        <div className="relative z-[2] flex min-h-0 flex-col justify-center px-6 py-10 sm:px-10 sm:py-12 lg:px-16 lg:py-14 xl:px-24 min-[980px]:ml-[10%] min-[980px]:min-h-[calc(100dvh-5rem)]">
           {hero.badge ? (
             <p className="hero-text-reveal hero-text-delay-1 mb-3 inline-block rounded-full border border-[var(--primary)] px-3 py-1 text-sm text-[var(--primary)]">
               {hero.badge}
@@ -171,128 +199,88 @@ export default function HomePage() {
         </div>
 
         <div
-          className="hero-visual-reveal relative z-[1] flex items-center items-end justify-center self-center"
+          className="hero-visual-reveal relative z-[1] flex items-center items-end justify-center self-center mb-16"
           aria-label="Hero program highlights"
         >
-          <div className="relative grid w-full justify-items-center gap-3 sm:min-h-[390px] sm:w-[min(100%,560px)] sm:block sm:justify-self-end min-[980px]:min-h-[440px]">
+          <div
+            className="pointer-events-none absolute inset-0 -z-10"
+            aria-hidden="true"
+          >
             <Image
-              src="/hero-person.svg"
-              alt="Student standing in front of abstract shapes"
-              width={531}
-              height={582}
-              className="relative z-[2] col-span-2 h-auto w-[min(100%,390px)] justify-self-center drop-shadow-[0_22px_30px_rgb(0_0_0_/_0.35)] sm:w-[min(100%,545px)]"
+              src="/carousel-background.png"
+              alt=""
+              fill
+              className="object-contain object-center opacity-90"
+              style={{ transform: "scale(1.55)" }}
+              sizes="(min-width: 1280px) 560px, (min-width: 980px) 45vw, 90vw"
               priority
             />
-            {heroInfoBlobs.map((blob, index) => (
-              <article
-                key={`${blob.title}-${index}`}
-                style={{ borderRadius: heroStatBlobRadius[index] ?? heroStatBlobRadius[0] }}
-                className={`hero-stat-blob relative z-[3] flex w-full flex-col items-center justify-center border border-[color-mix(in_srgb,var(--primary)_32%,#4e6c73)] bg-[rgb(34_34_34_/_0.88)] px-3 py-2.5 text-center shadow-[0_10px_24px_rgb(0_0_0_/_0.38)] [container-type:inline-size] sm:px-2 sm:py-2 hover:z-[4] ${index >= 3 ? "sm:h-[168px] sm:w-[168px]" : index === 2 ? "sm:h-[156px] sm:w-[156px]" : "sm:h-[138px] sm:w-[138px]"} ${heroStatPositionClasses[index] ?? ""}`}
-                aria-label={blob.description ? `${blob.title}: ${blob.description}` : blob.title}
-              >
-                <p
-                  className={`shrink-0 leading-none text-[clamp(0.82rem,10.5cqw,0.98rem)] text-[var(--primary)] ${index <= 2 ? "mb-[0.36rem] sm:text-[clamp(0.84rem,11.4cqw,1.02rem)]" : "mb-0.5 sm:text-[clamp(0.74rem,10.2cqw,0.9rem)]"}`}
-                  aria-hidden="true"
-                >
-                  {(() => {
-                    const BlobIcon = heroBlobIcons[index] ?? FaUsers;
-                    return <BlobIcon className="inline-block h-[1.5em] w-[1.5em] align-middle" />;
-                  })()}
-                </p>
-                <p className={`sm:max-w-none sm:font-bold sm:leading-[1.3] ${index <= 2 ? "sm:text-[clamp(0.8rem,calc(8.8cqw+0.15rem),1.02rem)]" : "sm:text-[clamp(0.72rem,calc(7.9cqw+0.13rem),0.92rem)]"}`}>
-                  {blob.title}
-                </p>
-                {blob.description ? (
-                  <p className="mt-[0.14em] max-w-[min(100%,18ch)] text-balance text-[clamp(0.58rem,calc(5.9cqw+0.22rem),0.74rem)] leading-[1.2] text-[var(--text-muted)] break-words">
-                    {blob.description}
-                  </p>
-                ) : null}
-              </article>
-            ))}
+          </div>
+          <div className="relative z-[1] w-full max-w-[560px] justify-self-end px-6 py-6 sm:px-8 min-[980px]:mr-[10%]">
+            <HeroTextCarousel items={heroCarouselItems} autoPlayMs={3000} />
           </div>
         </div>
       </section>
 
       <ProjectsShowcaseTabs items={projectShowcaseItems} />
 
-      <section
-        aria-labelledby="why-choose-title"
-        className="glass-panel glass-panel-muted rounded-2xl p-8"
-      >
-        <p className="mb-3 inline-block rounded-full bg-black/35 px-3.5 py-1.5 text-sm font-semibold tracking-[0.01em] text-white backdrop-blur-sm">
-          {whyChoose.badge}
-        </p>
-        <h2 id="why-choose-title" className="page-title max-w-3xl">
-          {whyChoose.title}
-        </h2>
-        <p className="max-w-3xl text-[var(--text-muted)]">{whyChoose.body}</p>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {whyChoose.points.map((point) => (
-            <article
-              key={point.title}
-              className="glass-card glass-card-muted rounded-xl p-5"
-            >
-              <div className="mb-4 text-2xl leading-none" aria-hidden="true">
-                {point.icon}
-              </div>
-              <h3 className="mb-2 text-xl font-semibold">{point.title}</h3>
-              <p className="text-[var(--text-muted)]">{point.description}</p>
-            </article>
-          ))}
-        </div>
-      </section>
+      <WhyChooseSection data={whyChoose} />
+
+      <CareerOpportunitiesRail
+        title={careerOpportunitiesSection.title}
+        body={careerOpportunitiesSection.body}
+        items={careerOpportunityItems}
+        ctaLabel="Join us!"
+        ctaHref="/opportunities/internships"
+      />
 
       <section
-        aria-labelledby="career-opportunities-title"
-        className="glass-panel glass-panel-horizontal glass-panel-muted rounded-2xl p-8"
+        aria-label="Internship paths and impact highlights"
+        className="internship-highlights-section relative ml-[calc(50%-50vw)] w-screen max-w-[100vw] px-4 pt-8 pb-6 sm:px-8 sm:pb-8 lg:px-12"
       >
-        <h2
-          id="career-opportunities-title"
-          className="mb-4 text-[clamp(2rem,1.2vw+1.7rem,3rem)] leading-tight font-semibold"
-        >
-          {careerOpportunitiesSection.title.split(" ")[0]}{" "}
-          <span className="text-[var(--primary)]">
-            {careerOpportunitiesSection.title.split(" ").slice(1).join(" ")}
-          </span>
-        </h2>
-        <p className="max-w-5xl text-[clamp(1.08rem,0.42vw+0.96rem,1.35rem)] leading-relaxed text-[var(--text-muted)]">
-          {careerOpportunitiesSection.body}
-        </p>
-
-        <div className="glass-card glass-card-muted mt-8 rounded-2xl p-6">
-          <h3 className="text-2xl font-semibold">{careerOpportunitiesSection.pathsTitle}</h3>
-          <p className="mt-3 text-[var(--text-muted)]">{careerOpportunitiesSection.pathsIntro}</p>
-          <p className="mt-2 text-[var(--text-muted)]">{careerOpportunitiesSection.pathsBody}</p>
-        </div>
-
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-6">
-          {careerOpportunitiesSection.tracks.map((track) => (
-            <article
-              key={track.title}
-              className="glass-card glass-card-muted [container-type:inline-size] rounded-xl p-6"
-            >
-              <header className="mb-2 flex items-start justify-between gap-3 sm:gap-4">
-                <h3 className="min-w-0 flex-1 text-2xl font-semibold">{track.title}</h3>
-                <span className="career-card-emoji shrink-0 select-none leading-none" aria-hidden="true">
-                  {track.icon}
-                </span>
-              </header>
-              <p className="mt-2 text-[var(--text-muted)]">{track.intro}</p>
-              <ul className="mt-3 list-disc space-y-1 pl-6 text-[var(--text-muted)]">
-                {track.roles.map((role) => (
-                  <li key={role}>{role}</li>
-                ))}
-              </ul>
-              <p className="mt-3 text-sm italic text-[var(--text-muted)]">{track.fit}</p>
+        <div className="internship-highlights-grid mx-auto grid w-full max-w-[1080px] grid-cols-1 gap-[1.8rem] md:grid-cols-2 md:gap-[5rem]">
+          <div className="flex flex-col">
+            <article className="internship-highlight-card internship-highlight-card--image relative rounded-2xl p-4 sm:p-5">
+              <Image
+                src="/39-internships.png"
+                alt=""
+                fill
+                className="object-cover object-center"
+                sizes="(min-width: 768px) 350px, 100vw"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/22 to-transparent" aria-hidden="true" />
+              <h3 className="relative mt-16 text-[clamp(1.5rem,1vw+1.25rem,2rem)] leading-[1.02] font-semibold text-white [text-shadow:0_3px_14px_rgba(0,0,0,0.999)] sm:mt-20">
+                {careerOpportunitiesSection.pathsTitle}
+              </h3>
             </article>
-          ))}
-        </div>
+            <div className="relative z-[1] mt-3 space-y-2">
+              <p className="text-[var(--text-muted)]">{careerOpportunitiesSection.pathsIntro}</p>
+              <p className="text-[var(--text-muted)]">{careerOpportunitiesSection.pathsBody}</p>
+            </div>
+          </div>
 
-        <article className="glass-card glass-card-muted mt-8 rounded-2xl p-6">
-          <h3 className="text-2xl font-semibold">{homeWhyItMatters.title}</h3>
-          <p className="mt-3 text-lg font-semibold text-[var(--text)]">{homeWhyItMatters.headline}</p>
-          <p className="mt-3 text-[var(--text-muted)]">{homeWhyItMatters.body}</p>
-        </article>
+          <div className="flex flex-col">
+            <article className="internship-highlight-card internship-highlight-card--image internship-highlight-card--image-secondary relative rounded-2xl p-4 sm:p-5">
+              <Image
+                src="/why-it-matters.png"
+                alt=""
+                fill
+                className="object-cover object-center"
+                sizes="(min-width: 768px) 350px, 100vw"
+                aria-hidden="true"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/68 via-black/20 to-transparent" aria-hidden="true" />
+              <h3 className="relative mt-16 text-[clamp(1.5rem,1vw+1.25rem,2rem)] leading-[1.02] font-semibold text-white [text-shadow:0_3px_14px_rgba(0,0,0,0.99)] sm:mt-20">
+                {homeWhyItMatters.title}
+              </h3>
+            </article>
+            <div className="relative z-[1] mt-3 space-y-2">
+              <p className="text-lg font-semibold text-[var(--text)]">{homeWhyItMatters.headline}</p>
+              <p className="text-[var(--text-muted)]">{homeWhyItMatters.body}</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section aria-labelledby="faq-title" className="faq-modern-section rounded-2xl px-4 py-10 sm:px-8 sm:py-12">
