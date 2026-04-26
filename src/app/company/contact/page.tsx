@@ -58,7 +58,7 @@ export default function ContactPage() {
         </p>
       </section>
 
-      <section className="grid gap-6 rounded-2xl border border-[#4a4a4a] bg-[var(--surface)] p-6 md:grid-cols-2">
+      <section className="grid gap-6 rounded-2xl border border-[var(--field-border)] bg-[var(--surface)] p-6 md:grid-cols-2">
         <article>
           <h2 className="text-3xl font-semibold">Get In Touch</h2>
           <p className="mt-3 text-[var(--text-muted)]">
@@ -97,7 +97,7 @@ export default function ContactPage() {
                 <input
                   name="name"
                   required
-                  className="w-full rounded-md border border-[#4a4a4a] bg-[var(--bg)] px-3 py-2"
+                  className="w-full rounded-md border border-[var(--field-border)] bg-[var(--field-bg)] px-3 py-2"
                 />
               </label>
               <label className="text-sm">
@@ -108,7 +108,7 @@ export default function ContactPage() {
                   required
                   value={contactEmail}
                   onChange={(event) => setContactEmail(event.target.value)}
-                  className="w-full rounded-md border border-[#4a4a4a] bg-[var(--bg)] px-3 py-2"
+                  className="w-full rounded-md border border-[var(--field-border)] bg-[var(--field-bg)] px-3 py-2"
                 />
               </label>
             </div>
@@ -118,7 +118,7 @@ export default function ContactPage() {
                 name="subject"
                 required
                 defaultValue=""
-                className="w-full rounded-md border border-[#4a4a4a] bg-[var(--bg)] px-3 py-2"
+                className="w-full rounded-md border border-[var(--field-border)] bg-[var(--field-bg)] px-3 py-2"
               >
                 <option value="" disabled>
                   Select a subject
@@ -136,15 +136,15 @@ export default function ContactPage() {
                 name="message"
                 required
                 minLength={10}
-                className="h-32 w-full rounded-md border border-[#4a4a4a] bg-[var(--bg)] px-3 py-2"
+                className="h-32 w-full rounded-md border border-[var(--field-border)] bg-[var(--field-bg)] px-3 py-2"
               />
             </label>
-            {contactError && <p className="text-sm text-red-400">{contactError}</p>}
-            {contactStatus && <p className="text-sm text-green-400">{contactStatus}</p>}
+            {contactError && <p className="text-sm text-[var(--status-error)]">{contactError}</p>}
+            {contactStatus && <p className="text-sm text-[var(--status-success)]">{contactStatus}</p>}
             <button
               type="submit"
               disabled={isContactSubmitting}
-              className="rounded-md bg-[var(--primary)] px-5 py-2 text-sm font-semibold text-black disabled:opacity-60"
+              className="rounded-md bg-[var(--primary)] px-5 py-2 text-sm font-semibold text-[var(--button-primary-text)] disabled:opacity-60"
             >
               Send Message
             </button>

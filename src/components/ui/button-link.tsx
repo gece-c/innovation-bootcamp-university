@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ComponentProps, ReactNode } from "react";
 
-type ButtonLinkProps = Omit<ComponentProps<typeof Link>, "className" | "children"> & {
+type ButtonLinkProps = Omit<ComponentProps<typeof Link>, "children"> & {
   href: string;
   children: ReactNode;
   variant?: "primary" | "secondary" | "ghost";
@@ -10,9 +10,9 @@ type ButtonLinkProps = Omit<ComponentProps<typeof Link>, "className" | "children
 
 const variantStyles: Record<NonNullable<ButtonLinkProps["variant"]>, string> = {
   primary:
-    "bg-[var(--primary)] text-black hover:bg-[#39c7e8] active:bg-[#0d8fae] border-[var(--primary)]",
+    "bg-[var(--primary)] text-[var(--button-primary-text)] hover:bg-[#39c7e8] active:bg-[#0d8fae] border-[var(--primary)]",
   secondary:
-    "bg-[var(--primary)] text-black hover:bg-[#39c7e8] active:bg-[#0d8fae] border-[var(--primary)]",
+    "bg-[var(--primary)] text-[var(--button-primary-text)] hover:bg-[#39c7e8] active:bg-[#0d8fae] border-[var(--primary)]",
   ghost:
     "bg-transparent text-[var(--text)] hover:bg-[var(--surface-muted)] active:bg-[var(--surface)] border-[var(--text-muted)]"
 };

@@ -94,7 +94,7 @@ export function ProjectsShowcaseTabs({ items }: ProjectsShowcaseTabsProps) {
       className="glass-panel glass-panel-muted rounded-2xl p-6 md:p-8"
     >
       <p
-        className={`mb-3 inline-block rounded-full bg-black/35 px-3.5 py-1.5 text-sm font-semibold tracking-[0.01em] text-white backdrop-blur-sm projects-container-reveal projects-container-delay-1 ${
+        className={`theme-badge mb-3 inline-block rounded-full px-3.5 py-1.5 text-sm font-semibold tracking-[0.01em] backdrop-blur-sm projects-container-reveal projects-container-delay-1 ${
           sectionInView ? "projects-container-reveal-visible" : ""
         }`}
       >

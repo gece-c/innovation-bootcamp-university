@@ -88,16 +88,16 @@ export default function HomePage() {
     "flo-travel": "/projects/Flomad-Travel.png"
   };
   const projectTabIconBySlug: Record<string, string> = {
-    moodchanger: "/projects/icons/Moodchanger.png",
-    caipo: "/projects/icons/CAIPO.png",
-    "flo-studios": "/projects/icons/FloStudios.png",
-    "humanoid-robots": "/projects/icons/Humanoids.png",
-    "hephaestus-international": "/projects/icons/Hepheastus.png",
-    tarrl: "/projects/icons/TARRL.png",
-    "flolabs-innovations-group": "/projects/icons/Flolabs-Innovation.png",
-    "flolabs-international": "/projects/icons/Flolabs-International.png",
-    "moodchanger-for-pets": "/projects/icons/Moodchanger-PETS.png",
-    "flo-travel": "/projects/icons/Flomad-Travel.png"
+    moodchanger: "/projects/icons/FloLabs_logo%20MoodChanger.svg",
+    caipo: "/projects/icons/FloLabs_logo%20CAIPO.svg",
+    "flo-studios": "/projects/icons/FloLabs_logo%20FloStudios.svg",
+    "humanoid-robots": "/projects/icons/FloLabs_logo%20RoboCollective.svg",
+    "hephaestus-international": "/projects/icons/FloLabs_logo%20Hephaestus.svg",
+    tarrl: "/projects/icons/FloLabs_logo%20TARRL.svg",
+    "flolabs-innovations-group": "/projects/icons/FloLabs_logo%20black%20circle%20background.svg",
+    "flolabs-international": "/projects/icons/FloLabs_logo%20FloLabs%20International.svg",
+    "moodchanger-for-pets": "/projects/icons/FloLabs_logo%20MoodChanger%20for%20Pets.svg",
+    "flo-travel": "/projects/icons/FloLabs_logo%20Flomad%20Travel.svg"
   };
   const projectShowcaseItems: ProjectShowcaseItem[] = projects.slice(0, 10).map((project) => {
     const sourceText = project.currentWork ?? project.summary;
@@ -168,7 +168,7 @@ export default function HomePage() {
               )}
             </span>
           </h1>
-          <p className="hero-text-reveal hero-text-delay-3 mt-1 mb-4 w-fit rounded-full border border-white/90 px-4 py-2 sm:px-5 text-left text-[clamp(1rem,0.6vw+0.85rem,1.35rem)] leading-[1.35] text-white shadow-[0_0_0.8rem_rgb(255_255_255_/_0.45),0_0_1.4rem_rgb(255_255_255_/_0.25)]">
+          <p className="hero-lead-chip hero-text-reveal hero-text-delay-3 mt-1 mb-4 w-fit rounded-full border px-4 py-2 text-left text-[clamp(1rem,0.6vw+0.85rem,1.35rem)] leading-[1.35] sm:px-5">
             {hero.lead.includes(heroLeadBoldPhrase) ? (
               <>
                 {hero.lead.split(heroLeadBoldPhrase)[0]}
@@ -183,7 +183,7 @@ export default function HomePage() {
             {hero.body.includes(heroBodyHighlightPhrase) ? (
               <>
                 {hero.body.split(heroBodyHighlightPhrase)[0]}
-                <span className="font-semibold text-cyan-300">{heroBodyHighlightPhrase}</span>
+                <span className="font-semibold text-[var(--hero-inline-accent)]">{heroBodyHighlightPhrase}</span>
                 {hero.body.split(heroBodyHighlightPhrase)[1]}
               </>
             ) : (

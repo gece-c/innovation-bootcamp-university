@@ -24,12 +24,12 @@ function sortInternships(list: Internship[]) {
 
 function internshipStatusBadgeClass(status: string) {
   if (status === "Open") {
-    return "bg-green-500/15 text-green-300";
+    return "internship-status-badge internship-status-open";
   }
   if (status === "Closed" || status === "Filled") {
-    return "bg-rose-500/15 text-rose-300";
+    return "internship-status-badge internship-status-closed";
   }
-  return "bg-amber-500/15 text-amber-300";
+  return "internship-status-badge internship-status-pending";
 }
 
 export default async function InternshipsPage() {
@@ -41,7 +41,7 @@ export default async function InternshipsPage() {
     <div className="space-y-10">
       <section
         aria-labelledby="internships-hero-title"
-        className="relative overflow-hidden rounded-2xl border border-[#4a4a4a]/70 bg-[var(--surface)] px-6 py-10 text-center sm:px-10 sm:py-12 md:px-14 md:py-14"
+        className="internships-hero-surface relative overflow-hidden rounded-2xl px-6 py-10 text-center sm:px-10 sm:py-12 md:px-14 md:py-14"
         style={{
           backgroundImage:
             "radial-gradient(circle at 88% 12%, color-mix(in srgb, var(--secondary) 20%, transparent), transparent 38%), radial-gradient(circle at 12% 88%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 42%)"
@@ -72,7 +72,7 @@ export default async function InternshipsPage() {
           {sorted.length > 0 ? (
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               {openCount > 0 ? (
-                <p className="inline-flex items-center gap-2.5 rounded-full border border-[#4a4a4a] bg-[var(--bg)]/55 px-4 py-2 text-sm text-[var(--text)] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.45)] backdrop-blur-[2px]">
+                <p className="internships-stat-chip inline-flex items-center gap-2.5 rounded-full px-4 py-2 text-sm text-[var(--text)] shadow-[0_8px_24px_-12px_rgba(0,0,0,0.45)] backdrop-blur-[2px]">
                   <span
                     className="relative flex h-2 w-2 shrink-0 rounded-full bg-green-400"
                     aria-hidden
@@ -91,7 +91,7 @@ export default async function InternshipsPage() {
                   </span>
                 </p>
               ) : (
-                <p className="inline-flex items-center rounded-full border border-[#4a4a4a]/80 bg-[var(--surface-muted)]/40 px-4 py-2 text-sm text-[var(--text-muted)]">
+                <p className="internships-stat-chip inline-flex items-center rounded-full px-4 py-2 text-sm text-[var(--text-muted)]">
                   {sorted.length} active listing{sorted.length === 1 ? "" : "s"}
                 </p>
               )}
@@ -102,7 +102,7 @@ export default async function InternshipsPage() {
 
       {sorted.length === 0 ? (
         <section
-          className="rounded-2xl border border-[#4a4a4a] bg-[var(--surface)] p-10 text-center"
+          className="internships-empty-surface rounded-2xl p-10 text-center"
           aria-live="polite"
         >
           <p className="text-[var(--text-muted)]">No internships available at the moment.</p>
@@ -113,7 +113,7 @@ export default async function InternshipsPage() {
             <article key={internship.id} className="h-full min-h-0">
               <Link
                 href={`/opportunities/internships/${internship.slug}`}
-                className="focus-ring group flex h-full min-h-[12rem] flex-col rounded-xl border border-[#4a4a4a] bg-[var(--surface)] p-5 transition-[border-color,box-shadow] hover:border-[var(--primary)]/40 hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--primary)_28%,transparent),0_12px_40px_-16px_rgba(0,0,0,0.55)]"
+                className="internships-card-surface focus-ring group flex h-full min-h-[12rem] flex-col rounded-xl p-5 transition-[border-color,box-shadow] hover:border-[var(--primary)]/40 hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--primary)_28%,transparent),0_12px_40px_-16px_rgba(0,0,0,0.55)]"
                 aria-labelledby={`internship-card-${internship.id}`}
               >
                 <h2
@@ -143,7 +143,7 @@ export default async function InternshipsPage() {
                 </div>
 
                 <span className="mt-auto block w-full pt-6">
-                  <span className="flex w-full items-center justify-center gap-2 rounded-lg border border-[var(--primary)]/50 bg-[color-mix(in_srgb,var(--primary)_14%,transparent)] px-4 py-3 text-sm font-semibold text-[var(--primary)] transition-[color,background-color,border-color,gap] group-hover:border-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-black group-hover:gap-3">
+                  <span className="flex w-full items-center justify-center gap-2 rounded-lg border border-[var(--primary)]/50 bg-[color-mix(in_srgb,var(--primary)_14%,transparent)] px-4 py-3 text-sm font-semibold text-[var(--primary)] transition-[color,background-color,border-color,gap] group-hover:border-[var(--primary)] group-hover:bg-[var(--primary)] group-hover:text-[var(--button-primary-text)] group-hover:gap-3">
                     View role
                     <span aria-hidden className="inline-block transition-transform duration-200 group-hover:translate-x-1">
                       →
