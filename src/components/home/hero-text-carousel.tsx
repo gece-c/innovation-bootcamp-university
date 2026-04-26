@@ -162,11 +162,11 @@ export function HeroTextCarousel({ items, autoPlayMs = 5000 }: HeroTextCarouselP
               priority={activeIndex === 0}
             />
           </div>
-          <h3 className="hero-carousel-text-animate hero-carousel-title-glow relative z-[2] text-[clamp(1.45rem,0.9vw+1.2rem,2rem)] leading-[1.2] font-bold absolute top-[50%] index-100">
+          <h3 className="hero-carousel-text-animate hero-carousel-title-glow relative z-[2] absolute top-[50%] text-[clamp(1.45rem,0.9vw+1.2rem,2rem)] leading-[1.2] font-bold text-white index-100">
             {activeItem.title}
           </h3>
           {activeItem.description ? (
-            <p className="hero-carousel-text-animate hero-carousel-description-glow relative z-[2] min-h-[3.2em] text-[clamp(1rem,0.36vw+0.9rem,1.1rem)] absolute top-[50%] font-semibold leading-relaxed text-[var(--text-muted)]">
+            <p className="hero-carousel-text-animate hero-carousel-description-glow relative z-[2] absolute top-[50%] min-h-[3.2em] text-[clamp(1rem,0.36vw+0.9rem,1.1rem)] font-semibold leading-relaxed text-white">
               {activeItem.description}
             </p>
           ) : null}

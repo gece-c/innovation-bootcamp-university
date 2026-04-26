@@ -87,6 +87,9 @@ export default function HomePage() {
     tarrl: "/projects/TARRL.png",
     "flo-travel": "/projects/Flomad-Travel.png"
   };
+  const projectImageBySlugLight: Partial<Record<string, string>> = {
+    "flolabs-innovations-group": "/projects/icons/FloLabs_logo%20black%20circle%20background.svg"
+  };
   const projectTabIconBySlug: Record<string, string> = {
     moodchanger: "/projects/icons/FloLabs_logo%20MoodChanger.svg",
     caipo: "/projects/icons/FloLabs_logo%20CAIPO.svg",
@@ -94,7 +97,7 @@ export default function HomePage() {
     "humanoid-robots": "/projects/icons/FloLabs_logo%20RoboCollective.svg",
     "hephaestus-international": "/projects/icons/FloLabs_logo%20Hephaestus.svg",
     tarrl: "/projects/icons/FloLabs_logo%20TARRL.svg",
-    "flolabs-innovations-group": "/projects/icons/FloLabs_logo%20black%20circle%20background.svg",
+    "flolabs-innovations-group": "/projects/FloLabs_white_logo.svg",
     "flolabs-international": "/projects/icons/FloLabs_logo%20FloLabs%20International.svg",
     "moodchanger-for-pets": "/projects/icons/FloLabs_logo%20MoodChanger%20for%20Pets.svg",
     "flo-travel": "/projects/icons/FloLabs_logo%20Flomad%20Travel.svg"
@@ -112,6 +115,7 @@ export default function HomePage() {
       badges: project.badges,
       imageAlt: `${project.title} project preview`,
       imageSrc: projectImageBySlug[project.slug],
+      imageSrcLight: projectImageBySlugLight[project.slug],
       tabIconSrc: projectTabIconBySlug[project.slug]
     };
   });

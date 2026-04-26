@@ -517,6 +517,7 @@ export const projects: Project[] = [
     title: "TARRL",
     summary: "The official portal for FloLabs' Texas Advanced Robotics Research Lab.",
     currentWork: "Redesigning the site to reflect ongoing changes at FloLabs.",
+    badges: ["Front-end", "Design"],
     externalUrl: "https://www.tarrl.org/"
   },
   {

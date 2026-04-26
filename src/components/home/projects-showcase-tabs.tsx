@@ -10,6 +10,7 @@ export type ProjectShowcaseItem = {
   badges?: string[];
   imageAlt: string;
   imageSrc?: string;
+  imageSrcLight?: string;
   tabIconSrc?: string;
 };
 
@@ -29,6 +30,7 @@ function getNextIndex(current: number, total: number, direction: "left" | "right
 export function ProjectsShowcaseTabs({ items }: ProjectsShowcaseTabsProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [sectionInView, setSectionInView] = useState(false);
+  const [isLightTheme, setIsLightTheme] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   const safeItems = useMemo(() => items.slice(0, 10), [items]);
@@ -87,6 +89,23 @@ export function ProjectsShowcaseTabs({ items }: ProjectsShowcaseTabsProps) {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const root = document.documentElement;
+
+    const syncTheme = () => {
+      setIsLightTheme(root.getAttribute("data-theme") === "light");
+    };
+
+    syncTheme();
+
+    const observer = new MutationObserver(syncTheme);
+    observer.observe(root, { attributes: true, attributeFilter: ["data-theme"] });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const activeImageSrc = isLightTheme ? activeItem.imageSrcLight ?? activeItem.imageSrc : activeItem.imageSrc;
+
   return (
     <section
       ref={sectionRef}
@@ -132,10 +151,10 @@ export function ProjectsShowcaseTabs({ items }: ProjectsShowcaseTabsProps) {
                   aria-selected={isActive}
                   aria-controls={`project-panel-${item.slug}`}
                   tabIndex={isActive ? 0 : -1}
-                  className={`focus-ring relative flex h-[72px] w-[72px] shrink-0 cursor-pointer items-center justify-center rounded-full border border-white/20 transition-transform transition-colors duration-200 motion-reduce:transition-none ${
+                  className={`project-tab-icon-button focus-ring relative flex h-[72px] w-[72px] shrink-0 cursor-pointer items-center justify-center rounded-full transition-transform transition-colors duration-200 motion-reduce:transition-none ${
                     isActive
-                      ? "scale-110 bg-white/12 text-[var(--text)] shadow-[0_0_0_1px_rgba(255,255,255,0.22)]"
-                      : "scale-[0.85] bg-white/[0.03] text-[var(--text-muted)] hover:bg-white/8 hover:text-[var(--text)]"
+                      ? "project-tab-icon-button--active scale-110 text-[var(--text)]"
+                      : "project-tab-icon-button--inactive scale-[0.85] text-[var(--text-muted)] hover:text-[var(--text)]"
                   }`}
                   onClick={() => setActiveIndex(index)}
                   onKeyDown={(event) => onTabKeyDown(event, index)}
@@ -194,7 +213,7 @@ export function ProjectsShowcaseTabs({ items }: ProjectsShowcaseTabsProps) {
         </div>
         <div className="project-panel-enter project-panel-enter-delay-3 relative min-h-[312px] md:min-h-[390px]">
           <Image
-            src={activeItem.imageSrc ?? placeholderImage}
+            src={activeImageSrc ?? placeholderImage}
             alt={activeItem.imageAlt}
             fill
             sizes="(max-width: 768px) 100vw, 40vw"
