@@ -145,7 +145,7 @@ export function HeroTextCarousel({ items, autoPlayMs = 5000 }: HeroTextCarouselP
           setIsFocusWithin(false);
         }
       }}
-      className="hero-carousel relative mx-auto w-full max-w-[560px] rounded-2xl p-6 sm:p-8"
+      className="hero-carousel relative mx-auto w-full max-w-[560px]"
     >
       <div className="relative min-h-[340px] sm:min-h-[340px]" aria-live="polite">
         <article

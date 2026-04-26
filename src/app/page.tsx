@@ -72,6 +72,10 @@ export default function HomePage() {
       "Global hub highlighting FloLabs' mission, projects, and collaboration opportunities.",
     "moodchanger-for-pets":
       "Extension of MoodChanger using AI + wearable data to monitor and improve pets' health and behavior.",
+    "flo-brain":
+      "AI-native initiative focused on knowledge workflows, intelligent assistants, and practical team productivity systems.",
+    "connecting-the-dots":
+      "Cross-disciplinary initiative connecting ideas, teams, and execution into clearer and more actionable outcomes.",
     "flo-travel":
       "AI-powered travel planning platform that organizes trips, including flights, hotels, and activities in one place."
   };
@@ -85,6 +89,8 @@ export default function HomePage() {
     "flolabs-international": "/projects/Flolabs_international.png",
     "flolabs-innovations-group": "/projects/Flolabs_white_logo.svg",
     tarrl: "/projects/TARRL.png",
+    "flo-brain": "/projects/icons/FloLabs_logo%20FloBrain.svg",
+    "connecting-the-dots": "/projects/icons/FloLabs_logo%20Connecting%20The%20Dots.svg",
     "flo-travel": "/projects/Flomad-Travel.png"
   };
   const projectImageBySlugLight: Partial<Record<string, string>> = {
@@ -100,9 +106,11 @@ export default function HomePage() {
     "flolabs-innovations-group": "/projects/FloLabs_white_logo.svg",
     "flolabs-international": "/projects/icons/FloLabs_logo%20FloLabs%20International.svg",
     "moodchanger-for-pets": "/projects/icons/FloLabs_logo%20MoodChanger%20for%20Pets.svg",
+    "flo-brain": "/projects/icons/FloLabs_logo%20FloBrain.svg",
+    "connecting-the-dots": "/projects/icons/FloLabs_logo%20Connecting%20The%20Dots.svg",
     "flo-travel": "/projects/icons/FloLabs_logo%20Flomad%20Travel.svg"
   };
-  const projectShowcaseItems: ProjectShowcaseItem[] = projects.slice(0, 10).map((project) => {
+  const projectShowcaseItems: ProjectShowcaseItem[] = projects.slice(0, 12).map((project) => {
     const sourceText = project.currentWork ?? project.summary;
     const normalizedText = sourceText.replace(/\s+/g, " ").trim();
     const shortDescription =
@@ -206,12 +214,9 @@ export default function HomePage() {
           className="hero-visual-reveal relative z-[1] flex items-center items-end justify-center self-center mb-16"
           aria-label="Hero program highlights"
         >
-          <div
-            className="pointer-events-none absolute inset-0 -z-10"
-            aria-hidden="true"
-          >
+          <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
             <Image
-              src="/carousel-background.png"
+              src="/carousel/carousel-background.png"
               alt=""
               fill
               className="object-contain object-center opacity-90"

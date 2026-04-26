@@ -33,7 +33,7 @@ export function ProjectsShowcaseTabs({ items }: ProjectsShowcaseTabsProps) {
   const [isLightTheme, setIsLightTheme] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const safeItems = useMemo(() => items.slice(0, 10), [items]);
+  const safeItems = useMemo(() => items.slice(0, 12), [items]);
   const activeItem = safeItems[activeIndex];
 
   if (!safeItems.length || !activeItem) {

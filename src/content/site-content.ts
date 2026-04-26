@@ -466,6 +466,7 @@ export const projects: Project[] = [
       "AI connectivity across multiple innovations",
       "Startup-style innovation and creator enablement"
     ],
+    badges: ["MoodChanger", "Design", "Internet of Things", "Neuroscience"],
     externalUrl: "https://moodchanger.ai"
   },
   {
@@ -495,6 +496,7 @@ export const projects: Project[] = [
       "Multimedia innovation with AI-first tooling",
       "Startup experimentation in creative production"
     ],
+    badges: ["Design", "Podcast Production"],
     externalUrl: "https://www.flostudios.ai/"
   },
   {
@@ -504,6 +506,7 @@ export const projects: Project[] = [
       "A major milestone in our mission to push the boundaries of intelligent systems and human-robot interaction and include that interns who join our program may have the opportunity to contribute directly to this groundbreaking initiative. We are also launching RoboCollective.ai. Our one stop shop for all our robots and our partners robots and accessories.",
     currentWork:
       "We are communicating with many robot manufacturers to showcase and sell their products. The future of robotics and a dealership come together and we're looking for ways for people to customize their very own robot.",
+    badges: ["Robotics"],
     externalUrl: "https://robocollective.ai"
   },
   {
@@ -536,6 +539,7 @@ export const projects: Project[] = [
       "A global platform showcasing FloLabs' diverse initiatives, partnerships, and cutting-edge innovations in AI and technology.",
     currentWork:
       "Redesigning the website to better highlight FloLabs' mission, ongoing projects, and opportunities for collaboration and internships.",
+    badges: ["Design"],
     externalUrl: "https://www.flolabs.international/"
   },
   {
@@ -544,7 +548,28 @@ export const projects: Project[] = [
     summary:
       "Expanding MoodChanger for pet owners by using data from wearable devices, environmental factors, and AI analysis to provide actionable insights into pets' behaviors, moods, and overall health.",
     currentWork:
-      "Developing a seamless platform that integrates with pet wearables, creating AI models for real-time analysis, and designing engaging tools for pet owners to monitor and enhance their pets' quality of life."
+      "Developing a seamless platform that integrates with pet wearables, creating AI models for real-time analysis, and designing engaging tools for pet owners to monitor and enhance their pets' quality of life.",
+    badges: ["MoodChanger", "Pet Science"]
+  },
+  {
+    slug: "flo-brain",
+    title: "FloBrain",
+    summary:
+      "An AI-native initiative focused on advanced knowledge workflows, intelligent assistants, and practical productivity systems for modern teams.",
+    currentWork:
+      "Building and iterating AI-assisted systems that improve planning, execution, and knowledge transfer across interdisciplinary project teams.",
+    badges: ["Multi-modal perception", "Front-end", "Back-end", "Design", "Internet of Things"],
+    externalUrl: "https://www.flolabs.ai/"
+  },
+  {
+    slug: "connecting-the-dots",
+    title: "Connecting The Dots",
+    summary:
+      "A cross-disciplinary project that links ideas, teams, and initiatives into clearer strategic narratives and actionable execution paths.",
+    currentWork:
+      "Developing connected content and systems that align design, technology, and business workstreams into cohesive project outcomes.",
+    badges: ["Podcast Production"],
+    externalUrl: "https://www.flolabs.ai/"
   },
   {
     slug: "flo-travel",
