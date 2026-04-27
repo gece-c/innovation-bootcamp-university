@@ -89,8 +89,8 @@ export default function HomePage() {
     "flolabs-international": "/projects/Flolabs_international.png",
     "flolabs-innovations-group": "/projects/Flolabs_white_logo.svg",
     tarrl: "/projects/TARRL.png",
-    "flo-brain": "/projects/icons/FloLabs_logo%20FloBrain.svg",
-    "connecting-the-dots": "/projects/icons/FloLabs_logo%20Connecting%20The%20Dots.svg",
+    "flo-brain": "/projects/Flo_brainn.png",
+    "connecting-the-dots": "/projects/connecting_the_dots.png",
     "flo-travel": "/projects/Flomad-Travel.png"
   };
   const projectImageBySlugLight: Partial<Record<string, string>> = {
@@ -220,7 +220,7 @@ export default function HomePage() {
               alt=""
               fill
               className="object-contain object-center opacity-90"
-              style={{ transform: "scale(1.55)" }}
+              style={{ transform: "scale(1.8)" }}
               sizes="(min-width: 1280px) 560px, (min-width: 980px) 45vw, 90vw"
               priority
             />

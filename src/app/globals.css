@@ -900,6 +900,39 @@ a {
   animation-delay: 240ms;
 }
 
+@keyframes projects-page-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.projects-page-enter {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: projects-page-slide-up 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.projects-page-delay-1 {
+  animation-delay: 70ms;
+}
+
+.projects-page-delay-2 {
+  animation-delay: 140ms;
+}
+
+.projects-page-delay-3 {
+  animation-delay: 210ms;
+}
+
+.projects-page-delay-4 {
+  animation-delay: 280ms;
+}
+
 .why-choose-section {
   background: transparent;
 }
@@ -1377,6 +1410,12 @@ a {
     animation: none;
   }
 
+  .projects-page-enter {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
   .project-tab-attention {
     opacity: 1;
     transform: none;
@@ -1740,5 +1779,63 @@ a {
   .faq-modern-summary,
   .faq-modern-chevron {
     transition: none;
+  }
+}
+
+/* Projects page: single-card item with internal split */
+.projects-showcase-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.projects-showcase-item {
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  min-height: 20rem;
+}
+
+.projects-showcase-item-copy {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.projects-showcase-item-image {
+  min-height: clamp(12rem, 28vw, 17.5rem);
+}
+
+@media (min-width: 768px) {
+  .projects-showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .projects-showcase-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    min-height: 21.5rem;
+  }
+
+  .projects-showcase-item--image-first {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+
+  .projects-showcase-item--image-first .projects-showcase-item-copy {
+    grid-column: 2;
+  }
+
+  .projects-showcase-item--image-first .projects-showcase-item-image {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .projects-showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.95rem;
   }
 }

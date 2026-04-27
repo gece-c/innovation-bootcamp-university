@@ -1,49 +1,62 @@
-import { ButtonLink } from "@/components/ui/button-link";
-import { SectionCard } from "@/components/ui/section-card";
+import { ProjectsShowcaseGrid } from "@/components/projects/projects-showcase-grid";
 import { projects, projectsPage } from "@/content/site-content";
 
 export default function ProjectsPage() {
+  const projectImageBySlug: Record<string, string> = {
+    moodchanger: "/projects/Moodchanger.png",
+    caipo: "/projects/CAIPO_Wearable.webp",
+    "flo-studios": "/projects/Flostudios.png",
+    "humanoid-robots": "/projects/Humanoid.png",
+    "hephaestus-international": "/projects/Hepheastus.png",
+    tarrl: "/projects/TARRL.png",
+    "flolabs-innovations-group": "/projects/FloLabs_white_logo.svg",
+    "flolabs-international": "/projects/Flolabs_international.png",
+    "moodchanger-for-pets": "/projects/MoodchangerPETS.png",
+    "connecting-the-dots": "/projects/Connecting_the_dots.png",
+    "flo-travel": "/projects/Flomad-Travel.png",
+    "flo-brain": "/projects/Flo_brainn.png"
+  };
+
+  const projectIconBySlug: Record<string, string> = {
+    moodchanger: "/projects/icons/FloLabs_logo MoodChanger.svg",
+    caipo: "/projects/icons/FloLabs_logo CAIPO.svg",
+    "flo-studios": "/projects/icons/FloLabs_logo FloStudios.svg",
+    "humanoid-robots": "/projects/icons/FloLabs_logo RoboCollective.svg",
+    "hephaestus-international": "/projects/icons/FloLabs_logo Hephaestus.svg",
+    tarrl: "/projects/icons/FloLabs_logo TARRL.svg",
+    "flolabs-innovations-group": "/projects/icons/FloLabs_logo black circle background.svg",
+    "flolabs-international": "/projects/icons/FloLabs_logo FloLabs International.svg",
+    "moodchanger-for-pets": "/projects/icons/FloLabs_logo MoodChanger for Pets.svg",
+    "connecting-the-dots": "/projects/icons/FloLabs_logo Connecting The Dots.svg",
+    "flo-travel": "/projects/icons/FloLabs_logo Flomad Travel.svg",
+    "flo-brain": "/projects/icons/FloLabs_logo FloBrain.svg"
+  };
+
+  const containImageSlugs = new Set(["humanoid-robots", "tarrl", "flo-brain", "flolabs-international", "flolabs-innovations-group"]);
+
+  const showcaseItems = projects.map((project) => ({
+    slug: project.slug,
+    title: project.title,
+    description: project.currentWork ?? project.summary,
+    focus: project.focus,
+    badges: project.badges,
+    imageSrc: projectImageBySlug[project.slug] ?? "/project-placeholder.svg",
+    imageAlt: `${project.title} project preview`,
+    imageContain: containImageSlugs.has(project.slug),
+    iconSrc: projectIconBySlug[project.slug] ?? "/projects/icons/FloLabs_logo Space.svg",
+    href: project.externalUrl
+  }));
+
   return (
     <div className="space-y-10">
-      <section className="text-center">
+      <section className="projects-page-enter projects-page-delay-1 mx-auto max-w-3xl text-center">
         <h1 className="page-title">{projectsPage.title}</h1>
-        <p className="mx-auto mb-8 max-w-3xl text-[var(--text-muted)]">{projectsPage.subtitle}</p>
+        <p className="mx-auto max-w-2xl text-[var(--text-muted)]">{projectsPage.subtitle}</p>
       </section>
 
-      <section aria-label="Project listings" className="grid gap-4 md:grid-cols-2">
-        {projects.map((project) => (
-          <SectionCard
-            key={project.slug}
-            title={project.title}
-            footer={
-              project.externalUrl ? (
-                <ButtonLink href={project.externalUrl} variant="secondary" target="_blank" rel="noreferrer noopener">
-                  Visit Site
-                </ButtonLink>
-              ) : null
-            }
-          >
-            <p>
-              <span className="font-semibold text-[var(--text)]">What Project Is:</span> {project.summary}
-            </p>
-            {project.currentWork ? (
-              <p className="mt-3">
-                <span className="font-semibold text-[var(--text)]">Current Work:</span> {project.currentWork}
-              </p>
-            ) : null}
-            {project.focus?.length ? (
-              <>
-                <h3 className="mt-4 text-base font-semibold text-[var(--text)]">Focus</h3>
-                <ul className="mt-2 list-inside list-disc space-y-1">
-                  {project.focus.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </>
-            ) : null}
-          </SectionCard>
-        ))}
-      </section>
+      <div className="projects-page-enter projects-page-delay-2">
+        <ProjectsShowcaseGrid items={showcaseItems} />
+      </div>
     </div>
   );
 }
