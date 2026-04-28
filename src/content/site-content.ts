@@ -549,7 +549,8 @@ export const projects: Project[] = [
       "Expanding MoodChanger for pet owners by using data from wearable devices, environmental factors, and AI analysis to provide actionable insights into pets' behaviors, moods, and overall health.",
     currentWork:
       "Developing a seamless platform that integrates with pet wearables, creating AI models for real-time analysis, and designing engaging tools for pet owners to monitor and enhance their pets' quality of life.",
-    badges: ["MoodChanger", "Pet Science"]
+    badges: ["MoodChanger", "Pet Science"],
+    externalUrl: "https://moodchanger.ai"
   },
   {
     slug: "flo-brain",

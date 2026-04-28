@@ -1800,7 +1800,7 @@ a {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .projects-showcase-item-image {

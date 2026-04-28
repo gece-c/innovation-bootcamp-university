@@ -5,10 +5,11 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 type ScrollRevealProps = {
   children: ReactNode;
   className?: string;
+  delayMs?: number;
 };
 
 /** Subtle scroll fade-in — respects reduced motion */
-export function ScrollReveal({ children, className = "" }: ScrollRevealProps) {
+export function ScrollReveal({ children, className = "", delayMs = 0 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
 
@@ -38,8 +39,9 @@ export function ScrollReveal({ children, className = "" }: ScrollRevealProps) {
   return (
     <div
       ref={ref}
-      className={`transition-[opacity,transform] duration-500 ease-out ${
-        shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
+      style={{ transitionDelay: `${Math.max(0, delayMs)}ms` }}
+      className={`will-change-transform transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        shown ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       } ${className}`}
     >
       {children}

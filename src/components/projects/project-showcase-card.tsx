@@ -50,7 +50,7 @@ export function ProjectShowcaseCard({
         ) : null}
 
         {href ? (
-          <p className="mt-5 inline-flex origin-left items-center gap-1.5 text-sm font-semibold text-[var(--primary)] transition-transform duration-200 group-hover:scale-110 motion-reduce:transition-none motion-reduce:transform-none">
+          <p className="mt-auto pt-5 inline-flex origin-left items-center gap-1.5 text-sm font-semibold text-[var(--primary)] transition-transform duration-200 group-hover:scale-110 motion-reduce:transition-none motion-reduce:transform-none">
             <span>Visit site</span>
             <span aria-hidden="true" className="text-base leading-none">
               ↗

@@ -50,7 +50,7 @@ export default function ProjectsPage() {
   return (
     <div className="space-y-10">
       <section className="projects-page-enter projects-page-delay-1 mx-auto max-w-3xl text-center">
-        <h1 className="page-title">{projectsPage.title}</h1>
+        <h1 className="page-title font-bold">{projectsPage.title}</h1>
         <p className="mx-auto max-w-2xl text-[var(--text-muted)]">{projectsPage.subtitle}</p>
       </section>
 

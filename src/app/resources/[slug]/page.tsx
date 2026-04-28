@@ -5,6 +5,9 @@ import type { IconType } from "react-icons";
 import { FaBriefcase, FaCheck, FaCoins, FaFlagCheckered, FaGlobe, FaRocket, FaUserCheck, FaUsersCog } from "react-icons/fa";
 import { SectionCard } from "@/components/ui/section-card";
 import { ButtonLink } from "@/components/ui/button-link";
+import { DailyWorkflowTimeline } from "@/components/resources/daily-workflow-timeline";
+import { PlaybookSplitSection } from "@/components/resources/playbook-split-section";
+import { ScrollReveal } from "@/components/editorial/scroll-reveal";
 import {
   RESOURCE_SLUGS,
   communityPlaybookPage,
@@ -216,30 +219,61 @@ export default async function ResourceDetailPage({ params }: Props) {
   }
 
   if (slug === RESOURCE_SLUGS.communityPlaybook) {
+    const dailyWorkflowSection = communityPlaybookPage.sections.find((section) => section.title === "Daily Workflow");
+    const splitSections = communityPlaybookPage.sections.filter((section) => section.title !== "Daily Workflow");
+
     return (
       <div className="space-y-10">
-        <section className="text-center">
-          <h1 className="page-title">{communityPlaybookPage.title}</h1>
-          <p className="mx-auto mb-4 max-w-3xl text-[var(--text-muted)]">{communityPlaybookPage.subtitle}</p>
-          <p className="mx-auto mb-6 max-w-3xl text-[var(--text-muted)]">{communityPlaybookPage.intro}</p>
-          <ButtonLink href={communityPlaybookPage.cta.href}>{communityPlaybookPage.cta.label}</ButtonLink>
-        </section>
+        <ScrollReveal>
+          <section className="relative overflow-hidden px-6 py-12 sm:px-10 sm:py-14 glass-panel rounded-3xl">
+            <Image
+              src="/resources/playbook.png"
+              alt="Community playbook overview"
+              fill
+              className="object-cover object-center opacity-24"
+              sizes="100vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/30 to-black/58" aria-hidden="true" />
+            <div className="absolute inset-0 bg-[linear-gradient(130deg,color-mix(in_srgb,var(--primary)_24%,transparent),transparent_46%)]" aria-hidden="true" />
 
-        <section aria-label="Community playbook sections" className="grid gap-4 md:grid-cols-2">
-          {communityPlaybookPage.sections.map((section) => (
-            <SectionCard
-              key={section.title}
-              title={section.title}
-              className="glass-card-soft border-[color-mix(in_srgb,var(--text-muted)_24%,transparent)] bg-transparent"
-            >
-              <ul className="list-inside list-disc space-y-1">
-                {section.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </SectionCard>
-          ))}
-        </section>
+            <div className="relative z-[1] mx-auto max-w-4xl text-center">
+              <h1 className='font-["Inter",Segoe_UI,Roboto,Arial,sans-serif] text-[clamp(2.25rem,4vw+1rem,4.1rem)] leading-[1.06] font-bold text-white'>
+                Community <span className="text-[var(--primary)]">Playbook</span>
+              </h1>
+              <p className="mx-auto mt-5 max-w-3xl text-[clamp(1.08rem,0.5vw+0.95rem,1.24rem)] leading-relaxed text-gray-200">
+                {communityPlaybookPage.subtitle}
+              </p>
+              <p className="mx-auto mt-4 max-w-3xl text-[clamp(1.01rem,0.4vw+0.92rem,1.14rem)] leading-relaxed text-gray-300">
+                {communityPlaybookPage.intro}
+              </p>
+              <div className="mt-8">
+                <ButtonLink href={communityPlaybookPage.cta.href}>{communityPlaybookPage.cta.label}</ButtonLink>
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        {dailyWorkflowSection ? (
+          <ScrollReveal>
+            <DailyWorkflowTimeline title={dailyWorkflowSection.title} items={dailyWorkflowSection.items} />
+          </ScrollReveal>
+        ) : null}
+
+        {splitSections.map((section, index) => {
+          const sectionId = `playbook-section-${section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
+          return (
+            <ScrollReveal key={section.title}>
+              <PlaybookSplitSection
+                title={section.title}
+                items={section.items}
+                sectionId={sectionId}
+                titleSide={index % 2 === 0 ? "left" : "right"}
+              />
+            </ScrollReveal>
+          );
+        })}
       </div>
     );
   }

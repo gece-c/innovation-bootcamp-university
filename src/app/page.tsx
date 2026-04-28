@@ -216,11 +216,11 @@ export default function HomePage() {
         >
           <div className="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
             <Image
-              src="/carousel/carousel-background.png"
+              src="/carousel/carousel-bg-2.png"
               alt=""
               fill
-              className="object-contain object-center opacity-90"
-              style={{ transform: "scale(1.8)" }}
+              className="object-contain object-center opacity-90 mt-16 pr-6"
+              style={{ transform: "scale(1.85)" }}
               sizes="(min-width: 1280px) 560px, (min-width: 980px) 45vw, 90vw"
               priority
             />
