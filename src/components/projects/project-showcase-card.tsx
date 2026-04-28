@@ -22,10 +22,9 @@ export function ProjectShowcaseCard({
   href,
   iconSrc,
   focus,
-  badges,
   imageFirst = false
 }: ProjectShowcaseCardProps) {
-  const highlights = focus?.length ? focus : badges?.slice(0, 3);
+  const highlights = focus?.length ? focus : undefined;
   const wrapperClassName = `group glass-card-muted projects-showcase-item rounded-2xl ${imageFirst ? "projects-showcase-item--image-first" : ""}`;
   const content = (
     <>

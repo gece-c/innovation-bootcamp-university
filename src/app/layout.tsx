@@ -3,6 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 import { SiteNavbar } from "@/components/site-navbar";
 import { SiteFooter } from "@/components/site-footer";
+import { NoOrphanWords } from "@/components/ui/no-orphan-words";
 
 export const metadata: Metadata = {
   title: { default: "Innovation Bootcamp University", template: "%s | Innovation Bootcamp University" },
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           {children}
         </main>
         <SiteFooter />
+        <NoOrphanWords />
       </body>
     </html>
   );
