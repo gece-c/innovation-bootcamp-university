@@ -14,7 +14,9 @@ export default function ProjectsPage() {
     "moodchanger-for-pets": "/projects/MoodchangerPETS.png",
     "connecting-the-dots": "/projects/Connecting_the_dots.png",
     "flo-travel": "/projects/Flomad-Travel.png",
-    "flo-brain": "/projects/Flo_brainn.png"
+    "flo-brain": "/projects/Flo_brainn.png",
+    "legal-ethics-ventures-institute": "/projects/icons/FloLabs_logo Legal.svg",
+    "space-ventures-institute": "/projects/SpaceVenturesInstitute.png"
   };
 
   const projectIconBySlug: Record<string, string> = {
@@ -29,10 +31,19 @@ export default function ProjectsPage() {
     "moodchanger-for-pets": "/projects/icons/FloLabs_logo MoodChanger for Pets.svg",
     "connecting-the-dots": "/projects/icons/FloLabs_logo Connecting The Dots.svg",
     "flo-travel": "/projects/icons/FloLabs_logo Flomad Travel.svg",
-    "flo-brain": "/projects/icons/FloLabs_logo FloBrain.svg"
+    "flo-brain": "/projects/icons/FloLabs_logo FloBrain.svg",
+    "legal-ethics-ventures-institute": "/projects/icons/FloLabs_logo Legal.svg",
+    "space-ventures-institute": "/projects/icons/FloLabs_logo Space.svg"
   };
 
-  const containImageSlugs = new Set(["humanoid-robots", "tarrl", "flo-brain", "flolabs-international", "flolabs-innovations-group"]);
+  const containImageSlugs = new Set([
+    "humanoid-robots",
+    "tarrl",
+    "flo-brain",
+    "flolabs-international",
+    "flolabs-innovations-group",
+    "legal-ethics-ventures-institute"
+  ]);
 
   const showcaseItems = projects.map((project) => ({
     slug: project.slug,
