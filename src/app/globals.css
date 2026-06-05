@@ -18,10 +18,6 @@
   --button-primary-text: #08141a;
   --badge-bg: rgb(0 0 0 / 0.35);
   --badge-text: #f8fafc;
-  --hero-chip-bg: rgb(0 0 0 / 0.45);
-  --hero-chip-border: rgb(255 255 255 / 0.82);
-  --hero-chip-text: #ffffff;
-  --hero-chip-shadow: 0 0 0.8rem rgb(255 255 255 / 0.45), 0 0 1.4rem rgb(255 255 255 / 0.25);
   --hero-inline-accent: #67e8f9;
   --hero-blob-bg: rgb(34 34 34 / 0.88);
   --hero-blob-hover-bg: rgb(40 40 40 / 0.93);
@@ -53,10 +49,6 @@
   --button-primary-text: #ffffff;
   --badge-bg: rgb(10 159 199 / 0.2);
   --badge-text: #0f172a;
-  --hero-chip-bg: rgb(255 255 255 / 0.88);
-  --hero-chip-border: rgb(10 159 199 / 0.58);
-  --hero-chip-text: #0f172a;
-  --hero-chip-shadow: 0 0 0.8rem rgb(10 159 199 / 0.28);
   --hero-inline-accent: #0684a7;
   --hero-blob-bg: rgb(255 255 255 / 0.84);
   --hero-blob-hover-bg: rgb(255 255 255 / 0.95);
@@ -518,13 +510,6 @@ a {
 .theme-badge {
   background: var(--badge-bg);
   color: var(--badge-text);
-}
-
-.hero-lead-chip {
-  background: var(--hero-chip-bg);
-  border-color: var(--hero-chip-border);
-  color: var(--hero-chip-text);
-  box-shadow: var(--hero-chip-shadow);
 }
 
 :root[data-theme="light"] .navbar-glass-cyan {

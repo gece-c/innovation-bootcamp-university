@@ -11,7 +11,7 @@ import {
   resources,
   whyChoose
 } from "@/content/site-content";
-import { FaYoutube } from "react-icons/fa";
+import { FaLinkedin, FaYoutube } from "react-icons/fa";
 import { HiOutlinePaperAirplane } from "react-icons/hi2";
 
 const MUTED = "#8A8A8A";
@@ -55,8 +55,7 @@ const checkMoreColumns: FooterNavLink[][] = [
   [
     { label: "CAIPO", href: "https://www.caipo.ai/", external: true },
     { label: "MoodChanger", href: "https://moodchanger.ai/", external: true },
-    // TODO: set URL when RoboCollective destination is confirmed
-    { label: "RoboCollective", href: "#" },
+    { label: "RoboCollective", href: "https://www.robocollective.ai/", external: true },
     {
       label: "Athletic Performance",
       href: "https://www.athleticperformanceintelligence.com/#cta",
@@ -64,7 +63,7 @@ const checkMoreColumns: FooterNavLink[][] = [
     }
   ],
   [
-    { label: "FloBrain", href: "https://flobrain.vercel.app/", external: true },
+    { label: "FloBrain", href: "https://www.robocollective.ai/", external: true },
     { label: "FloTravel", href: "https://www.flomadtravel.com/", external: true },
     {
       label: "Space Ventures Institute",
@@ -79,7 +78,7 @@ const checkMoreColumns: FooterNavLink[][] = [
   ],
   [
     { label: "Hephaestus International", href: "https://hephaestus.international/", external: true },
-    { label: "FloStudio", href: "https://www.flostudios.ai/", external: true }
+    { label: "FloStudios", href: "https://www.flostudios.ai/", external: true }
   ]
 ];
 
@@ -130,21 +129,35 @@ function FooterLink({
 }
 
 function FooterLinkList({
-  links
+  links,
+  twoColumnOnWide = false
 }: {
   links: readonly { label: string; href: string; external?: boolean }[];
+  twoColumnOnWide?: boolean;
 }) {
-  return (
-    <ul className="mt-4 flex flex-col gap-3.5">
-      {links.map((item) => (
-        <li key={`${item.href}-${item.label}`}>
-          <FooterLink href={item.href} external={item.external}>
-            {item.label}
-          </FooterLink>
-        </li>
-      ))}
-    </ul>
-  );
+  const renderLinks = (items: typeof links) =>
+    items.map((item) => (
+      <li key={`${item.href}-${item.label}`}>
+        <FooterLink href={item.href} external={item.external}>
+          {item.label}
+        </FooterLink>
+      </li>
+    ));
+
+  if (twoColumnOnWide) {
+    const midpoint = Math.ceil(links.length / 2);
+    const leftColumn = links.slice(0, midpoint);
+    const rightColumn = links.slice(midpoint);
+
+    return (
+      <div className="mt-4 flex flex-col gap-3.5 lg:flex-row lg:gap-x-12">
+        <ul className="flex min-w-0 flex-1 flex-col gap-3.5">{renderLinks(leftColumn)}</ul>
+        <ul className="flex min-w-0 flex-1 flex-col gap-3.5">{renderLinks(rightColumn)}</ul>
+      </div>
+    );
+  }
+
+  return <ul className="mt-4 flex flex-col gap-3.5">{renderLinks(links)}</ul>;
 }
 
 function handleNewsletterSubmit(event: FormEvent<HTMLFormElement>) {
@@ -218,12 +231,21 @@ export function Footer() {
               <div className="mt-4 flex items-center gap-4">
                 <a
                   href="https://www.youtube.com/@FloLabsInnovation"
-                  className="focus-ring rounded text-white transition-colors hover:text-[#1B9FD8]"
+                  className="focus-ring group rounded text-white transition-colors duration-200 hover:text-[var(--primary)]"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="YouTube"
                 >
-                  <FaYoutube className="h-6 w-6" aria-hidden />
+                  <FaYoutube className="h-6 w-6 fill-current transition-colors duration-200 group-hover:text-[var(--primary)]" aria-hidden />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/flolabs-innovation"
+                  className="focus-ring group rounded text-white transition-colors duration-200 hover:text-[var(--primary)]"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <FaLinkedin className="h-6 w-6 fill-current transition-colors duration-200 group-hover:text-[var(--primary)]" aria-hidden />
                 </a>
               </div>
             </div>
@@ -234,7 +256,7 @@ export function Footer() {
             <div className="grid gap-10 sm:grid-cols-2 lg:gap-12">
               <div>
                 <FooterHeading>Navigation</FooterHeading>
-                <FooterLinkList links={navigationLinks} />
+                <FooterLinkList links={navigationLinks} twoColumnOnWide />
               </div>
               <div>
                 <FooterHeading>Company</FooterHeading>
