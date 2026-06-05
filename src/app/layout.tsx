@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { SiteNavbar } from "@/components/site-navbar";
-import { SiteFooter } from "@/components/site-footer";
+import { Footer } from "@/components/Footer";
 import { NoOrphanWords } from "@/components/ui/no-orphan-words";
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="main-content" className="container-shell min-w-0 py-10">
           {children}
         </main>
-        <SiteFooter />
+        <Footer />
         <NoOrphanWords />
       </body>
     </html>
