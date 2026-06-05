@@ -578,6 +578,26 @@ export const projects: Project[] = [
     summary:
       "AI is taking over in the market for travel. Flo Travel is using AI to help clients plan their trips accordingly. Plan your flight, hotel, trip, activites, etc. all in one place.",
     externalUrl: "https://www.flomadtravel.com"
+  },
+  {
+    slug: "legal-ethics-ventures-institute",
+    title: "Legal & Ethics Ventures Institute",
+    summary:
+      "A remote-first legal and ethics venture institute offering experiential project work across compliance, legal operations, drafting, and AI-enabled legal innovation.",
+    currentWork:
+      "Expanding hands-on legal and ethics initiatives that help students and career changers build real-world experience through applied projects and venture-style collaboration.",
+    badges: ["Legal", "Ethics", "AI"],
+    externalUrl: "https://www.legalethicsventuresinstitute.com/"
+  },
+  {
+    slug: "space-ventures-institute",
+    title: "Space Ventures Institute",
+    summary:
+      "A remote-first venture studio and experiential institute connecting space-curious talent with real projects in space tourism, robotics, AI, and operations.",
+    currentWork:
+      "Building project streams across CAIPO Space Buddy, MoodChanger for space, space travel initiatives, and robotics-focused product development.",
+    badges: ["Space", "Robotics", "AI"],
+    externalUrl: "https://www.spaceventuresinstitute.com/"
   }
 ];
 

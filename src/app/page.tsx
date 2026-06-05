@@ -5,6 +5,7 @@ import { ProjectsShowcaseTabs, type ProjectShowcaseItem } from "@/components/hom
 import { HeroTextCarousel, type HeroCarouselItem } from "@/components/home/hero-text-carousel";
 import { WhyChooseSection } from "@/components/home/why-choose-section";
 import { CareerOpportunitiesRail } from "@/components/home/career-opportunities-rail";
+import { TestimonialVideoPlayer } from "@/components/home/testimonial-video-player";
 import {
   type CareerOpportunityIcon,
   careerOpportunitiesSection,
@@ -288,6 +289,24 @@ export default function HomePage() {
               <p className="text-lg font-semibold text-[var(--text)]">{homeWhyItMatters.headline}</p>
               <p className="text-[var(--text-muted)]">{homeWhyItMatters.body}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="testimonial-title" className="testimonial-video-section rounded-2xl px-4 py-8 sm:px-8 sm:py-10">
+        <div className="mx-auto w-full max-w-4xl">
+          <div className="faq-modern-title-wrap">
+            <h2 id="testimonial-title" className="faq-modern-title">
+              Student Testimonial
+            </h2>
+          </div>
+          <p className="mb-4 text-center text-[var(--text-muted)] sm:mb-5">Hear directly from Whitney about the internship journey.</p>
+          <div className="testimonial-video-shell overflow-hidden rounded-2xl">
+            <TestimonialVideoPlayer
+              videoSrc="/testimonial-whitney.mp4"
+              captionSrc="/testimonial-whitney.en.vtt"
+              captionLabel="English captions"
+            />
           </div>
         </div>
       </section>
