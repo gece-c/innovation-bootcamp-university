@@ -3,88 +3,99 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, type ReactNode } from "react";
-import {
-  careerOpportunitiesSection,
-  companyLinks,
-  navItems,
-  opportunityPages,
-  resources,
-  whyChoose
-} from "@/content/site-content";
-import { FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaRedditAlien, FaTiktok, FaYoutube } from "react-icons/fa";
 import { HiOutlinePaperAirplane } from "react-icons/hi2";
-
-const MUTED = "#8A8A8A";
 
 type FooterNavLink = { label: string; href: string; external?: boolean };
 
 const navigationLinks: FooterNavLink[] = [
   { label: "Home", href: "/" },
-  { label: whyChoose.title, href: "/#why-choose-title" },
-  { label: "Project Showcase", href: "/#project-showcase-title" },
-  { label: careerOpportunitiesSection.title, href: "/#career-opportunities-title" },
-  { label: "FAQ", href: "/#faq-title" },
-  ...navItems.map((item) => ({ label: item.label, href: item.href })),
-  { label: "Opportunities", href: "/opportunities" },
-  ...opportunityPages.map((page) => ({
-    label: page.title,
-    href: `/opportunities/${page.slug}`
-  })),
-  { label: "Internship Listings", href: "/opportunities/internships-data" },
-  ...resources.map((resource) => ({
-    label: resource.title,
-    href: `/resources/${resource.slug}`
-  }))
+  { label: "About us", href: "/company" },
+  { label: "Projects", href: "/projects" },
+  { label: "Resources", href: "/resources" },
+  { label: "Internships", href: "/internships" },
+  { label: "Contact", href: "/company/contact" }
 ];
 
 const footerCompanyLinks: FooterNavLink[] = [
-  ...companyLinks.filter((item) => item.href !== "/company"),
-  {
-    label: "Careers",
-    href: "https://hephaestus.international/internships",
-    external: true
-  },
-  {
-    label: "Merch",
-    href: "https://flolabsrd.notion.site/merch-background",
-    external: true
-  }
+  { label: "Careers", href: "/internships" },
+  { label: "Contact Us", href: "/company/contact" },
+  { label: "Merch", href: "https://flolabsrd.notion.site/merch-background", external: true }
 ];
 
-const checkMoreColumns: FooterNavLink[][] = [
-  [
-    { label: "CAIPO", href: "https://www.caipo.ai/", external: true },
-    { label: "MoodChanger", href: "https://moodchanger.ai/", external: true },
-    { label: "RoboCollective", href: "https://www.robocollective.ai/", external: true },
-    {
-      label: "Athletic Performance",
-      href: "https://www.athleticperformanceintelligence.com/#cta",
-      external: true
-    }
-  ],
-  [
-    { label: "FloBrain", href: "https://www.robocollective.ai/", external: true },
-    { label: "FloTravel", href: "https://www.flomadtravel.com/", external: true },
-    {
-      label: "Space Ventures Institute",
-      href: "https://www.spaceventuresinstitute.com/",
-      external: true
-    },
-    {
-      label: "Connecting the dots",
-      href: "https://www.youtube.com/playlist?list=PLwvFs7_Vcdwvn4eiECTY8tAB-M6cB5_B9",
-      external: true
-    }
-  ],
-  [
-    { label: "Hephaestus International", href: "https://hephaestus.international/", external: true },
-    { label: "FloStudios", href: "https://www.flostudios.ai/", external: true }
-  ]
+const projectLinks: FooterNavLink[] = [
+  {
+    label: "Athletic Performance Intelligence",
+    href: "https://www.athleticperformanceintelligence.com/",
+    external: true
+  },
+  { label: "CAIPO", href: "https://www.caipo.ai/", external: true },
+  {
+    label: "Connecting the Dots",
+    href: "https://www.youtube.com/@flolabsinnovation",
+    external: true
+  },
+  { label: "Cosmos Intelligence", href: "http://cosmosintelligence.org/", external: true },
+  { label: "Flo Travel", href: "https://www.flomadtravel.com/", external: true },
+  { label: "FloBrain", href: "https://www.flobrain.ai/", external: true },
+  { label: "FloLabs Innovations Group", href: "https://www.flolabsinnovations.com/", external: true },
+  { label: "FloLabs International", href: "https://www.flolabs.international/", external: true },
+  { label: "FloStudios", href: "https://www.flostudios.ai/", external: true },
+  { label: "Hephaestus International", href: "https://hephaestus.international/", external: true },
+  { label: "Innovation Bootcamp University", href: "https://www.bootcampuniversity.org/", external: true },
+  { label: "MoodChanger", href: "https://www.moodchanger.ai/", external: true },
+  { label: "MoodChanger for Pets", href: "https://www.moodchanger.ai/", external: true },
+  {
+    label: "Legal & Ethics Ventures Institute",
+    href: "https://www.legalethicsventuresinstitute.com/",
+    external: true
+  },
+  { label: "RoboCollective", href: "https://www.robocollective.ai/", external: true },
+  {
+    label: "Space Ventures Institute",
+    href: "https://www.spaceventuresinstitute.com/",
+    external: true
+  },
+  { label: "TARRL", href: "https://tarrl.org/", external: true }
+];
+
+const socialLinks = [
+  {
+    label: "YouTube",
+    href: "https://www.youtube.com/@flolabsinnovation",
+    icon: FaYoutube
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/company/flolabs-innovation/",
+    icon: FaLinkedinIn
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/people/Flo-Labs-RD/61572285432918/",
+    icon: FaFacebookF,
+    className: "site-footer-social--facebook"
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/flolabsinnovations/",
+    icon: FaInstagram
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@flomadlabs",
+    icon: FaTiktok
+  },
+  {
+    label: "Reddit",
+    href: "https://www.reddit.com/user/FloLabs_Innovations/",
+    icon: FaRedditAlien
+  }
 ];
 
 function FooterHeading({ children }: { children: ReactNode }) {
   return (
-    <h3 className="text-[13px] font-bold uppercase tracking-[0.2em] text-white">{children}</h3>
+    <h3 className="site-footer-heading text-[15px] font-bold uppercase tracking-[0.28em]">{children}</h3>
   );
 }
 
@@ -98,7 +109,7 @@ function FooterLink({
   external?: boolean;
 }) {
   const className =
-    "focus-ring inline-block text-[15px] text-white underline underline-offset-2 transition-colors hover:text-[#1B9FD8]";
+    "site-footer-link focus-ring inline-block rounded text-[13px] font-medium leading-relaxed";
 
   if (external || href.startsWith("http")) {
     return (
@@ -128,36 +139,18 @@ function FooterLink({
   );
 }
 
-function FooterLinkList({
-  links,
-  twoColumnOnWide = false
-}: {
-  links: readonly { label: string; href: string; external?: boolean }[];
-  twoColumnOnWide?: boolean;
-}) {
-  const renderLinks = (items: typeof links) =>
-    items.map((item) => (
-      <li key={`${item.href}-${item.label}`}>
-        <FooterLink href={item.href} external={item.external}>
-          {item.label}
-        </FooterLink>
-      </li>
-    ));
-
-  if (twoColumnOnWide) {
-    const midpoint = Math.ceil(links.length / 2);
-    const leftColumn = links.slice(0, midpoint);
-    const rightColumn = links.slice(midpoint);
-
-    return (
-      <div className="mt-4 flex flex-col gap-3.5 lg:flex-row lg:gap-x-12">
-        <ul className="flex min-w-0 flex-1 flex-col gap-3.5">{renderLinks(leftColumn)}</ul>
-        <ul className="flex min-w-0 flex-1 flex-col gap-3.5">{renderLinks(rightColumn)}</ul>
-      </div>
-    );
-  }
-
-  return <ul className="mt-4 flex flex-col gap-3.5">{renderLinks(links)}</ul>;
+function FooterLinkList({ links }: { links: readonly FooterNavLink[] }) {
+  return (
+    <ul className="mt-5 flex flex-col gap-2.5">
+      {links.map((item) => (
+        <li key={`${item.href}-${item.label}`}>
+          <FooterLink href={item.href} external={item.external}>
+            {item.label}
+          </FooterLink>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 function handleNewsletterSubmit(event: FormEvent<HTMLFormElement>) {
@@ -166,41 +159,41 @@ function handleNewsletterSubmit(event: FormEvent<HTMLFormElement>) {
 
 export function Footer() {
   return (
-    <footer className="mt-16 w-full bg-[#0B0B0B] py-16 text-white lg:py-20">
+    <footer className="site-footer mt-16 w-full py-14 lg:py-16">
       <div className="container-shell">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,340px)_1fr] lg:gap-x-16 xl:gap-x-20">
+        <div className="grid gap-12 lg:grid-cols-[minmax(260px,1.3fr)_0.65fr_1fr_0.65fr] lg:gap-x-14 xl:gap-x-20">
           {/* Left brand column */}
           <div className="flex min-w-0 flex-col">
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5">
               <Image
                 src="/flolabs-logo.svg"
                 alt=""
-                width={40}
-                height={40}
-                className="h-10 w-10 shrink-0"
-                style={{
-                  filter:
-                    "brightness(0) saturate(100%) invert(56%) sepia(89%) saturate(749%) hue-rotate(163deg) brightness(93%) contrast(92%)"
-                }}
+                width={34}
+                height={34}
+                className="site-footer-logo h-8 w-8 shrink-0"
                 aria-hidden
               />
-              <span className="text-base font-bold leading-tight tracking-tight sm:text-lg">
+              <span className="site-footer-brand text-[18px] font-bold leading-tight tracking-tight sm:text-[20px]">
                 Innovation Bootcamp University
               </span>
-              <span className="text-[13px]" style={{ color: MUTED }}>
-                | a FloLabs Project
+              <span className="site-footer-muted text-[12px]">
+                | by FloLabs Innovations Group
               </span>
             </div>
+            <p className="site-footer-muted mt-5 max-w-[360px] text-[13px] leading-relaxed">
+              A remote-first learning community where students build career-ready skills through
+              real internships, interdisciplinary projects, and a path from learning to earning.
+            </p>
 
-            <div className="mt-8 flex flex-col gap-4">
+            <div className="mt-8 flex flex-col gap-3">
               <div>
                 <FooterHeading>Newsletter</FooterHeading>
-                <p className="mt-3 text-sm leading-relaxed" style={{ color: MUTED }}>
-                  Receive the newest Innovation Bootcamp University updates at:
+                <p className="site-footer-muted mt-3 text-[13px] leading-relaxed">
+                  Receive the newest updates at:
                 </p>
               </div>
               <form
-                className="relative w-full max-w-[340px] border border-white/20"
+                className="site-footer-form relative w-full max-w-[345px] border"
                 onSubmit={handleNewsletterSubmit}
                 action="#"
                 noValidate
@@ -214,84 +207,59 @@ export function Footer() {
                   name="email"
                   autoComplete="email"
                   placeholder="Enter your email..."
-                  className="focus-ring min-h-11 w-full border-0 bg-transparent py-3 pl-4 pr-12 text-[15px] text-white outline-none placeholder:text-[#8A8A8A]"
+                  className="site-footer-input focus-ring min-h-10 w-full border-0 bg-transparent py-2.5 pl-3 pr-11 text-[13px] outline-none"
                 />
                 <button
                   type="submit"
-                  className="focus-ring absolute right-0 top-0 flex h-11 w-11 items-center justify-center bg-[#1A1A1A] text-white transition-colors hover:text-[#1B9FD8]"
+                  className="site-footer-submit focus-ring absolute right-0 top-0 flex h-10 w-10 items-center justify-center"
                   aria-label="Subscribe to newsletter"
                 >
-                  <HiOutlinePaperAirplane className="h-5 w-5 stroke-[1.5]" aria-hidden />
+                  <HiOutlinePaperAirplane className="h-4 w-4 stroke-[1.5]" aria-hidden />
                 </button>
               </form>
             </div>
 
             <div className="mt-10">
               <FooterHeading>Social media</FooterHeading>
-              <div className="mt-4 flex items-center gap-4">
-                <a
-                  href="https://www.youtube.com/@FloLabsInnovation"
-                  className="focus-ring group rounded text-white transition-colors duration-200 hover:text-[var(--primary)]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                >
-                  <FaYoutube className="h-6 w-6 fill-current transition-colors duration-200 group-hover:text-[var(--primary)]" aria-hidden />
-                </a>
-                <a
-                  href="https://www.linkedin.com/company/flolabs-innovation"
-                  className="focus-ring group rounded text-white transition-colors duration-200 hover:text-[var(--primary)]"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                >
-                  <FaLinkedin className="h-6 w-6 fill-current transition-colors duration-200 group-hover:text-[var(--primary)]" aria-hidden />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Right link area */}
-          <div className="flex min-w-0 flex-col gap-10 lg:gap-12">
-            <div className="grid gap-10 sm:grid-cols-2 lg:gap-12">
-              <div>
-                <FooterHeading>Navigation</FooterHeading>
-                <FooterLinkList links={navigationLinks} twoColumnOnWide />
-              </div>
-              <div>
-                <FooterHeading>Company</FooterHeading>
-                <FooterLinkList links={footerCompanyLinks} />
-              </div>
-            </div>
-
-            <div>
-              <FooterHeading>Check more</FooterHeading>
-              <div className="mt-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
-                {checkMoreColumns.map((column, columnIndex) => (
-                  <ul key={columnIndex} className="flex flex-col gap-3.5">
-                    {column.map((item) => (
-                      <li key={item.label}>
-                        <FooterLink href={item.href} external={item.external}>
-                          {item.label}
-                        </FooterLink>
-                      </li>
-                    ))}
-                  </ul>
+              <div className="mt-4 flex flex-wrap items-center gap-4">
+                {socialLinks.map(({ label, href, icon: Icon, className }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    className={`site-footer-social focus-ring rounded${className ? ` ${className}` : ""}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                  >
+                    <Icon aria-hidden />
+                  </a>
                 ))}
               </div>
             </div>
           </div>
+
+          <div>
+            <FooterHeading>Navigation</FooterHeading>
+            <FooterLinkList links={navigationLinks} />
+          </div>
+
+          <div>
+            <FooterHeading>Projects</FooterHeading>
+            <FooterLinkList links={projectLinks} />
+          </div>
+
+          <div>
+            <FooterHeading>Company</FooterHeading>
+            <FooterLinkList links={footerCompanyLinks} />
+          </div>
         </div>
 
         <div
-          className="mt-14 border-t border-white/[0.12] pt-8 lg:mt-16"
+          className="site-footer-divider mt-14 border-t pt-7 lg:mt-16"
           role="presentation"
         >
-          <p
-            className="text-center text-[13px] tracking-[0.15em]"
-            style={{ color: MUTED }}
-          >
-            Live long and prosper.
+          <p className="site-footer-muted text-center text-[12px] tracking-[0.08em]">
+            Live Long and Prosper.
           </p>
         </div>
       </div>
