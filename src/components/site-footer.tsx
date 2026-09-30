@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
-import { companyLinks, legalLinks, opportunityPages, resources, stayUpdatedBlock } from "@/content/site-content";
+import { companyLinks, legalLinks, resources, stayUpdatedBlock } from "@/content/site-content";
 import { isValidEmail } from "@/lib/validation/email";
 
 export function SiteFooter() {
@@ -94,18 +94,16 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h2 className="font-semibold">Opportunities</h2>
+            <h2 className="font-semibold">Internships</h2>
             <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)]">
-              {opportunityPages.map((item) => (
-                <li key={item.slug}>
-                  <Link
-                    href={`/opportunities/${item.slug}`}
-                    className="focus-ring rounded hover:text-[var(--primary)]"
-                  >
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link
+                  href="/internships"
+                  className="focus-ring rounded hover:text-[var(--primary)]"
+                >
+                  Open Positions
+                </Link>
+              </li>
             </ul>
           </div>
         </section>
