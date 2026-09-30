@@ -249,7 +249,7 @@ export default function HomePage() {
         body={careerOpportunitiesSection.body}
         items={careerOpportunityItems}
         ctaLabel="Join us!"
-        ctaHref="/opportunities/internships"
+        ctaHref="/internships"
       />
 
       <section

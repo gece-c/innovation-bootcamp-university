@@ -8,24 +8,6 @@ export type Track = {
   careers: string[];
 };
 
-export type InternshipPosition = {
-  slug: string;
-  title: string;
-  company?: string;
-  location?: string;
-  duration?: string;
-  schedule?: "Full-time" | "Part-time" | "Flexible";
-  status?: "Open" | "Closed" | "Coming Soon";
-  summary?: string;
-};
-
-export type OpportunityPage = {
-  slug: "internships";
-  title: string;
-  summary: string;
-  ctaLabel: string;
-};
-
 export type Project = {
   slug: string;
   title: string;
@@ -62,6 +44,7 @@ export type CareerOpportunityIcon =
 
 export const navItems = [
   { href: "/projects", label: "Projects" },
+  { href: "/internships", label: "Internships" },
   { href: "/resources", label: "Resources" },
   { href: "/company", label: "About" }
 ];
@@ -84,8 +67,8 @@ export const hero = {
     { title: "Open Entry", description: "No prior experience required. Just ambition and curiosity." }
   ],
   actions: [
-    { href: "/opportunities/internships", label: "Pre-Register" },
-    { href: "/opportunities/internships", label: "Explore Internships" }
+    { href: "/internships", label: "Pre-Register" },
+    { href: "/internships", label: "Explore Internships" }
   ],
   stats: [
     { label: "", value: "Global community of learners" },
@@ -339,100 +322,6 @@ export const opportunities = [
   "Internships"
 ];
 
-export const opportunityPages: OpportunityPage[] = [
-  {
-    slug: "internships",
-    title: "Internships",
-    summary: "Explore open internship positions across engineering, AI, robotics, and business teams.",
-    ctaLabel: "Check Internships"
-  }
-];
-
-export const internshipPositions: InternshipPosition[] = [
-  {
-    slug: "ai-agi-intern",
-    title: "AI/AGI Intern",
-    status: "Open",
-    summary: "Support AI product experiments and model evaluation workflows."
-  },
-  {
-    slug: "animal-science-research-intern",
-    title: "Animal Science and Veterinary Research Intern",
-    status: "Open",
-    summary: "Assist with data capture and research documentation projects."
-  },
-  {
-    slug: "biomedical-engineering-intern",
-    title: "Biomedical Engineering Intern",
-    status: "Open",
-    summary: "Contribute to applied engineering prototypes in healthcare technology."
-  },
-  {
-    slug: "business-development-sales-intern",
-    title: "Business Development and Sales Intern",
-    status: "Open",
-    summary: "Help drive outreach, lead tracking, and structured follow-up execution."
-  },
-  {
-    slug: "business-development-sales-ai-robotics-intern",
-    title: "Business Development and Sales Intern (AI and Robotics)",
-    status: "Open",
-    summary: "Support AI and robotics outreach pipelines and market analysis."
-  },
-  {
-    slug: "computer-vision-engineering-intern",
-    title: "Computer Vision Engineering Intern",
-    status: "Open",
-    summary: "Work on image processing, model testing, and deployment validation."
-  },
-  {
-    slug: "content-marketing-intern",
-    title: "Content Marketing Intern",
-    status: "Open",
-    summary: "Create campaign content and optimize messaging for growth channels."
-  },
-  {
-    slug: "control-systems-engineering-intern",
-    title: "Control Systems Engineering Intern",
-    status: "Open",
-    summary: "Assist with system modeling, tuning, and controls documentation."
-  },
-  {
-    slug: "digital-marketing-intern",
-    title: "Digital Marketing Intern",
-    status: "Open",
-    summary: "Execute digital campaigns and analyze channel performance metrics."
-  },
-  {
-    slug: "full-stack-developer-intern",
-    title: "Full Stack Developer Intern",
-    schedule: "Full-time",
-    status: "Open",
-    summary: "Build modern web features using React, Next.js, and Node.js."
-  },
-  {
-    slug: "machine-learning-intern",
-    title: "Machine Learning Intern",
-    schedule: "Full-time",
-    status: "Open",
-    summary: "Develop and evaluate ML models for real-world AI use cases."
-  },
-  {
-    slug: "robotics-engineering-intern",
-    title: "Robotics Engineering Intern",
-    schedule: "Full-time",
-    status: "Open",
-    summary: "Design and test robotics components for next-generation systems."
-  },
-  {
-    slug: "data-science-intern",
-    title: "Data Science Intern",
-    schedule: "Part-time",
-    status: "Open",
-    summary: "Analyze datasets and deliver dashboards for actionable insights."
-  }
-];
-
 export const resources = [
   {
     slug: RESOURCE_SLUGS.howItWorks,
@@ -605,7 +494,7 @@ export const projects: Project[] = [
 export const howItWorksPage = {
   title: "How It Works",
   subtitle: "A practical roadmap from collaborative learning to professional earning.",
-  cta: { href: "/opportunities/internships", label: "Explore the Journey" },
+  cta: { href: "/internships", label: "Explore the Journey" },
   journeyTitle: "Three-Tier Learning Experience",
   journeySubtitle: "A smarter path from beginner to paid professional, built for real-world success.",
   journeySteps: [
@@ -698,7 +587,7 @@ export const howItWorksPage = {
     title: "Ready to Start Building?",
     description:
       "Apply today and step into a modern collaborative experience. Build real skills, tackle real projects, and turn your ambition into a professional career.",
-    href: "/opportunities/internships",
+    href: "/internships",
     label: "Apply Now"
   }
 };
@@ -916,7 +805,7 @@ export const aboutPage = {
   finalCta: {
     title: "Ready to Build Your Future?",
     body: "Join an interdisciplinary community where your growth is driven by action. Pre-register today and take the first step toward a career defined by real-world impact.",
-    href: "/opportunities/internships",
+    href: "/internships",
     label: "Pre-register Now"
   }
 };

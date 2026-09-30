@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { navItems, opportunityPages, resources } from "@/content/site-content";
+import { navItems, resources } from "@/content/site-content";
 import { ButtonLink } from "@/components/ui/button-link";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -17,7 +17,7 @@ export function SiteNavbar() {
             <nav aria-label="Main navigation">
               <ul className="flex items-center gap-4">
                 {navItems.map((item) =>
-                  item.href === "/opportunities" || item.href === "/resources" ? (
+                  item.href === "/resources" ? (
                     <li key={item.href} className="group relative">
                       <Link
                         className="focus-ring rounded-md px-2 py-1 text-sm hover:text-[var(--primary)]"
@@ -28,28 +28,18 @@ export function SiteNavbar() {
                       <div
                         className="pointer-events-none invisible absolute left-0 top-full z-50 w-64 pt-2 opacity-0 transition group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100"
                         role="menu"
-                        aria-label={item.href === "/opportunities" ? "Opportunity pages" : "Resource pages"}
+                        aria-label="Resource pages"
                       >
                         <div className="navbar-menu-glass-cyan rounded-xl p-2">
-                          {item.href === "/opportunities"
-                            ? opportunityPages.map((subItem) => (
-                                <Link
-                                  key={subItem.slug}
-                                  href={`/opportunities/${subItem.slug}`}
-                                  className="focus-ring block rounded-lg px-3 py-2 text-sm text-[var(--text)]/90 hover:bg-[var(--menu-hover-bg)] hover:text-[var(--text)]"
-                                >
-                                  {subItem.title}
-                                </Link>
-                              ))
-                            : resources.map((subItem) => (
-                                <Link
-                                  key={subItem.slug}
-                                  href={`/resources/${subItem.slug}`}
-                                  className="focus-ring block rounded-lg px-3 py-2 text-sm text-[var(--text)]/90 hover:bg-[var(--menu-hover-bg)] hover:text-[var(--text)]"
-                                >
-                                  {subItem.title}
-                                </Link>
-                              ))}
+                          {resources.map((subItem) => (
+                            <Link
+                              key={subItem.slug}
+                              href={`/resources/${subItem.slug}`}
+                              className="focus-ring block rounded-lg px-3 py-2 text-sm text-[var(--text)]/90 hover:bg-[var(--menu-hover-bg)] hover:text-[var(--text)]"
+                            >
+                              {subItem.title}
+                            </Link>
+                          ))}
                         </div>
                       </div>
                     </li>
@@ -65,7 +55,7 @@ export function SiteNavbar() {
                   )
                 )}
                 <li>
-                  <ButtonLink href="/opportunities/internships" variant="secondary" className="navbar-apply-btn">
+                  <ButtonLink href="/internships" variant="secondary" className="navbar-apply-btn">
                     Apply Now
                   </ButtonLink>
                 </li>
@@ -83,22 +73,7 @@ export function SiteNavbar() {
                 <nav aria-label="Mobile navigation">
                   <ul className="space-y-1">
                     {navItems.map((item) =>
-                      item.href === "/opportunities" ? (
-                        <li key={item.href} className="space-y-1 rounded-lg border border-[var(--menu-group-border)] bg-[var(--mobile-menu-group-bg)] p-2">
-                          <Link className="focus-ring block rounded-md px-2 py-1.5 text-sm font-semibold" href={item.href}>
-                            {item.label}
-                          </Link>
-                          {opportunityPages.map((subItem) => (
-                            <Link
-                              key={subItem.slug}
-                              href={`/opportunities/${subItem.slug}`}
-                              className="focus-ring block rounded-md px-2 py-1.5 text-sm text-[var(--text)]/90 hover:bg-[var(--menu-hover-bg)] hover:text-[var(--text)]"
-                            >
-                              {subItem.title}
-                            </Link>
-                          ))}
-                        </li>
-                      ) : item.href === "/resources" ? (
+                      item.href === "/resources" ? (
                         <li key={item.href} className="space-y-1 rounded-lg border border-[var(--menu-group-border)] bg-[var(--mobile-menu-group-bg)] p-2">
                           <Link className="focus-ring block rounded-md px-2 py-1.5 text-sm font-semibold" href={item.href}>
                             {item.label}
@@ -123,7 +98,7 @@ export function SiteNavbar() {
                     )}
                     <li className="pt-2">
                       <div className="[&_a]:w-full">
-                        <ButtonLink href="/opportunities/internships" variant="secondary" className="navbar-apply-btn">
+                        <ButtonLink href="/internships" variant="secondary" className="navbar-apply-btn">
                           Apply Now
                         </ButtonLink>
                       </div>
